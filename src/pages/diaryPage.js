@@ -8,6 +8,7 @@ import {
 } from './diaryPage.module.css';
 import Sidebar from '../components/diary/Sidebar';
 
+
 export default function diaryPage() {
   return (
     <div className={DiaryPageContainer}>
@@ -20,3 +21,4 @@ export default function diaryPage() {
     </div>
   );
 }
+

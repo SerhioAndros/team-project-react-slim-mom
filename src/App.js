@@ -1,26 +1,32 @@
 import React, { Component, Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
+
+import PublicRoute from "./routes/publicRoute";
+import PrivateRoute from "./routes/privateRoute";
 import NotFound from "./pages/notFoundPage";
 
 const HomePage = lazy(() =>
-  import("./pages/homePage" /* webpackChunkName: 'home-page' */)
+  import("./pages/HomePage" /* webpackChunkName: 'home-page' */)
 );
+
+const NavBar = lazy(() =>
+  import("./navBar/NavBar.js" /* webpackChunkName: 'navigation-page' */)
+);
+
 const LoginPage = lazy(() =>
-  import("./pages/loginPage" /* webpackChunkName: 'movie-page' */)
+  import("./pages/LoginPage.js" /* webpackChunkName: 'login-page' */)
 );
-const Navigation = lazy(() =>
-  import("./navBar/navBar" /* webpackChunkName: 'navigation-page' */)
-);
+
 const RegistrationPage = lazy(() =>
-  import("./pages/registerPage" /* webpackChunkName: 'movie-deatils-page' */)
+  import("./pages/RegistrationPage" /* webpackChunkName: 'registration-page' */)
 );
 
 const CalculatorPage = lazy(() =>
-  import("./pages/calculatorPage" /* webpackChunkName: 'movie-deatils-page' */)
+  import("./pages/CalculatorPage" /* webpackChunkName: 'calculator-page' */)
 );
 
 const DiaryPage = lazy(() =>
-  import("./pages/diaryPage" /* webpackChunkName: 'movie-deatils-page' */)
+  import("./pages/DiaryPage" /* webpackChunkName: 'diary-page' */)
 );
 
 class App extends Component {
@@ -30,14 +36,36 @@ class App extends Component {
   render() {
     return (
       <>
-        <Suspense fallback="Loading...">
-          <Navigation />
+        <Suspense fallback={<p>Loading...</p>}>
+          <NavBar />
           <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/registration" component={RegistrationPage} />
-            <Route exact path="/calculator" component={CalculatorPage} />
-            <Route exact path="/diary" component={DiaryPage} />
+            <PublicRoute exact path="/" component={HomePage} />
+            <PublicRoute
+              exact
+              path="/login"
+              redirectTo="/calculator"
+              restricted
+              component={LoginPage}
+            />
+            <PublicRoute
+              exact
+              path="/registration"
+              redirectTo="/calculator"
+              restricted
+              component={RegistrationPage}
+            />
+            <PrivateRoute
+              exact
+              path="/calculator"
+              redirectTo="/"
+              component={CalculatorPage}
+            />
+            <PrivateRoute
+              exact
+              path="/diary"
+              redirectTo="/"
+              component={DiaryPage}
+            />
             <Route component={NotFound} />
           </Switch>
         </Suspense>
