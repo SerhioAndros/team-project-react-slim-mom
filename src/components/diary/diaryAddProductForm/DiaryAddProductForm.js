@@ -1,8 +1,10 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react';
+import {useSelector} from 'react-redux';
 import Autocomplete from 'react-autocomplete';
 import styles from './DiaryAddProductForm.module.css';
 import sprite from '../../../images/diary/sprite.svg';
+import {getAuthToken} from '../../../redux/auth/auth-selectors';
 
 const DiaryAddProductForm = () => {
   const initialState = {
@@ -17,11 +19,12 @@ const DiaryAddProductForm = () => {
   const [state, setState] = useState({...initialState});
   //const dispatch = useDispatch();
 
-  const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MGVjMWQ1Y2E2Zjk3NjY4ZjdmYzRmZWMiLCJzaWQiOiI2MGVkNjdlM2E2Zjk3NjY4ZjdmYzUwMmEiLCJpYXQiOjE2MjYxNzEzNjMsImV4cCI6MTYyNjE3NDk2M30.5zfIj3x0Y-nmByTDEWVXcVTDQktXgpS9-DbqV9ttlSU';
+  //   const token =
+  //     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MGVjMWQ1Y2E2Zjk3NjY4ZjdmYzRmZWMiLCJzaWQiOiI2MGVkNjdlM2E2Zjk3NjY4ZjdmYzUwMmEiLCJpYXQiOjE2MjYxNzEzNjMsImV4cCI6MTYyNjE3NDk2M30.5zfIj3x0Y-nmByTDEWVXcVTDQktXgpS9-DbqV9ttlSU';
   const base_url = 'https://slimmom-backend.goit.global';
 
   axios.defaults.baseURL = base_url;
+  const token = useSelector(getAuthToken);
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
   useEffect(() => {
@@ -93,7 +96,6 @@ const DiaryAddProductForm = () => {
               placeholder="Граммы"
               name="weight"
               value={state.productWeight}
-              onChange
               autoComplete="off"
             />
           </label>
