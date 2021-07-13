@@ -6,24 +6,24 @@ import PrivateRoute from "./routes/privateRoute";
 import NotFound from "./pages/notFoundPage";
 
 const HomePage = lazy(() =>
-  import("./pages/HomePage" /* webpackChunkName: 'home-page' */)
+  import("./pages/homePage" /* webpackChunkName: 'home-page' */)
 );
 const LoginPage = lazy(() =>
-  import("./pages/LoginPage" /* webpackChunkName: 'login-page' */)
+  import("./pages/loginPage" /* webpackChunkName: 'login-page' */)
 );
 const NavBar = lazy(() =>
-  import("./navBar/NavBar" /* webpackChunkName: 'navigation-page' */)
+  import("./navBar/navBar" /* webpackChunkName: 'navigation-page' */)
 );
 const RegistrationPage = lazy(() =>
-  import("./pages/RegistrationPage" /* webpackChunkName: 'registration-page' */)
+  import("./pages/registerPage" /* webpackChunkName: 'registration-page' */)
 );
 
 const CalculatorPage = lazy(() =>
-  import("./pages/CalculatorPage" /* webpackChunkName: 'calculator-page' */)
+  import("./pages/calculatorPage" /* webpackChunkName: 'calculator-page' */)
 );
 
 const DiaryPage = lazy(() =>
-  import("./pages/DiaryPage" /* webpackChunkName: 'diary-page' */)
+  import("./pages/diaryPage" /* webpackChunkName: 'diary-page' */)
 );
 
 class App extends Component {

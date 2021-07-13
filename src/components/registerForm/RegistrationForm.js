@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/auth-operation";
 import { FormControl } from "../loginForm/LoginForm";
 import * as Yup from "yup";
+import { Link } from "react-router-dom";
+import css from './RegistrationForm.module.css'
 
 const initialForm = { username: "", email: "", password: "" };
 
@@ -28,7 +30,9 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className={css.form_container}>
+            <h2 className={css.form_title}>РЕГИСТРАЦИЯ</h2>
+
       <Formik
         initialValues={initialForm}
         validationSchema={validationSchema}
@@ -39,9 +43,17 @@ const RegistrationForm = () => {
           <FormControl label="Имя *" type="text" name="username" />
           <FormControl label="Почта *" name="email" type="email" />
           <FormControl label="Пароль *" type="password" name="password" />
-          <button type="submit" className="btn">
-            Register
-          </button>
+          <div className={css.btn_container}>
+            <button type="submit" className={css.form_btn}>
+            Регистрация
+            </button>
+            <Link to="/login" exact>
+              {" "}
+              <button type="button" className={css.secondary_form_btn}>
+                Вход
+              </button>
+            </Link>
+          </div>
         </Form>
       </Formik>
     </div>
