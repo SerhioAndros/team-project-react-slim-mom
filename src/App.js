@@ -26,7 +26,7 @@ const CalculatorPage = lazy(() =>
 );
 
 const DiaryPage = lazy(() =>
-  import("./pages/DiaryPage" /* webpackChunkName: 'diary-page' */)
+  import("./pages/DiaryPage.js" /* webpackChunkName: 'diary-page' */)
 );
 
 class App extends Component {
