@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-import { getUserName } from "../redux/auth/auth-selector";
+import { getAuthUserName } from "../redux/auth/auth-selectors";
 // import { logout } from "../redux/auth/auth-operations";
 // import styles from "./UserMenu.module.css";
 
@@ -55,7 +55,7 @@ const UserMenu = ({ name, onLogout }) => (
 );
 
 const mapStateToProps = (state) => ({
-  name: getUserName(state),
+  name: getAuthUserName(state),
 });
 
 // const mapDispatchToProps = (dispatch) => ({

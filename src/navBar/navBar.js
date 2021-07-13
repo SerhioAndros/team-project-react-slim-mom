@@ -5,7 +5,7 @@ import styles from "./NavBar.module.css";
 import Navigation from "./navigation";
 import UserMenu from "./userMenu";
 import AuthNav from "./authNav";
-import { getIsAuthenticated } from "../redux/auth/auth-selector";
+import { getIsAuth } from "../redux/auth/auth-selectors";
 
 const NavBar = ({ isAuthenticated }) => (
   <header className={styles.header}>
@@ -15,7 +15,7 @@ const NavBar = ({ isAuthenticated }) => (
 );
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: getIsAuthenticated(state),
+  isAuthenticated: getIsAuth(state),
 });
 
 export default connect(mapStateToProps)(NavBar);

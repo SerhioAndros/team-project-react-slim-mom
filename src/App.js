@@ -8,12 +8,15 @@ import NotFound from "./pages/notFoundPage";
 const HomePage = lazy(() =>
   import("./pages/HomePage" /* webpackChunkName: 'home-page' */)
 );
-const LoginPage = lazy(() =>
-  import("./pages/LoginPage" /* webpackChunkName: 'login-page' */)
-);
+
 const NavBar = lazy(() =>
-  import("./navBar/NavBar" /* webpackChunkName: 'navigation-page' */)
+  import("./navBar/NavBar.js" /* webpackChunkName: 'navigation-page' */)
 );
+
+const LoginPage = lazy(() =>
+  import("./pages/LoginPage.js" /* webpackChunkName: 'login-page' */)
+);
+
 const RegistrationPage = lazy(() =>
   import("./pages/RegistrationPage" /* webpackChunkName: 'registration-page' */)
 );
