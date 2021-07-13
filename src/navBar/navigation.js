@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
-const logoImg = "../images/logo.png";
+import logoImg from "../images/logo.png";
 
 const Navigation = () => (
   <NavLink exact to="/">
