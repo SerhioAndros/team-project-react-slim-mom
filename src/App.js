@@ -12,19 +12,19 @@ const HomePage = lazy(() =>
 );
 
 const NavBar = lazy(() =>
-  import("./navBar/NavBar.js" /* webpackChunkName: 'navigation-page' */)
+  import("./navBar/NavBar" /* webpackChunkName: 'navigation-page' */)
 );
 
 const LoginPage = lazy(() =>
-  import("./pages/LoginPage.js" /* webpackChunkName: 'login-page' */)
+  import("./pages/LoginPage" /* webpackChunkName: 'login-page' */)
 );
 
 const RegistrationPage = lazy(() =>
-  import("./pages/RegistrationPage" /* webpackChunkName: 'registration-page' */)
+  import("./pages/registerPage" /* webpackChunkName: 'registration-page' */)
 );
 
 const CalculatorPage = lazy(() =>
-  import("./pages/CalculatorPage" /* webpackChunkName: 'calculator-page' */)
+  import("./pages/CalculatorPage.js" /* webpackChunkName: 'calculator-page' */)
 );
 
 const DiaryPage = lazy(() =>

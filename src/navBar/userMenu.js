@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { UserInfo } from "../components/UserInfo/UserInfo";
 
 import { getAuthUserName } from "../redux/auth/auth-selectors";
 // import { logout } from "../redux/auth/auth-operations";
@@ -40,7 +41,8 @@ const UserMenu = ({ name, onLogout }) => (
         Калькулятор
       </NavLink>
     </div>
-    <div className="userInfo">
+    <UserInfo />
+    {/* <div className="userInfo">
       <span>
         Привет, <span>{name}</span>
       </span>
@@ -50,7 +52,7 @@ const UserMenu = ({ name, onLogout }) => (
       >
         Выйти
       </button>
-    </div>
+    </div> */}
   </>
 );
 

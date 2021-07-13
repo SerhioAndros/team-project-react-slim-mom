@@ -1,13 +1,13 @@
 import React from "react";
+import Container from "../components/Container/Container";
 import RegistrationForm from "../components/registerForm/RegistrationForm";
 
-const RegistrationPage = () => {
+const registerPage = () => {
   return (
-    <div>
-      <h1>РЕГИСТРАЦИЯ</h1>
+    <Container>
       <RegistrationForm />
-    </div>
+    </Container>
   );
 };
 
-export default RegistrationPage;
+export default registerPage;

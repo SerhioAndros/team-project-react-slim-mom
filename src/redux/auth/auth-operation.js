@@ -42,19 +42,20 @@ const logIn = (loginObject) => async (dispatch) => {
 
   try {
     const { data } = await axios.post("/auth/login", loginObject);
-    console.log()
+    console.log();
     // token.set(data.token);
     dispatch(loginSuccess(data));
   } catch (error) {
-    alert('Введен неверный логин или пароль.');
+    alert("Введен неверный логин или пароль.");
     dispatch(loginError(error.message));
   }
 };
 
-const logOut = () => async (dispatch) => {
+const logOut = () => async (dispatch, getState) => {
   dispatch(logoutRequest());
-
+  const authToken = getState().auth.token;
   try {
+    token.set(authToken);
     const { data } = await axios.post("/auth/logout");
     token.unset();
 
