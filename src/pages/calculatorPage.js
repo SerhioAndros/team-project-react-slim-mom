@@ -1,7 +1,7 @@
 import React from "react";
 
-const calculatorPage = () => {
+const CalculatorPage = () => {
   return <h1>Calculator</h1>;
 };
 
-export default calculatorPage;
+export default CalculatorPage;
