@@ -1,12 +1,12 @@
 import React from "react";
+import Container from "../components/Container/Container";
 import LoginForm from "../components/loginForm/LoginForm";
 
 const LoginPage = () => {
   return (
-    <div>
-      <h2>ВХОД</h2>
+    <Container>
       <LoginForm />
-    </div>
+    </Container>
   );
 };
 

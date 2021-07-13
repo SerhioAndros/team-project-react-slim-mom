@@ -1,6 +1,6 @@
 import React from "react";
 
-const rightSideBar = () => {
+const RightSideBar = () => {
   return (
     <div className="container">
       <div>
@@ -38,4 +38,4 @@ const rightSideBar = () => {
   );
 };
 
-export default rightSideBar;
+export default RightSideBar;
