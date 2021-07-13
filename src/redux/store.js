@@ -1,5 +1,4 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-// import notificationReducer from "./notification/notificationReducer";
 import {
   persistStore,
   persistReducer,
@@ -23,7 +22,7 @@ const authPersistConfig = {
 
 const store = configureStore({
   reducer: {
-    // notification: notificationReducer,
+
     // user: userReducer,
     // auth: persistReducer(authPersistConfig, authReducer),
   },
