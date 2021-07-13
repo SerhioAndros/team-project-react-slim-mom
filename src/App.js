@@ -5,6 +5,8 @@ import PublicRoute from "./routes/publicRoute";
 import PrivateRoute from "./routes/privateRoute";
 import NotFound from "./pages/notFoundPage";
 
+// test
+
 const HomePage = lazy(() =>
   import("./pages/HomePage" /* webpackChunkName: 'home-page' */)
 );
