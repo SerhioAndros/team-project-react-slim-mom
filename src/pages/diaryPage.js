@@ -1,7 +1,7 @@
 import React from "react";
 
-const diaryPage = () => {
+const DiaryPage = () => {
   return <h1>Diary</h1>;
 };
 
-export default diaryPage;
+export default DiaryPage;
