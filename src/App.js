@@ -8,15 +8,15 @@ import NotFound from "./pages/notFoundPage";
 // test
 
 const HomePage = lazy(() =>
-  import("./pages/homePage" /* webpackChunkName: 'home-page' */)
+  import("./pages/HomePage" /* webpackChunkName: 'home-page' */)
 );
 
 const NavBar = lazy(() =>
-  import("./navBar/NavBar.js" /* webpackChunkName: 'navigation-page' */)
+  import("./navBar/NavBar" /* webpackChunkName: 'navigation-page' */)
 );
 
 const LoginPage = lazy(() =>
-  import("./pages/LoginPage.js" /* webpackChunkName: 'login-page' */)
+  import("./pages/LoginPage" /* webpackChunkName: 'login-page' */)
 );
 
 const RegistrationPage = lazy(() =>
@@ -24,7 +24,7 @@ const RegistrationPage = lazy(() =>
 );
 
 const CalculatorPage = lazy(() =>
-  import("./pages/calculatorPage" /* webpackChunkName: 'calculator-page' */)
+  import("./pages/CalculatorPage.js" /* webpackChunkName: 'calculator-page' */)
 );
 
 const DiaryPage = lazy(() =>
