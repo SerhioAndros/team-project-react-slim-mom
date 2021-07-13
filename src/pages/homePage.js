@@ -1,7 +1,8 @@
 import React from "react";
+import MainForm from "../components/mainForm/MainForm";
 
 const homePage = () => {
-  return <h1>Home Page</h1>;
+  return <MainForm />;
 };
 
 export default homePage;
