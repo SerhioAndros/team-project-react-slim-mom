@@ -8,7 +8,7 @@ import {
 } from "./DiaryPage.module.css";
 import Sidebar from "../components/diary/Sidebar";
 
-export default function diaryPage() {
+export default function DiaryPage() {
   return (
     <div className={DiaryPageContainer}>
       <div className={DiaryPageInnerContainer}>
