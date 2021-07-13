@@ -1,8 +1,8 @@
 import React from "react";
 import MainForm from "../components/mainForm/MainForm";
 
-const homePage = () => {
+const HomePage = () => {
   return <MainForm />;
 };
 
-export default homePage;
+export default HomePage;
