@@ -5,15 +5,20 @@ import PublicRoute from "./routes/publicRoute";
 import PrivateRoute from "./routes/privateRoute";
 import NotFound from "./pages/notFoundPage";
 
+// test
+
 const HomePage = lazy(() =>
   import("./pages/homePage" /* webpackChunkName: 'home-page' */)
 );
-const LoginPage = lazy(() =>
-  import("./pages/loginPage" /* webpackChunkName: 'login-page' */)
-);
+
 const NavBar = lazy(() =>
-  import("./navBar/navBar" /* webpackChunkName: 'navigation-page' */)
+  import("./navBar/NavBar.js" /* webpackChunkName: 'navigation-page' */)
 );
+
+const LoginPage = lazy(() =>
+  import("./pages/LoginPage.js" /* webpackChunkName: 'login-page' */)
+);
+
 const RegistrationPage = lazy(() =>
   import("./pages/registerPage" /* webpackChunkName: 'registration-page' */)
 );
@@ -23,7 +28,7 @@ const CalculatorPage = lazy(() =>
 );
 
 const DiaryPage = lazy(() =>
-  import("./pages/diaryPage" /* webpackChunkName: 'diary-page' */)
+  import("./pages/DiaryPage.js" /* webpackChunkName: 'diary-page' */)
 );
 
 class App extends Component {
