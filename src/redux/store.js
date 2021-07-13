@@ -1,4 +1,5 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+// import notificationReducer from "./notification/notificationReducer";
 import {
   persistStore,
   persistReducer,
@@ -15,13 +16,14 @@ import storage from "redux-persist/lib/storage";
 // import authReducer from "./auth/auth-reducer";
 
 const authPersistConfig = {
-  key: "authToken",
+  key: "auth",
   storage,
-  whitelist: ["token"],
+  whitelist: ["token", "refreshToken", "sid"],
 };
 
 const store = configureStore({
   reducer: {
+    // notification: notificationReducer,
     // user: userReducer,
     // auth: persistReducer(authPersistConfig, authReducer),
   },
