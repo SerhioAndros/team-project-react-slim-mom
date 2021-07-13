@@ -4,6 +4,8 @@ import { logIn } from "../../redux/auth/auth-operation";
 ///////////////////////////////Formik, YUP /////////////////////////////////////////////////
 import { ErrorMessage, Form, Formik, useField } from "formik";
 import * as Yup from "yup";
+import css from "./LoginForm.module.css";
+import { Link } from "react-router-dom";
 
 const initialForm = { email: "", password: "" };
 
@@ -21,18 +23,18 @@ export const FormControl = ({ label, ...props }) => {
   const id = useMemo(() => Math.floor(Math.random() * 99999).toString(), []);
   const [field, meta] = useField(props);
   return (
-    <div>
-      <label className="label" htmlFor={id}>
+    <div className={css.form_control_container}>
+      <label className={css.label} htmlFor={id}>
         {label}
         <input
           id={id}
-          className={meta.error && meta.touched ? "input input-error" : "input"}
+          className={meta.error && meta.touched ? `${css.input_error}`: `${css.input}`}
           {...field}
           {...props}
         />
-        <div className='box-error-message'>
+        <div className={css.box_error_message}>
           {meta.error && meta.touched && (
-            <p className="error-message">{meta.error}</p>
+            <p className={css.error_message_text}>{meta.error}</p>
           )}
         </div>
       </label>
@@ -49,7 +51,8 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className={css.form_container}>
+      <h2 className={css.form_title}>ВХОД</h2>
       <Formik
         initialValues={initialForm}
         validationSchema={validationSchema}
@@ -58,9 +61,16 @@ const LoginForm = () => {
         <Form>
           <FormControl label="Почта *" name="email" type="email" />
           <FormControl label="Пароль *" type="password" name="password" />
-          <button type="submit" className="btn">
-            Login
-          </button>
+          <div className={css.btn_container}>
+            <button type="submit" className={css.form_btn}>
+              Вход
+            </button>
+            <Link to="/registration" exact>
+              <button type="button" className={css.secondary_form_btn}>
+                Регистрация
+              </button>
+            </Link>
+          </div>
         </Form>
       </Formik>
     </div>

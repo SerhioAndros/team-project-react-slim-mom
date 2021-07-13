@@ -5,9 +5,9 @@ import DiaryProductsList from "../components/diary/diaryProductsList/DiaryProduc
 import {
   DiaryPageContainer,
   DiaryPageInnerContainer,
-} from "./DiaryPage.module.css";
-import Sidebar from "../components/diary/Sidebar";
-
+} from "./diaryPage.module.css";
+import RightSideBar from "../components/rightSideBar/RightSideBar";
+//test
 export default function DiaryPage() {
   return (
     <div className={DiaryPageContainer}>
@@ -16,7 +16,7 @@ export default function DiaryPage() {
         <DiaryAddProductForm />
         <DiaryProductsList />
       </div>
-      <Sidebar />
+      <RightSideBar />
     </div>
   );
 }

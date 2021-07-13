@@ -50,7 +50,7 @@ const error = createReducer(null, {
 });
 
 const isAuthenticated = createReducer(false, {
-  [registerSuccess]: () => true,
+  [registerSuccess]: () => false,
   [loginSuccess]: () => true,
   [getCurrentUserSuccess]: () => true,
   [registerError]: () => false,

@@ -1,1 +1,1 @@
-export { default } from "./rightSideBar";
+export { default } from "./RightSideBar";
