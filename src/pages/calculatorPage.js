@@ -6,9 +6,10 @@ import { calculatorOperation } from "../redux/calculator/calculatorOperation";
 import { calculatorFormSelector } from "../redux/calculator/calculatorSelector";
 
 const CalculatorPage = () => {
-  const selector = useSelector(calculatorFormSelector);
- const dispatch = useDispatch();
- const onSubmit = (values) => dispatch(calculatorOperation(values));
+const selector = useSelector(calculatorFormSelector);
+const dispatch = useDispatch();
+const onSubmit = (values) => dispatch(calculatorOperation(values));
+ 
  return (
   <>
    <h2>Узнай свою суточную норму калорий</h2>
