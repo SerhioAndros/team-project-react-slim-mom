@@ -10,8 +10,8 @@ const DiaryAddProductForm = () => {
   const initialState = {
     product: '',
     productId: '',
-    productWeight: 0,
-    productCalories: 0,
+    productWeight: '',
+    productCalories: '',
     error: ''
   };
 
@@ -19,6 +19,7 @@ const DiaryAddProductForm = () => {
 
   const dispatch = useDispatch();
   const matchingProducts = useSelector(selectors.getMatchingProducts);
+  const selectedDate = useSelector(selectors.getSelectedDate);
 
   useEffect(() => {
     if (state.product.length < 1) {
@@ -29,14 +30,14 @@ const DiaryAddProductForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
     const eatenProduct = {
-      date: '2021-07-12',
+      date: selectedDate,
       productId: state.productId,
       weight: state.productWeight
     };
 
     dispatch(operations.addEatenProduct(eatenProduct));
+    setState(initialState);
   };
 
   return (

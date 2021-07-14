@@ -8,8 +8,6 @@ const DiaryProductsListItem = ({id, product, weight, calories}) => {
     dispatch(operations.deleteEatenProduct(id));
   };
 
-  console.log(id);
-
   return (
     <>
       <li className={styles.item}>

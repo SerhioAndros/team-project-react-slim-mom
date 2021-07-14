@@ -13,15 +13,19 @@ const DiaryProductsList = () => {
     dispatch(operations.fetchDailyEatenProducts());
   }, [dispatch, selectedDate]);
 
-  return dailyEatenProducts.map(item => (
-    <DiaryProductsListItem
-      product={item.title}
-      weight={item.weight}
-      calories={item.kcal}
-      id={item.id}
-      key={item.id}
-    />
-  ));
+  return (
+    <ul>
+      {dailyEatenProducts.map(item => (
+        <DiaryProductsListItem
+          product={item.title}
+          weight={item.weight}
+          calories={item.kcal}
+          id={item.id}
+          key={item.id}
+        />
+      ))}
+    </ul>
+  );
 };
 
 export default DiaryProductsList;

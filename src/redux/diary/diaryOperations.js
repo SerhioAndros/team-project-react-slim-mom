@@ -25,12 +25,12 @@ const fetchMatchingProducts = query => async (dispatch, getState) => {
   const endpoint = `/product?search=${query}`;
 
   try {
-    const { data } = await axios.get(endpoint);
-    const matchingProducts = data.map((product) => ({
+    const {data} = await axios.get(endpoint);
+    const matchingProducts = data.map(product => ({
       id: product._id,
       label: product.title.ru,
       weight: product.weight,
-      calories: product.calories,
+      calories: product.calories
     }));
 
     dispatch(setMatchingProductsSuccess(matchingProducts));
@@ -48,11 +48,17 @@ const fetchDailyEatenProducts = () => async (dispatch, getState) => {
 
   axios.defaults.headers.common.Authorization = getState().auth.token;
   const endpoint = `/day/info`;
-  const request = { date: selectedDate };
+  const request = {date: selectedDate};
+
+  console.log(`fetching eaten for : ${selectedDate}`);
 
   try {
     const {data} = await axios.post(endpoint, request);
     console.dir(data);
+    if (!data.eatenProducts) {
+      data.eatenProducts = [];
+    }
+
     dispatch(setDailyEatenProductsSuccess(data));
   } catch (error) {
     dispatch(setDailyEatenProductsError(error.message));
@@ -65,7 +71,7 @@ const addEatenProduct = eatenProduct => dispatch => {
 
   axios
     .post('/day', eatenProduct)
-    .then(({data}) => dispatch(addProductSuccess(data.eatenProduct)))
+    .then(({data}) => dispatch(addProductSuccess(data)))
     .catch(error => dispatch(addProductError(error.message)));
 };
 
@@ -74,15 +80,17 @@ const deleteEatenProduct = id => (dispatch, getState) => {
   dispatch(deleteProductRequest());
 
   const request = {
-    dayId: getState().diary.selectedDateId,
-    eatenProductId: id
+    data: {
+      dayId: getState().diary.selectedDateId,
+      eatenProductId: id
+    }
   };
 
-  console.dir(request);
-
   axios
-    .delete('/day/', request)
-    .then(() => dispatch(deleteProductSuccess(id)))
+    .delete('/day', request)
+    .then(({data}) =>
+      dispatch(deleteProductSuccess({id: id, daySummary: data.newDaySummary}))
+    )
     .catch(error => dispatch(deleteProductError(error.message)));
 };
 

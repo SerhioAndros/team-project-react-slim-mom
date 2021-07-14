@@ -24,7 +24,8 @@ const initialDiaryState = {
     .join('-'),
   matchingProducts: [],
   dailyEatenProducts: [],
-  selectedDateId: ''
+  selectedDateId: '',
+  daySummary: {}
 };
 
 const selectedDate = createReducer(initialDiaryState.selectedDate, {
@@ -32,7 +33,10 @@ const selectedDate = createReducer(initialDiaryState.selectedDate, {
 });
 
 const selectedDateId = createReducer(initialDiaryState.selectedDateId, {
-  [setDailyEatenProductsSuccess]: (state, {payload}) => payload.id
+  [setDailyEatenProductsSuccess]: (state, {payload}) => {
+    const id = payload.id ? payload.id : '';
+    return id;
+  }
 });
 
 const matchingProducts = createReducer(initialDiaryState.matchingProducts, {
@@ -40,25 +44,23 @@ const matchingProducts = createReducer(initialDiaryState.matchingProducts, {
 });
 
 const dailyEatenProducts = createReducer(initialDiaryState.dailyEatenProducts, {
-  [addProductSuccess]: (state, {payload}) => [...state, payload],
+  [addProductSuccess]: (state, {payload}) => [...state, payload.eatenProduct],
   [setDailyEatenProductsSuccess]: (state, {payload}) => payload.eatenProducts,
   [deleteProductSuccess]: (state, {payload}) =>
-    state.filter(({id}) => id !== payload)
+    state.filter(({id}) => id !== payload.id)
 });
 
-const dailyConsumedCalories = createReducer(
-  initialDiaryState.dailyEatenProducts,
-  {
-    [setDailyEatenProductsSuccess]: (state, action) =>
-      action.payload.eatenProducts.reduce((a, e) => (a += e.kcal), 0)
-  }
-);
+const daySummary = createReducer(initialDiaryState.daySummary, {
+  [deleteProductSuccess]: (state, {payload}) => payload.daySummary,
+  [setDailyEatenProductsSuccess]: (state, {payload}) => payload.daySummary,
+  [addProductSuccess]: (state, {payload}) => payload.daySummary
+});
 
 const diaryReducer = combineReducers({
   selectedDate,
   matchingProducts,
   dailyEatenProducts,
-  dailyConsumedCalories,
+  daySummary,
   selectedDateId
 });
 
