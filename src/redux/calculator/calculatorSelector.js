@@ -1,0 +1,1 @@
+export const calculatorSelector = (state) => state.dayly.daylyCalory;

@@ -13,6 +13,7 @@ import {
 
 // import contactsReducer from "./contacts/contacts-reducer";
 import {authReducer} from "./auth/auth-reducer";
+import { dailyCaloryReducer } from "./calculator/calculatorReducer";
 
 // const authPersistConfig = {
 //   key: "authToken",
@@ -21,16 +22,17 @@ import {authReducer} from "./auth/auth-reducer";
 // };
 
 const store = configureStore({
-  reducer: {
+ reducer: {
+  // user: userReducer,
+  auth: authReducer,
+  daily: dailyCaloryReducer,
+ },
 
-    // user: userReducer,
-    auth: authReducer,
+ middleware: getDefaultMiddleware({
+  serializableCheck: {
+   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
   },
-  middleware: getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
+ }),
 });
 
 // const persistor = persistStore(store);

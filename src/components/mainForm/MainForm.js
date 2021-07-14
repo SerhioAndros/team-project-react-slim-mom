@@ -18,7 +18,9 @@ const MainForm = () => {
           desiredWeight: "",
           bloodType: "1",
         }}
+
         onSubmit={getDailyRate}
+
         validationSchema={SignupSchema}
       >
         {() => (
