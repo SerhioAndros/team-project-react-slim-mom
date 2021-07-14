@@ -41,7 +41,13 @@ class App extends Component {
         <Suspense fallback={<p>Loading...</p>}>
           <NavBar />
           <Switch>
-            <PublicRoute exact path="/" component={HomePage} />
+            <PublicRoute
+              exact
+              path="/"
+              redirectTo="/calculator"
+              restricted
+              component={HomePage}
+            />
             <PublicRoute
               exact
               path="/login"

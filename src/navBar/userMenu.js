@@ -5,38 +5,28 @@ import { UserInfo } from "../components/UserInfo/UserInfo";
 
 import { getAuthUserName } from "../redux/auth/auth-selectors";
 // import { logout } from "../redux/auth/auth-operations";
-// import styles from "./UserMenu.module.css";
+import styles from "./userMenu.module.css";
 
-const styles = {
-  link: {
-    display: "inline-block",
-    textDecoration: "none",
-    padding: 12,
-    fontWeight: 700,
-    fontSize: 21,
-    color: "#2A363B",
-  },
-  activeLink: {
-    color: "rgb(89, 89, 199)",
-  },
+const activeLink = {
+  color: "#212121",
 };
 
-const UserMenu = ({ name, onLogout }) => (
+const UserMenu = () => (
   <>
-    <div className="appNavigation">
+    <div className={styles.navWrapper}>
       <NavLink
         to="/diary"
         exact
-        style={styles.link}
-        activeStyle={styles.activeLink}
+        className={styles.link}
+        activeStyle={activeLink}
       >
         Дневник
       </NavLink>
       <NavLink
         to="/calculator"
         exact
-        style={styles.link}
-        activeStyle={styles.activeLink}
+        className={styles.link}
+        activeStyle={activeLink}
       >
         Калькулятор
       </NavLink>
