@@ -1,7 +1,7 @@
-import axios from 'axios';
-import {setMatchingProducts, setDailyEatenProducts} from './diaryActions';
+import axios from "axios";
+import { setMatchingProducts, setDailyEatenProducts } from "./diaryActions";
 
-const fetchMatchingProducts = query => async (dispatch, getState) => {
+const fetchMatchingProducts = (query) => async (dispatch, getState) => {
   if (query.length < 1) {
     return;
   }
@@ -10,12 +10,12 @@ const fetchMatchingProducts = query => async (dispatch, getState) => {
   const endpoint = `/product?search=${query}`;
 
   try {
-    const {data} = await axios.get(endpoint);
-    const matchingProducts = data.map(product => ({
+    const { data } = await axios.get(endpoint);
+    const matchingProducts = data.map((product) => ({
       id: product._id,
       label: product.title.ru,
       weight: product.weight,
-      calories: product.calories
+      calories: product.calories,
     }));
 
     dispatch(setMatchingProducts(matchingProducts));
@@ -32,17 +32,17 @@ const fetchDailyEatenProducts = () => async (dispatch, getState) => {
 
   axios.defaults.headers.common.Authorization = getState().auth.token;
   const endpoint = `/day/info`;
-  const request = {date: selectedDate};
+  const request = { date: selectedDate };
 
   try {
-    const {data} = await axios.post(endpoint, request);
+    const { data } = await axios.post(endpoint, request);
 
     const eatenProducts = data.eatenProducts
-      ? data.eatenProducts?.map(item => ({
+      ? data.eatenProducts?.map((item) => ({
           id: item.id,
           product: item.title,
           calories: item.kcal,
-          weight: item.weight
+          weight: item.weight,
         }))
       : [];
 
@@ -52,4 +52,4 @@ const fetchDailyEatenProducts = () => async (dispatch, getState) => {
   }
 };
 
-export {fetchMatchingProducts, fetchDailyEatenProducts};
+export { fetchMatchingProducts, fetchDailyEatenProducts };

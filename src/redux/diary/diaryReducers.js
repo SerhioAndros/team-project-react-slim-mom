@@ -1,31 +1,43 @@
-import {combineReducers} from 'redux';
-import {createReducer} from '@reduxjs/toolkit';
-import {setSelectedDate, setMatchingProducts, setDailyEatenProducts} from './diaryActions';
+import { combineReducers } from "redux";
+import { createReducer } from "@reduxjs/toolkit";
+import {
+  setSelectedDate,
+  setMatchingProducts,
+  setDailyEatenProducts,
+} from "./diaryActions";
 
 const initialDiaryState = {
-  selectedDate: '2021-07-12',
+  selectedDate: new Date()
+    .toLocaleDateString("uk-UA")
+    .split(".")
+    .reverse()
+    .join("-"),
   matchingProducts: [],
-  dailyEatenProducts:[],
+  dailyEatenProducts: [],
 };
 
 const selectedDate = createReducer(initialDiaryState.selectedDate, {
-  [setSelectedDate]: (state, action) => action.payload
+  [setSelectedDate]: (state, action) => action.payload,
 });
 const matchingProducts = createReducer(initialDiaryState.matchingProducts, {
-  [setMatchingProducts]: (state, action) => action.payload
+  [setMatchingProducts]: (state, action) => action.payload,
 });
 const dailyEatenProducts = createReducer(initialDiaryState.dailyEatenProducts, {
-  [setDailyEatenProducts]: (state, action) => action.payload
+  [setDailyEatenProducts]: (state, action) => action.payload,
 });
-const dailyConsumedCalories = createReducer(initialDiaryState.dailyEatenProducts, {
-    [setDailyEatenProducts]: (state, action) => action.payload.reduce((a, e) => a+=e.calories,0)
-});
+const dailyConsumedCalories = createReducer(
+  initialDiaryState.dailyEatenProducts,
+  {
+    [setDailyEatenProducts]: (state, action) =>
+      action.payload.reduce((a, e) => (a += e.calories), 0),
+  }
+);
 
 const diaryReducer = combineReducers({
   selectedDate,
   matchingProducts,
   dailyEatenProducts,
-  dailyConsumedCalories
+  dailyConsumedCalories,
 });
 
-export {diaryReducer};
+export { diaryReducer };
