@@ -1,4 +1,4 @@
-burgerMenu
+
 .userInfo {
     border-top: 1px solid #e0e0e0;
   }
@@ -10,9 +10,9 @@ burgerMenu
   .logoDesctop {
     display: none;
   }
-  /* .userInfoTablet {
+  .userInfoTablet {
     display: none;
-  } */
+  }
   .userInfoDesktop {
     display: none;
   }
@@ -62,12 +62,12 @@ burgerMenu
   color: white;
   }
   
-  /* .boxTablet {
+  .boxTablet {
     height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  } */
+  }
   .logoDesktop {
     display: none;
   }
@@ -90,9 +90,9 @@ burgerMenu
       font-weight: bold;
       font-family: Verdana;
     }
-    /* .container_footer{    width: 320px;
+    .container_footer{    width: 320px;
       padding: 0 15px;
-      margin: 0 auto;} */
+      margin: 0 auto;}
     .linkCalc {
       display: block;
       text-align: center;
@@ -110,26 +110,26 @@ burgerMenu
       font-weight: bold;
       font-family: Verdana;
     }
-    /* .userInfoTablet {
+    .userInfoTablet {
       display: block;
       margin-left: auto;
-    } */
+    }
     .userInfo {
       display: none;
     }
-    /* .container {
+    .container {
       border-bottom: 1px solid #e0e0e0;
-    } */
+    }
     .mobileLinkActive{
       color: white;
       }
   }
   @media screen and (min-width: 768px){
-    /* .container_footer {
+    .container_footer {
       width: 768px;
       padding: 0 87px;
       margin: 0 auto;
-  } */
+  }
 }
   
   @media screen and (min-width: 1280px) {
@@ -141,9 +141,9 @@ burgerMenu
       align-items: center;
       margin-left: 22px;
     }
-    /* .boxTablet {
+    .boxTablet {
       display: none;
-    } */
+    }
     .logo {
       display: none;
     }

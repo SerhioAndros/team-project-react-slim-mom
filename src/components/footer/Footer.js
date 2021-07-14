@@ -4,13 +4,12 @@ import MainMenu from './MainMenu/MainMenu';
 import { NavState } from './NavState/NavState';
 import { UserInfo } from '../UserInfo/UserInfo';
 import styles from './Footer.module.css';
-import Navigation from '../../navBar/navigation';
 
 const Footer = () => {
     return (
         <>
         
-        <Navigation/>
+   
         <div className={styles.container}>
 <div className={styles.container_footer}><div className={styles.boxTablet}>
    
