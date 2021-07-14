@@ -17,7 +17,11 @@ import {
 } from './diaryActions';
 
 const initialDiaryState = {
-  selectedDate: '2021-07-12',
+  selectedDate: new Date()
+    .toLocaleDateString('uk-UA')
+    .split('.')
+    .reverse()
+    .join('-'),
   matchingProducts: [],
   dailyEatenProducts: [],
   selectedDateId: ''

@@ -25,12 +25,12 @@ const fetchMatchingProducts = query => async (dispatch, getState) => {
   const endpoint = `/product?search=${query}`;
 
   try {
-    const {data} = await axios.get(endpoint);
-    const matchingProducts = data.map(product => ({
+    const { data } = await axios.get(endpoint);
+    const matchingProducts = data.map((product) => ({
       id: product._id,
       label: product.title.ru,
       weight: product.weight,
-      calories: product.calories
+      calories: product.calories,
     }));
 
     dispatch(setMatchingProductsSuccess(matchingProducts));
@@ -48,7 +48,7 @@ const fetchDailyEatenProducts = () => async (dispatch, getState) => {
 
   axios.defaults.headers.common.Authorization = getState().auth.token;
   const endpoint = `/day/info`;
-  const request = {date: selectedDate};
+  const request = { date: selectedDate };
 
   try {
     const {data} = await axios.post(endpoint, request);
