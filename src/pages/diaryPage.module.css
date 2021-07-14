@@ -4,10 +4,11 @@
     grid-template-areas: 'content sidebar';
     grid-template-columns: 58% 42%;
     grid-template-rows: 1fr;
-    outline: 1px solid tomato;
   }
   .DiaryPageInnerContainer {
     grid-area: content;
-    outline: 1px solid green;
+  }
+  .RightSideBar_container {
+    grid-area: sidebar;
   }
 }

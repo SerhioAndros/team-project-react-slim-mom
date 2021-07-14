@@ -1,43 +1,67 @@
-import { combineReducers } from "redux";
-import { createReducer } from "@reduxjs/toolkit";
+import {combineReducers} from 'redux';
+import {createReducer} from '@reduxjs/toolkit';
 import {
   setSelectedDate,
-  setMatchingProducts,
-  setDailyEatenProducts,
-} from "./diaryActions";
+  setMatchingProductsRequest,
+  setMatchingProductsSuccess,
+  setMatchingProductsError,
+  setDailyEatenProductsRequest,
+  setDailyEatenProductsSuccess,
+  setDailyEatenProductsError,
+  addProductRequest,
+  addProductSuccess,
+  addProductError,
+  deleteProductRequest,
+  deleteProductSuccess,
+  deleteProductError
+} from './diaryActions';
 
 const initialDiaryState = {
   selectedDate: new Date()
-    .toLocaleDateString("uk-UA")
-    .split(".")
+    .toLocaleDateString('uk-UA')
+    .split('.')
     .reverse()
-    .join("-"),
+    .join('-'),
   matchingProducts: [],
   dailyEatenProducts: [],
+  selectedDateId: '',
+  daySummary: {}
 };
 
 const selectedDate = createReducer(initialDiaryState.selectedDate, {
-  [setSelectedDate]: (state, action) => action.payload,
+  [setSelectedDate]: (state, action) => action.payload
 });
-const matchingProducts = createReducer(initialDiaryState.matchingProducts, {
-  [setMatchingProducts]: (state, action) => action.payload,
-});
-const dailyEatenProducts = createReducer(initialDiaryState.dailyEatenProducts, {
-  [setDailyEatenProducts]: (state, action) => action.payload,
-});
-const dailyConsumedCalories = createReducer(
-  initialDiaryState.dailyEatenProducts,
-  {
-    [setDailyEatenProducts]: (state, action) =>
-      action.payload.reduce((a, e) => (a += e.calories), 0),
+
+const selectedDateId = createReducer(initialDiaryState.selectedDateId, {
+  [setDailyEatenProductsSuccess]: (state, {payload}) => {
+    const id = payload.id ? payload.id : '';
+    return id;
   }
-);
+});
+
+const matchingProducts = createReducer(initialDiaryState.matchingProducts, {
+  [setMatchingProductsSuccess]: (state, action) => action.payload
+});
+
+const dailyEatenProducts = createReducer(initialDiaryState.dailyEatenProducts, {
+  [addProductSuccess]: (state, {payload}) => [...state, payload.eatenProduct],
+  [setDailyEatenProductsSuccess]: (state, {payload}) => payload.eatenProducts,
+  [deleteProductSuccess]: (state, {payload}) =>
+    state.filter(({id}) => id !== payload.id)
+});
+
+const daySummary = createReducer(initialDiaryState.daySummary, {
+  [deleteProductSuccess]: (state, {payload}) => payload.daySummary,
+  [setDailyEatenProductsSuccess]: (state, {payload}) => payload.daySummary,
+  [addProductSuccess]: (state, {payload}) => payload.daySummary
+});
 
 const diaryReducer = combineReducers({
   selectedDate,
   matchingProducts,
   dailyEatenProducts,
-  dailyConsumedCalories,
+  daySummary,
+  selectedDateId
 });
 
-export { diaryReducer };
+export {diaryReducer};
