@@ -1,0 +1,25 @@
+.navWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.link {
+  display: inline-block;
+  text-decoration: none;
+  margin-right: 15px;
+  color: #9b9faa;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 1280px) {
+  .navWrapper {
+    border-left: 2px solid #e0e0e0;
+    padding: 8px 22px;
+  }
+}

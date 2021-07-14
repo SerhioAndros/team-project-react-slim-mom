@@ -1,101 +1,102 @@
 import styled from "styled-components";
 export const ModalStyled = styled.div`
-  .overlay {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-y: scroll;
-    background-color: rgba(33, 33, 33, 0.12);
+.overlay {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+  background-color: rgba(33, 33, 33, 0.12);
+}
+.notShow {
+  opacity: 0;
+  transition: 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+  pointer-events: none;
+  background-color: rgba(33, 33, 33, 0.12);
+}
+
+.modal {
+  position: absolute;
+  top: 35px;
+  width: 100%;
+  padding: 40px 15px 80px;
+  background-color: white;
+}
+.closeModalBtn {
+  display: block;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border-radius: 50%;
+  background-color: white;
+  border: none;
+  color: #000000;
+}
+.closeModalImg {
+  display: none;
+}
+.goBackImg {
+  display: block;
+  position: absolute;
+  top: -45px;
+  left: -265px;
+}
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 594px;
+    height: 580px;
+    padding: 64px 42px 68px;
+    top: 222px;
   }
-  .notShow {
-    opacity: 0;
-    transition: 0.3s;
-    position: fixed;
+  .overlay {
     top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-y: scroll;
-    pointer-events: none;
-    background-color: rgba(33, 33, 33, 0.12);
   }
 
-  .modal {
-    position: absolute;
-    top: 35px;
-    width: 100%;
-    padding: 40px 15px 80px;
-    background-color: rgb(223, 42, 42);
-  }
-  .closeModalBtn {
-    display: block;
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    border-radius: 50%;
-    background-color: rgb(83, 43, 109);
-    border: none;
-    color: #000000;
-  }
-  .closeModalImg {
+  .goBackImg {
     display: none;
   }
-  .goBackImg {
+  .closeModalImg {
     display: block;
-    position: absolute;
-    top: -45px;
-    left: -265px;
   }
-  @media screen and (min-width: 768px) {
-    .modal {
-      width: 594px;
-      height: 580px;
-      padding: 64px 42px 68px;
-      top: 222px;
-    }
-    .overlay {
-      top: 0;
-    }
+}
+@media screen and (min-width: 1024px) {
+  .modal {
+    width: 690px;
+    height: 580px;
+    padding: 64px 90px 81px;
+    top: 135px;
+  }
+}
+.enter {
+  opacity: 0;
+  transform: scale(0.3);
+}
+.enterActive {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 300ms linear;
+}
+.exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.exitActive {
+  opacity: 0;
+  transform: scale(0.3);
+  transition: all 300ms linear;
+}
 
-    .goBackImg {
-      display: none;
-    }
-    .closeModalImg {
-      display: block;
-    }
-  }
-  @media screen and (min-width: 1024px) {
-    .modal {
-      width: 690px;
-      height: 580px;
-      padding: 64px 90px 81px;
-      top: 135px;
-    }
-  }
-  .enter {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  .enterActive {
-    opacity: 1;
-    transform: scale(1);
-    transition: all 300ms linear;
-  }
-  .exit {
-    opacity: 1;
-    transform: scale(1);
-  }
-  .exitActive {
-    opacity: 0;
-    transform: scale(0.3);
-    transition: all 300ms linear;
-  }
 `;
