@@ -8,10 +8,12 @@ import AuthNav from "./authNav";
 import { getIsAuth } from "../redux/auth/auth-selectors";
 
 const NavBar = ({ isAuthenticated }) => (
-  <header className={styles.headerBar}>
-    <Navigation />
-    {isAuthenticated ? <UserMenu /> : <AuthNav />}
-  </header>
+  <div className={styles.headerContainer}>
+    <div className={styles.headerSection}>
+      <Navigation auth={isAuthenticated} />
+      {isAuthenticated ? <UserMenu /> : <AuthNav />}
+    </div>
+  </div>
 );
 
 const mapStateToProps = (state) => ({

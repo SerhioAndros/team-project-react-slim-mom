@@ -5,10 +5,8 @@ import { CalculatorSchema } from "./validationSchema";
 
 const MainForm = ({ onSubmit, initialValues, phraze }) => {
   return (
-    <div className={styled.bg}>
-      <h1 className={styled.titleH}>
-        {phraze}
-      </h1>
+    <div>
+      <h1 className={styled.titleH}>{phraze}</h1>
       <Formik
         enableReinitialize
         initialValues={initialValues}
@@ -33,7 +31,6 @@ const MainForm = ({ onSubmit, initialValues, phraze }) => {
                   component="div"
                   className={styled.errorLowerDiv}
                 />
-
 
                 <label htmlFor="age" className={styled.label}>
                   Возраст*
