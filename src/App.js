@@ -6,8 +6,7 @@ import PrivateRoute from "./routes/privateRoute";
 import NotFound from "./pages/notFoundPage";
 import { AppLoader } from "./shared/components/loader/Loader";
 import PublicRouteReg from "./routes/publicRouteReg";
-
-// test2
+import "./App.css";
 
 const HomePage = lazy(() =>
   import("./pages/homePage" /* webpackChunkName: 'home-page' */)
@@ -39,7 +38,7 @@ class App extends Component {
   };
   render() {
     return (
-      <>
+      <div className="appWrapper">
         <Suspense fallback={<AppLoader />}>
           <NavBar />
           <Switch>
@@ -79,7 +78,7 @@ class App extends Component {
             <Route component={NotFound} />
           </Switch>
         </Suspense>
-      </>
+      </div>
     );
   }
 }

@@ -1,0 +1,20 @@
+@media screen and (min-width: 768px) {
+  .appWrapper {
+    background-image: url(./images/bg/bg-tablet-1.png);
+    overflow: visible;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: right;
+    background-position-y: 430px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .appWrapper {
+    background-image: url(./images/bg/bg-desktop.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: right;
+    background-position-y: bottom;
+  }
+}
