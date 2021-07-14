@@ -1,10 +1,10 @@
-import { createAction } from "@reduxjs/toolkit";
+import {createAction} from '@reduxjs/toolkit';
 
 const getCalculateDailyCalory = createAction(
- "calculator/getCalculateDaylyCalory"
+  'calculator/getCalculateDaylyCalory'
 );
 const getCalculateDailyCaloryError = createAction(
- "calculator/getCalculateDaylyCalory"
+  'calculator/getCalculateDaylyCalory'
 );
 
-export { getCalculateDailyCalory, getCalculateDailyCaloryError };
+export {getCalculateDailyCalory, getCalculateDailyCaloryError};

@@ -76,6 +76,12 @@ const DiaryAddProductForm = () => {
               placeholder="Граммы"
               name="weight"
               value={state.productWeight}
+              onChange={e =>
+                setState(prevState => ({
+                  ...prevState,
+                  productWeight: e.target.value
+                }))
+              }
               autoComplete="off"
             />
           </label>

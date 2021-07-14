@@ -1,6 +1,21 @@
 import axios from 'axios';
-import {setMatchingProducts, setDailyEatenProducts} from './diaryActions';
+import {
+  setSelectedDate,
+  setMatchingProductsRequest,
+  setMatchingProductsSuccess,
+  setMatchingProductsError,
+  setDailyEatenProductsRequest,
+  setDailyEatenProductsSuccess,
+  setDailyEatenProductsError,
+  addProductRequest,
+  addProductSuccess,
+  addProductError,
+  deleteProductRequest,
+  deleteProductSuccess,
+  deleteProductError
+} from './diaryActions';
 
+// GET @ /filtered products
 const fetchMatchingProducts = query => async (dispatch, getState) => {
   if (query.length < 1) {
     return;
@@ -18,12 +33,13 @@ const fetchMatchingProducts = query => async (dispatch, getState) => {
       calories: product.calories
     }));
 
-    dispatch(setMatchingProducts(matchingProducts));
+    dispatch(setMatchingProductsSuccess(matchingProducts));
   } catch (error) {
-    //alert(`${error.message}`);
+    dispatch(setMatchingProductsError(error.message));
   }
 };
 
+// GET @ /products
 const fetchDailyEatenProducts = () => async (dispatch, getState) => {
   const selectedDate = getState().diary.selectedDate;
   if (!selectedDate) {
@@ -46,9 +62,9 @@ const fetchDailyEatenProducts = () => async (dispatch, getState) => {
         }))
       : [];
 
-    dispatch(setDailyEatenProducts(eatenProducts));
+    dispatch(setDailyEatenProductsSuccess(eatenProducts));
   } catch (error) {
-    alert(`${error.message}`);
+    dispatch(setDailyEatenProductsError(error.message));
   }
 };
 
