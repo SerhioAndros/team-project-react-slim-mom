@@ -117,11 +117,8 @@ input[type="radio"]:checked ~ span:after {
     font-weight: 700;
     font-size: 30px;
     line-height: 1.2;
-    margin-left: 87px;
+    /* margin-left: 87px; */
     margin-bottom: 60px;
-  }
-  .formInput {
-    padding-left: 87px;
   }
 
   .containerDivFlex {
@@ -155,7 +152,7 @@ input[type="radio"]:checked ~ span:after {
     background-size: contain;
     height: 850px;
     background-position: 339px -5px;
-    padding-top: 200px;
+    /* padding-top: 200px; */
   }
 
   .titleH {

@@ -2,23 +2,29 @@ import React, { Component } from "react";
 import closeModalBtn from "../../images/modal/close-burger-menu.png";
 import goBackBtn from "../../images/modal/go-back.png";
 import { ModalStyled } from "./ModalStyled";
+
 import DailyCalorieIntake from "../DailyCalorieIntake/DailyCalorieIntake";
+
 
 class Modal extends Component {
   state = { showModal: false };
   componentDidMount() {
     window.addEventListener("keydown", this.closeModal);
+
     document
       .getElementById("overlay")
       .addEventListener("click", this.closeOverlay);
+
   }
 
   componentWillUnmount() {
     this.removeScroll();
     window.removeEventListener("keydown", this.closeModal);
+
     document
       .getElementById("overlay")
       .removeEventListener("click", this.closeModalOverlay);
+
   }
   onModalToggle = () => {
     this.setState((prevState) => ({ showModal: !prevState.showModal }));
@@ -44,9 +50,8 @@ class Modal extends Component {
   };
 
   render() {
-    return (
-      <>
-        <ModalStyled>
+    return ReactDOM.createPortal((
+      <><div id='overlay' className='overlay' onClick={this.closeOverlay}> <ModalStyled >
           <div className="modal">
             <button
               type="button"
@@ -60,11 +65,14 @@ class Modal extends Component {
               />
               <img src={goBackBtn} alt="close-modal" className="goBackImg" />
             </button>
+
             <DailyCalorieIntake />
+
           </div>
-        </ModalStyled>
+        </ModalStyled></div>
+       
       </>
-    );
+    ),document.getElementById('portal')) 
   }
 }
 

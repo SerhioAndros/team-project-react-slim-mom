@@ -3,11 +3,11 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import styled from "./MainForm.module.css";
 import { CalculatorSchema } from "./validationSchema";
 
-const MainForm = ({ onSubmit, initialValues }) => {
+const MainForm = ({ onSubmit, initialValues, phraze }) => {
   return (
     <div className={styled.bg}>
       <h1 className={styled.titleH}>
-        Просчитай свою суточную норму калорий прямо сейчас
+        {phraze}
       </h1>
       <Formik
         enableReinitialize
@@ -33,6 +33,7 @@ const MainForm = ({ onSubmit, initialValues }) => {
                   component="div"
                   className={styled.errorLowerDiv}
                 />
+
 
                 <label htmlFor="age" className={styled.label}>
                   Возраст*
