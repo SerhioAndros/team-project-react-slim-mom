@@ -32,6 +32,7 @@ const RightSideBar = () => {
             <li className={styles.productsItem}>item</li>
           </ul> */}
           <p className={styles.message}>Здесь будет отображаться Ваш рацион</p>
+          <p>test</p>
         </div>
       </div>
     </div>
