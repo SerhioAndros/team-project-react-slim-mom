@@ -58,12 +58,22 @@ const isAuthenticated = createReducer(false, {
   [getCurrentUserError]: () => false,
   [logoutSuccess]: () => false,
 });
+const isRegistrated = createReducer(false, {
+  [registerSuccess]: () => true,
+  [getCurrentUserSuccess]: () => true,
+  [registerError]: () => false,
+  [loginError]: () => false,
+  [getCurrentUserError]: () => false,
+  [logoutSuccess]: () => false,
+
+});
 
 const authReducer = combineReducers({
   user,
   todaySummaryInfo,
   token,
   isAuthenticated,
+  isRegistrated,
   error,
 });
 

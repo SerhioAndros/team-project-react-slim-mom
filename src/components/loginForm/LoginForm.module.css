@@ -44,6 +44,7 @@
   outline: 0;
   height: 20px;
   margin-top: 3px;
+  height: 30px;
 }
 
 .input_error {
@@ -52,7 +53,7 @@
   border-bottom: 1px solid #f00505;
   width: 100%;
   outline: 0;
-  height: 22px;
+  height: 30px;
 }
 
 .box_error_message {
@@ -93,6 +94,11 @@
   border: none;
 }
 
+.form_btn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
 .form_btn:first-child {
   margin-bottom: 20px;
 }
@@ -114,6 +120,11 @@
   border: 2px solid #fc842d;
   box-sizing: border-box;
   border-radius: 30px;
+}
+
+.secondary_form_btn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 @media screen and (min-width: 768px) {
@@ -143,7 +154,6 @@
     display: block;
     margin-top: 60px;
   }
-
 
   .form_btn {
     font-family: Verdana;

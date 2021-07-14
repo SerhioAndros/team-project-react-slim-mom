@@ -5,6 +5,7 @@ import PublicRoute from "./routes/publicRoute";
 import PrivateRoute from "./routes/privateRoute";
 import NotFound from "./pages/notFoundPage";
 import { AppLoader } from "./shared/components/loader/Loader";
+import PublicRouteReg from "./routes/publicRouteReg";
 
 // test2
 
@@ -56,10 +57,10 @@ class App extends Component {
               restricted
               component={LoginPage}
             />
-            <PublicRoute
+            <PublicRouteReg
               exact
               path="/registration"
-              redirectTo="/calculator"
+              redirectTo="/login"
               restricted
               component={RegistrationPage}
             />
