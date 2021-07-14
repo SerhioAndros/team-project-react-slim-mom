@@ -1,8 +1,8 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/auth-operation";
 ///////////////////////////////Formik, YUP /////////////////////////////////////////////////
-import { ErrorMessage, Form, Formik, useField } from "formik";
+import { Form, Formik, useField } from "formik";
 import * as Yup from "yup";
 import css from "./LoginForm.module.css";
 import { Link } from "react-router-dom";
@@ -28,7 +28,9 @@ export const FormControl = ({ label, ...props }) => {
         {label}
         <input
           id={id}
-          className={meta.error && meta.touched ? `${css.input_error}`: `${css.input}`}
+          className={
+            meta.error && meta.touched ? `${css.input_error}` : `${css.input}`
+          }
           {...field}
           {...props}
         />
