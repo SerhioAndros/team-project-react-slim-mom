@@ -1,19 +1,20 @@
-import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import {
-  // persistStore,
-  // persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER
-} from 'redux-persist';
+ // persistStore,
+ // persistReducer,
+ FLUSH,
+ REHYDRATE,
+ PAUSE,
+ PERSIST,
+ PURGE,
+ REGISTER,
+} from "redux-persist";
 // import storage from "redux-persist/lib/storage";
 
 // import contactsReducer from "./contacts/contacts-reducer";
-import {authReducer} from './auth/auth-reducer';
-import {diaryReducer} from './diary/diaryReducers';
+import { authReducer } from "./auth/auth-reducer";
+import { dailyCaloryReducer } from "./calculator/calculatorReducer";
+import { diaryReducer } from "./diary/diaryReducers";
 
 // const authPersistConfig = {
 //   key: "authToken",
@@ -22,16 +23,18 @@ import {diaryReducer} from './diary/diaryReducers';
 // };
 
 const store = configureStore({
-  reducer: {
-    // user: userReducer,
-    auth: authReducer,
-    diary: diaryReducer
+ reducer: {
+  // user: userReducer,
+  auth: authReducer,
+  diary: diaryReducer,
+  daily: dailyCaloryReducer,
+ },
+
+ middleware: getDefaultMiddleware({
+  serializableCheck: {
+   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
   },
-  middleware: getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-    }
-  })
+ }),
 });
 
 // const persistor = persistStore(store);
