@@ -1,13 +1,10 @@
-import axios from 'axios';
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Autocomplete from 'react-autocomplete';
 import styles from './DiaryAddProductForm.module.css';
 import sprite from '../../../images/diary/sprite.svg';
-import {getAuthToken} from '../../../redux/auth/auth-selectors';
-import {fetchMatchingProducts} from '../../../redux/diary/diaryOperations';
-import {getMatchingProducts} from '../../../redux/diary/diarySelectors';
-import {setSelectedDate} from '../../../redux/diary/diaryActions';
+import {operations} from '../../../redux/diary/diaryOperations';
+import {selectors} from '../../../redux/diary/diarySelectors';
 
 const DiaryAddProductForm = () => {
   const initialState = {
@@ -21,18 +18,25 @@ const DiaryAddProductForm = () => {
   const [state, setState] = useState({...initialState});
 
   const dispatch = useDispatch();
-  const matchingProducts = useSelector(getMatchingProducts);
+  const matchingProducts = useSelector(selectors.getMatchingProducts);
 
   useEffect(() => {
     if (state.product.length < 1) {
       return;
     }
-    dispatch(fetchMatchingProducts(state.product));
+    dispatch(operations.fetchMatchingProducts(state.product));
   }, [dispatch, state.product]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(setSelectedDate('2021-07-13'));
+
+    const eatenProduct = {
+      date: '2021-07-12',
+      productId: state.productId,
+      weight: state.productWeight
+    };
+
+    dispatch(operations.addEatenProduct(eatenProduct));
   };
 
   return (

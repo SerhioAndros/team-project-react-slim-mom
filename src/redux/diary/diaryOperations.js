@@ -52,20 +52,43 @@ const fetchDailyEatenProducts = () => async (dispatch, getState) => {
 
   try {
     const {data} = await axios.post(endpoint, request);
-
-    const eatenProducts = data.eatenProducts
-      ? data.eatenProducts?.map(item => ({
-          id: item.id,
-          product: item.title,
-          calories: item.kcal,
-          weight: item.weight
-        }))
-      : [];
-
-    dispatch(setDailyEatenProductsSuccess(eatenProducts));
+    console.dir(data);
+    dispatch(setDailyEatenProductsSuccess(data));
   } catch (error) {
     dispatch(setDailyEatenProductsError(error.message));
   }
 };
 
-export {fetchMatchingProducts, fetchDailyEatenProducts};
+// POST @ /products
+const addEatenProduct = eatenProduct => dispatch => {
+  dispatch(addProductRequest());
+
+  axios
+    .post('/day', eatenProduct)
+    .then(({data}) => dispatch(addProductSuccess(data.eatenProduct)))
+    .catch(error => dispatch(addProductError(error.message)));
+};
+
+// DELETE @ /products/:id
+const deleteEatenProduct = id => (dispatch, getState) => {
+  dispatch(deleteProductRequest());
+
+  const request = {
+    dayId: getState().diary.selectedDateId,
+    eatenProductId: id
+  };
+
+  console.dir(request);
+
+  axios
+    .delete('/day/', request)
+    .then(() => dispatch(deleteProductSuccess(id)))
+    .catch(error => dispatch(deleteProductError(error.message)));
+};
+
+export const operations = {
+  fetchMatchingProducts,
+  fetchDailyEatenProducts,
+  addEatenProduct,
+  deleteEatenProduct
+};

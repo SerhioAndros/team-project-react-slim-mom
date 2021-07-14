@@ -19,26 +19,34 @@ import {
 const initialDiaryState = {
   selectedDate: '2021-07-12',
   matchingProducts: [],
-  dailyEatenProducts: []
+  dailyEatenProducts: [],
+  selectedDateId: ''
 };
 
 const selectedDate = createReducer(initialDiaryState.selectedDate, {
   [setSelectedDate]: (state, action) => action.payload
 });
+
+const selectedDateId = createReducer(initialDiaryState.selectedDateId, {
+  [setDailyEatenProductsSuccess]: (state, {payload}) => payload.id
+});
+
 const matchingProducts = createReducer(initialDiaryState.matchingProducts, {
   [setMatchingProductsSuccess]: (state, action) => action.payload
 });
+
 const dailyEatenProducts = createReducer(initialDiaryState.dailyEatenProducts, {
   [addProductSuccess]: (state, {payload}) => [...state, payload],
-  [setDailyEatenProductsSuccess]: (state, action) => action.payload,
+  [setDailyEatenProductsSuccess]: (state, {payload}) => payload.eatenProducts,
   [deleteProductSuccess]: (state, {payload}) =>
     state.filter(({id}) => id !== payload)
 });
+
 const dailyConsumedCalories = createReducer(
   initialDiaryState.dailyEatenProducts,
   {
     [setDailyEatenProductsSuccess]: (state, action) =>
-      action.payload.reduce((a, e) => (a += e.calories), 0)
+      action.payload.eatenProducts.reduce((a, e) => (a += e.kcal), 0)
   }
 );
 
@@ -46,7 +54,8 @@ const diaryReducer = combineReducers({
   selectedDate,
   matchingProducts,
   dailyEatenProducts,
-  dailyConsumedCalories
+  dailyConsumedCalories,
+  selectedDateId
 });
 
 export {diaryReducer};
