@@ -1,4 +1,4 @@
-import React from "react";
+gimport React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import styled from "./MainForm.module.css";
 import { SignupSchema } from "./validationSchema";
