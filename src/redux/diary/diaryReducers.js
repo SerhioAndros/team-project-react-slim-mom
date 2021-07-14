@@ -33,11 +33,17 @@ const dailyConsumedCalories = createReducer(
   }
 );
 
+const loading = createReducer(false, {
+  [setMatchingProducts]: () => false,
+  [setDailyEatenProducts]: () => false,
+});
+
 const diaryReducer = combineReducers({
   selectedDate,
   matchingProducts,
   dailyEatenProducts,
   dailyConsumedCalories,
+  loading,
 });
 
 export { diaryReducer };
