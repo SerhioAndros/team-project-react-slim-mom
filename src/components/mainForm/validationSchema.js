@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const SignupSchema = Yup.object().shape({
+export const CalculatorSchema = Yup.object().shape({
   height: Yup.string()
     .required("Обязательное поле ввода")
     .matches(/^[0-9]+$/, "Введите числовое значение от 2 до 3 символов")

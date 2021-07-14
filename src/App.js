@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import PublicRoute from "./routes/publicRoute";
 import PrivateRoute from "./routes/privateRoute";
 import NotFound from "./pages/notFoundPage";
+import { AppLoader } from "./shared/components/loader/Loader";
 
 // test2
 
@@ -38,10 +39,16 @@ class App extends Component {
   render() {
     return (
       <>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<AppLoader />}>
           <NavBar />
           <Switch>
-            <PublicRoute exact path="/" component={HomePage} />
+            <PublicRoute
+              exact
+              path="/"
+              redirectTo="/calculator"
+              restricted
+              component={HomePage}
+            />
             <PublicRoute
               exact
               path="/login"

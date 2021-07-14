@@ -1,7 +1,7 @@
 import axios from "axios";
 const BASE_URL = "https://slimmom-backend.goit.global";
 
-export const calculatorСalorieFormApi = async (token, id,formState) => {
+ const calculatorFormApi = async (token, id, formState) => {
  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
  try {
@@ -13,3 +13,5 @@ export const calculatorСalorieFormApi = async (token, id,formState) => {
   console.log(error);
  }
 };
+
+export default calculatorFormApi;
