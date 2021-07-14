@@ -42,17 +42,6 @@ const UserMenu = ({ name, onLogout }) => (
       </NavLink>
     </div>
     <UserInfo />
-    {/* <div className="userInfo">
-      <span>
-        Привет, <span>{name}</span>
-      </span>
-      <button
-        type="button"
-        // onClick={onLogout}
-      >
-        Выйти
-      </button>
-    </div> */}
   </>
 );
 
