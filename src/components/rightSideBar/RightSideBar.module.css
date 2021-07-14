@@ -91,7 +91,7 @@
     flex-direction: column;
     padding: 146px 175px 162px 90px;
     margin-top: 0;
-    position: absolute;
+    /* position: absolute; */
     width: 538px;
   }
 
