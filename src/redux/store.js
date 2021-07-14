@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
 import {
   // persistStore,
   // persistReducer,
@@ -7,12 +7,13 @@ import {
   PAUSE,
   PERSIST,
   PURGE,
-  REGISTER,
-} from "redux-persist";
+  REGISTER
+} from 'redux-persist';
 // import storage from "redux-persist/lib/storage";
 
 // import contactsReducer from "./contacts/contacts-reducer";
-import {authReducer} from "./auth/auth-reducer";
+import {authReducer} from './auth/auth-reducer';
+import {diaryReducer} from './diary/diaryReducers';
 
 // const authPersistConfig = {
 //   key: "authToken",
@@ -22,15 +23,15 @@ import {authReducer} from "./auth/auth-reducer";
 
 const store = configureStore({
   reducer: {
-
     // user: userReducer,
     auth: authReducer,
+    diary: diaryReducer
   },
   middleware: getDefaultMiddleware({
     serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+    }
+  })
 });
 
 // const persistor = persistStore(store);
