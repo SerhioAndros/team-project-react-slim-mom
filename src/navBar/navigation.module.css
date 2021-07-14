@@ -13,6 +13,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .logoWrapper {
+    margin-left: 0;
+  }
+
   .logoText,
   .logoTextAccent {
     display: block;
