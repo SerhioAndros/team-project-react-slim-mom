@@ -5,8 +5,9 @@ import styles from './DiaryAddProductForm.module.css';
 import sprite from '../../../images/diary/sprite.svg';
 import {operations} from '../../../redux/diary/diaryOperations';
 import {selectors} from '../../../redux/diary/diarySelectors';
+import {isAppMobile} from '../../../redux/appState/appStateSelector';
 
-const DiaryAddProductForm = () => {
+const DiaryAddProductForm = ({isModal, toggleModal}) => {
   const initialState = {
     product: '',
     productId: '',
@@ -38,12 +39,19 @@ const DiaryAddProductForm = () => {
 
     dispatch(operations.addEatenProduct(eatenProduct));
     setState(initialState);
+    if (isModal) {
+      toggleModal();
+    }
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className={styles.form}>
+        <div
+          className={`${styles.form} 
+                      ${isModal ? styles.mobileModal : ''}
+                      `}
+        >
           <label>
             <Autocomplete
               className={styles.productName}
@@ -91,15 +99,17 @@ const DiaryAddProductForm = () => {
             />
           </label>
 
-          <button className={styles.buttonSubmitMobile} type="submit">
-            Добавить
-          </button>
-
-          <button className={styles.buttonSubmit} type="submit">
-            <svg className={styles.icon}>
-              <use href={sprite + '#whiteCross'} />
-            </svg>
-          </button>
+          {isModal ? (
+            <button className={styles.buttonSubmitMobile} type="submit">
+              Добавить
+            </button>
+          ) : (
+            <button className={styles.buttonSubmit} type="submit">
+              <svg className={styles.icon}>
+                <use href={sprite + '#whiteCross'} />
+              </svg>
+            </button>
+          )}
         </div>
       </form>
     </>
