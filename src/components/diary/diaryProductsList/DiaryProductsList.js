@@ -1,16 +1,8 @@
-import {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import DiaryProductsListItem from './diaryProductsListItem/DiaryProductsListItem';
 import {selectors} from '../../../redux/diary/diarySelectors';
 import {operations} from '../../../redux/diary/diaryOperations';
-import {isAppMobile} from '../../../redux/appState/appStateSelector';
-
-import styles from '../diaryAddProductForm/DiaryAddProductForm.module.css';
-import sprite from '../../../images/diary/sprite.svg';
-import {
-  setAppDesktop,
-  setAppMobile
-} from '../../../redux/appState/appStateActions';
 
 const DiaryProductsList = () => {
   const dispatch = useDispatch();
