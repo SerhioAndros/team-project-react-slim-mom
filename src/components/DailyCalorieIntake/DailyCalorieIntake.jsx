@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import sprite from '../../images/modal/sprite.svg';
 import { DailyCalorieIntakeStyled } from './DailyCalorieIntakeStyled';
 
-const DailyCalorieIntake = ({data}) => {
+const DailyCalorieIntake = ({calories,products}) => {
 
 
- console.log(data);
+ console.log(products);
 
   const [value, setValue] = useState('');
   const onChange = event => setValue(event.target.value);
@@ -21,7 +21,7 @@ const DailyCalorieIntake = ({data}) => {
       </p>
       <div className='container'>
         <p className='caloriesText'>
-          <span className='caloriesValue'>calories</span> ккал
+          <span className='caloriesValue'>{calories}</span> ккал
         </p>
         <p className='productsTitle'>
           Продукты, которые вам не рекомендуется употреблять
@@ -41,13 +41,12 @@ const DailyCalorieIntake = ({data}) => {
             </svg>
           </span>
         </div>
-        {/* <ol className='productsList'>
-          {productsFinal.map((product, id) => (
-            <li key={id} className='productsItem'>
-              {product}
-            </li>
-          ))}
-        </ol> */}
+        <ol className='productsList'>
+        {products.map(product=>(<li className='productsItem'>{product}</li>))}
+
+  
+        </ol>
+        
       
         <Link to="/registration" className='button'>
           Начать худеть
