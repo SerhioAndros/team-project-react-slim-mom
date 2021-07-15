@@ -3,7 +3,8 @@ import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/auth-reducer";
 import { dailyCaloryReducer } from "./calculator/calculatorReducer";
 import { diaryReducer } from "./diary/diaryReducers";
-import daySummary from "./daySummary/daySummaryReducers";
+import { dayInfo } from "./dayInfo/dayInfoReducer";
+import { notAllowedProducts } from "./notAllowedProducts/notAllowedProductsReducer";
 import {
   persistStore,
   persistReducer,
@@ -25,8 +26,9 @@ const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     diary: diaryReducer,
-    daySummary,
     daily: dailyCaloryReducer,
+    dayInfo,
+    notAllowedProducts,
   },
 
   middleware: getDefaultMiddleware({
