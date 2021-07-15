@@ -144,6 +144,6 @@ input[type="radio"]:checked ~ span:after {
   }
 
   .containerDivFlex {
-    width: 55%;
+    width: 70%;
   }
 }

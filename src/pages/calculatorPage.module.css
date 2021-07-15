@@ -1,14 +1,12 @@
 @media screen and (min-width: 1280px) {
-.PageContainer {
- display: grid;
-    grid-template-areas: 'content sidebar';
-    grid-template-columns: 58% 42%;
-    grid-template-rows: 1fr;
-}
-.calculatorPageLeftSide {
-   grid-area: content;
-}
-.calculatorPageRigthSide {
-  grid-area: sidebar;
-}
+  .calculatorPageLeftSide {
+    margin-top: 146px;
+    margin-left: 115px;
+    height: 85vh;
+  }
+  .calculatorPageRigthSide {
+    margin-top: 146px;
+    margin-left: 90px;
+    height: 85vh;
+  }
 }
