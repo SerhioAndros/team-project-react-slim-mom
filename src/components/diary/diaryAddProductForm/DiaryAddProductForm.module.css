@@ -3,6 +3,10 @@
   flex-direction: column;
 }
 
+/* .mobileModal {
+  outline: 1px solid red;
+} */
+
 .productName {
   width: 250px;
   border: none;
@@ -48,12 +52,31 @@
   color: #ffffff;
 }
 .buttonSubmit {
-  display: none;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 50%;
+  background: #fc842d;
+  box-shadow: 0 4px 10px 0 rgb(252 132 45 / 50%);
+  border: 1px solid #fc842d;
 }
 .icon {
   width: 24px;
   height: 24px;
   fill: #fff;
+}
+
+.buttonArrow {
+  position: absolute;
+  top: 65px;
+  left: 15px;
+  width: 50px;
+  height: 50px;
+  display: block;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
 }
 
 @media screen and (min-width: 768px) {
