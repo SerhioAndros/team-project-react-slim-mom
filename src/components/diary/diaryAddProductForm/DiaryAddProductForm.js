@@ -5,7 +5,6 @@ import styles from './DiaryAddProductForm.module.css';
 import sprite from '../../../images/diary/sprite.svg';
 import {operations} from '../../../redux/diary/diaryOperations';
 import {selectors} from '../../../redux/diary/diarySelectors';
-import {isAppMobile} from '../../../redux/appState/appStateSelector';
 
 const DiaryAddProductForm = ({isModal, toggleModal}) => {
   const initialState = {

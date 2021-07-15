@@ -1,16 +1,9 @@
-import {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import DiaryProductsListItem from './diaryProductsListItem/DiaryProductsListItem';
+import styles from './DiaryProductsList.module.css';
 import {selectors} from '../../../redux/diary/diarySelectors';
 import {operations} from '../../../redux/diary/diaryOperations';
-import {isAppMobile} from '../../../redux/appState/appStateSelector';
-
-import styles from '../diaryAddProductForm/DiaryAddProductForm.module.css';
-import sprite from '../../../images/diary/sprite.svg';
-import {
-  setAppDesktop,
-  setAppMobile
-} from '../../../redux/appState/appStateActions';
 
 const DiaryProductsList = () => {
   const dispatch = useDispatch();
@@ -22,12 +15,12 @@ const DiaryProductsList = () => {
   }, [dispatch, selectedDate]);
 
   return (
-    <ul>
+    <ul className={styles.productList}>
       {dailyEatenProducts.map(item => (
         <DiaryProductsListItem
           product={item.title}
           weight={item.weight}
-          calories={item.kcal}
+          calories={Math.round(item.kcal)}
           id={item.id}
           key={item.id}
         />
