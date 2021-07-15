@@ -12,10 +12,10 @@ const HomePage = () => {
   const onSubmit = async (values) => {
     try {
       const result = await getDailyRate(values);
-      if (result) {
+      // if (result) {
         setShowModal(true);
         setData(result.data)
-      }
+      // }
     } catch (error) {}
   };
   console.log(data);
@@ -38,7 +38,7 @@ const HomePage = () => {
     </Container>
       {showModal && (
         <Modal>
-          <DailyCalorieIntake data={data} />
+          <DailyCalorieIntake calories={data.dailyRate}   products={data.notAllowedProducts}/>
         </Modal>
       )}
     </>
