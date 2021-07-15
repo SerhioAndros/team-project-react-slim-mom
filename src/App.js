@@ -7,6 +7,8 @@ import NotFound from "./pages/notFoundPage";
 import { AppLoader } from "./shared/components/loader/Loader";
 import PublicRouteReg from "./routes/publicRouteReg";
 import "./App.css";
+import { connect } from "react-redux";
+import { getCurrentUser } from "./redux/auth/auth-operation";
 
 const HomePage = lazy(() =>
   import("./pages/homePage" /* webpackChunkName: 'home-page' */)
@@ -36,6 +38,11 @@ class App extends Component {
   state = {
     isModal: false,
   };
+
+  componentDidMount() {
+    this.props.getCurrentUser();
+  }
+
   render() {
     return (
       <div className="appWrapper">
@@ -83,4 +90,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = {
+  getCurrentUser,
+};
+
+export default connect(null, mapDispatchToProps)(App);

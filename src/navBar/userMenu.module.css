@@ -18,6 +18,13 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .userMenuWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* background-color: tomato; */
+    /* width: 100%; */
+  }
   .navWrapper {
     border-left: 2px solid #e0e0e0;
     padding: 8px 22px;

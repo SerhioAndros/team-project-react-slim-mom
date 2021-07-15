@@ -3,27 +3,29 @@ import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/auth-reducer";
 import { dailyCaloryReducer } from "./calculator/calculatorReducer";
 import { diaryReducer } from "./diary/diaryReducers";
+import daySummary from "./daySummary/daySummaryReducers";
 import {
- persistStore,
- persistReducer,
- FLUSH,
- REHYDRATE,
- PAUSE,
- PERSIST,
- PURGE,
- REGISTER,
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
 } from "redux-persist";
 
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"],
+  whitelist: ["token", "isAuthenticated", "user"],
 };
 
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     diary: diaryReducer,
+    daySummary,
     daily: dailyCaloryReducer,
   },
 

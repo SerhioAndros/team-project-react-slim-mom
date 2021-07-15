@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { MenuContext } from "../NavState/NavState";
 import styles from "../../footer/Footer.module.css";
@@ -34,17 +34,25 @@ export const SideMenu = ({ children }) => {
   return <Menu open={isMenuOpen}>{children}</Menu>;
 };
 
-SideMenu.propTypes = {
-  children: PropTypes.node,
-};
+// SideMenu.propTypes = {
+//   children: PropTypes.node,
+// };
 
 SideMenu.defaultProps = {
   children: (
     <>
-      <NavLink className={styles.linkDiary} activeClassName={styles.mobileLinkActive} to="/daily-rate">
+      <NavLink
+        className={styles.linkDiary}
+        activeClassName={styles.mobileLinkActive}
+        to="/diary"
+      >
         ДНЕВНИК
       </NavLink>
-      <NavLink className={styles.linkCalc} activeClassName={styles.mobileLinkActive} to="/calculator">
+      <NavLink
+        className={styles.linkCalc}
+        activeClassName={styles.mobileLinkActive}
+        to="/calculator"
+      >
         КАЛЬКУЛЯТОР
       </NavLink>
     </>

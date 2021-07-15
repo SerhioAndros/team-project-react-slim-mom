@@ -33,7 +33,15 @@ const todaySummaryInfo = createReducer(null, {
   [registerSuccess]: (_, { payload }) => payload.todaySummary,
   [loginSuccess]: (_, { payload }) => payload.todaySummary,
   [logoutSuccess]: () => null,
-  [getCurrentUserSuccess]: (_, { payload }) => payload.days.daySummary,
+  [getCurrentUserSuccess]: (_, { payload }) => {
+    console.log(payload, "PAYLOAD");
+    const findDaySummary =
+      payload.data.days.find(
+        (day) => day.date === new Date().toISOString().slice(0, 10)
+      ) ?? null;
+    console.log(payload.data.userData.notAllowedProducts, "PRODUCTS");
+    return findDaySummary?.daySummary;
+  },
 });
 
 const token = createReducer(null, {
@@ -66,9 +74,10 @@ const isAuthenticated = createReducer(false, {
   [getCurrentUserSuccess]: () => true,
   [registerError]: () => false,
   [loginError]: () => false,
-  [getCurrentUserError]: () => false,
+  // [getCurrentUserError]: () => false,
   [logoutSuccess]: () => false,
 });
+
 const isRegistrated = createReducer(false, {
   [registerSuccess]: () => true,
   [getCurrentUserSuccess]: () => true,
