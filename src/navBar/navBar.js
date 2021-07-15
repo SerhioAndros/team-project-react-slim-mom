@@ -10,7 +10,7 @@ import { getIsAuth } from "../redux/auth/auth-selectors";
 const NavBar = ({ isAuthenticated }) => (
   <div className={styles.headerContainer}>
     <div className={styles.headerSection}>
-      <Navigation />
+      <Navigation auth={isAuthenticated} />
       {isAuthenticated ? <UserMenu /> : <AuthNav />}
     </div>
   </div>
