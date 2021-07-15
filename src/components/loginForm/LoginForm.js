@@ -11,12 +11,13 @@ const initialForm = { email: "", password: "" };
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
-    .email("Поле должно содержать  cимвол '@'")
-    .required("Поле обязательное!"),
+    .email("* Поле должно содержать cимвол '@'")
+    .min(5, "* Минимум 5 символов")
+    .required("*Поле обязательно!"),
   password: Yup.string()
-    .required("Поле обязательное!")
-    .min(3, "Must be exactly 3 digits")
-    .max(10, "Must be exactly 10 digits"),
+    .required("* Поле обязательно!")
+    .min(3, "* Минимум 3 символа")
+    .max(20, "* Максимум 20 символов"),
 });
 
 export const FormControl = ({ label, ...props }) => {
