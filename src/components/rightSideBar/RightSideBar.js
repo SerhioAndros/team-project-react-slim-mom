@@ -26,7 +26,7 @@ const RightSideBar = () => {
             </li>
 
             <li className={styles.statisticsItem}>
-              n% от нормы <span>{daySummary.percentsOfDailyRate} %</span>
+              % от нормы <span>{daySummary.percentsOfDailyRate} %</span>
             </li>
           </ul>
         </div>
