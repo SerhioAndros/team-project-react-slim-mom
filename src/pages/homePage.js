@@ -37,8 +37,10 @@ const HomePage = () => {
     </Section>
     </Container>
       {showModal && (
-        <Modal>
-          <DailyCalorieIntake calories={data.dailyRate}   products={data.notAllowedProducts}/>
+        <Modal onClose={()=>setShowModal(false)}>
+          <DailyCalorieIntake 
+          calories={data.dailyRate}   products={data.notAllowedProducts}
+          />
         </Modal>
       )}
     </>
