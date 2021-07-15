@@ -12,6 +12,9 @@ import {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
+  getUserInfoRequest,
+  getUserInfoSuccess,
+  getUserInfoError,
 } from "./auth-actions";
 
 axios.defaults.baseURL = "https://slimmom-backend.goit.global";
@@ -78,12 +81,37 @@ const getCurrentUser = () => async (dispatch, getState) => {
   dispatch(getCurrentUserRequest());
 
   try {
-    const response = await axios.get("/user");
-
-    dispatch(getCurrentUserSuccess(response));
+    const { data } = await axios.get("/user");
+    dispatch(getCurrentUserSuccess(data));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));
   }
 };
 
-export { token, register, logIn, logOut, getCurrentUser };
+const getUserDayInfo = () => async (dispatch, getState) => {
+  const userId = getState().auth.user.id;
+  const userBody = getState().auth.user.userData;
+  const { weight, height, age, bloodType, desiredWeight } = userBody;
+  const objUserBody = { weight, height, age, bloodType, desiredWeight };
+  console.log(objUserBody);
+  const {
+    auth: { token: persistedToken },
+  } = getState();
+
+  if (!persistedToken) {
+    return;
+  }
+  token.set(persistedToken);
+
+  dispatch(getUserInfoRequest());
+
+  try {
+    const response = await axios.post(`/daily-rate/${userId}`, objUserBody);
+
+    dispatch(getUserInfoSuccess(response));
+  } catch (error) {
+    dispatch(getUserInfoError(error.message));
+  }
+};
+
+export { token, register, logIn, logOut, getCurrentUser, getUserDayInfo };
