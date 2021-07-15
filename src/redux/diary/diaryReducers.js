@@ -1,5 +1,5 @@
-import { combineReducers } from "redux";
-import { createReducer } from "@reduxjs/toolkit";
+import {combineReducers} from 'redux';
+import {createReducer} from '@reduxjs/toolkit';
 import {
   setSelectedDate,
   setMatchingProductsRequest,
@@ -13,47 +13,48 @@ import {
   addProductError,
   deleteProductRequest,
   deleteProductSuccess,
-  deleteProductError,
-} from "./diaryActions";
+  deleteProductError
+} from './diaryActions';
 
 const initialDiaryState = {
   selectedDate: new Date()
-    .toLocaleDateString("uk-UA")
-    .split(".")
+    .toLocaleDateString('uk-UA')
+    .split('.')
     .reverse()
-    .join("-"),
+    .join('-'),
   matchingProducts: [],
   dailyEatenProducts: [],
-  selectedDateId: "",
-  daySummary: {},
+  selectedDateId: '',
+  daySummary: {}
 };
 
 const selectedDate = createReducer(initialDiaryState.selectedDate, {
-  [setSelectedDate]: (state, action) => action.payload,
+  [setSelectedDate]: (state, action) => action.payload
 });
 
 const selectedDateId = createReducer(initialDiaryState.selectedDateId, {
-  [setDailyEatenProductsSuccess]: (state, { payload }) => {
-    const id = payload.id ? payload.id : "";
+  [setDailyEatenProductsSuccess]: (state, {payload}) => {
+    const id = payload.id ? payload.id : '';
     return id;
-  },
+  }
 });
 
 const matchingProducts = createReducer(initialDiaryState.matchingProducts, {
-  [setMatchingProductsSuccess]: (state, action) => action.payload,
+  [setMatchingProductsSuccess]: (state, action) => action.payload
 });
 
 const dailyEatenProducts = createReducer(initialDiaryState.dailyEatenProducts, {
-  [addProductSuccess]: (state, { payload }) => [...state, payload.eatenProduct],
-  [setDailyEatenProductsSuccess]: (state, { payload }) => payload.eatenProducts,
-  [deleteProductSuccess]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload.id),
+  [addProductSuccess]: (state, {payload}) => [...state, payload.eatenProduct],
+  [setDailyEatenProductsSuccess]: (state, {payload}) => payload.eatenProducts,
+  [deleteProductSuccess]: (state, {payload}) =>
+    state.filter(({id}) => id !== payload.id)
 });
 
 const daySummary = createReducer(initialDiaryState.daySummary, {
-  [deleteProductSuccess]: (state, { payload }) => payload.daySummary,
-  [setDailyEatenProductsSuccess]: (state, { payload }) => payload.daySummary,
-  [addProductSuccess]: (state, { payload }) => payload.daySummary,
+  [deleteProductSuccess]: (state, {payload}) => parseDaySummary(payload),
+  [setDailyEatenProductsSuccess]: (state, {payload}) =>
+    parseDaySummary(payload),
+  [addProductSuccess]: (state, {payload}) => parseDaySummary(payload)
 });
 
 const loading = createReducer(false, {
@@ -68,8 +69,13 @@ const loading = createReducer(false, {
   [addProductError]: () => false,
   [deleteProductRequest]: () => true,
   [deleteProductSuccess]: () => false,
-  [deleteProductError]: () => false,
+  [deleteProductError]: () => false
 });
+
+const parseDaySummary = data => {
+  if (data.daySummary) return data.daySummary;
+  return {...data};
+};
 
 const diaryReducer = combineReducers({
   selectedDate,
@@ -77,7 +83,7 @@ const diaryReducer = combineReducers({
   dailyEatenProducts,
   daySummary,
   selectedDateId,
-  loading,
+  loading
 });
 
-export { diaryReducer };
+export {diaryReducer};
