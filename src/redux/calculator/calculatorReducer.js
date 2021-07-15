@@ -1,20 +1,25 @@
 import { createReducer, combineReducers } from "@reduxjs/toolkit";
 import {
- getCalculateDailyCalory,
- getCalculateDailyCaloryError,
+  getCalculateDailyCalory,
+  getCalculateDailyCaloryError,
 } from "./calculatorActions";
 
 const dailyCaloryFormReducer = createReducer(null, {
- [getCalculateDailyCalory]: (state, action) => action.payload,
+  [getCalculateDailyCalory]: (state, action) => action.payload,
 });
 
 const dailyCaloryFormErrorReducer = createReducer(null, {
- [getCalculateDailyCaloryError]: (state, action) => action.payload,
+  [getCalculateDailyCaloryError]: (state, action) => action.payload,
 });
 
 const dailyCaloryReducer = combineReducers({
- dailyCalory: dailyCaloryFormReducer,
- dailyCaloryError: dailyCaloryFormErrorReducer,
+  dailyCalory: dailyCaloryFormReducer,
+  dailyCaloryError: dailyCaloryFormErrorReducer,
 });
 
-export { dailyCaloryReducer };
+const loading = createReducer(false, {
+  [getCalculateDailyCalory]: () => false,
+  [getCalculateDailyCaloryError]: () => false,
+});
+
+export { dailyCaloryReducer, loading };
