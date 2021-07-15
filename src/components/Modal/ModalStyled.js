@@ -75,6 +75,16 @@ export const ModalStyled = styled.div`
     display: block;
   }
 }
+@media screen and (max-width: 320px){
+  .modal {
+    width: 100%;
+  height: 100%;
+  }
+  .goBackImg {
+    display: block;
+  }
+ 
+}
 @media screen and (min-width: 1024px) {
   .modal {
     width: 690px;
@@ -101,5 +111,61 @@ export const ModalStyled = styled.div`
   transform: scale(0.3);
   transition: all 300ms linear;
 }
+@media screen and (min-width: 320px){
+  .modal {
+    position: absolute;
+width: 594px;
+height: 580px;
+
+
+background: #FFFFFF;
+box-shadow: 0px 22px 40px rgba(0, 0, 0, 0.1)
+  }
+
+}
+/* @media screen and (min-width: 768px) {
+  .modal {
+    width: 594px;
+    height: 580px;
+    padding: 64px 42px 68px;
+    top: 222px;
+  }
+  .overlay {
+    top: 0;
+  }
+
+  .goBackImg {
+    display: none;
+  }
+  .closeModalImg {
+    display: block;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .modal {
+    width: 690px;
+    height: 580px;
+    padding: 64px 90px 81px;
+    top: 135px;
+  }
+}
+.enter {
+  opacity: 0;
+  transform: scale(0.3);
+}
+.enterActive {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 300ms linear;
+}
+.exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.exitActive {
+  opacity: 0;
+  transform: scale(0.3);
+  transition: all 300ms linear;
+} */
 
 `;
