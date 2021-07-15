@@ -1,7 +1,11 @@
+import storage from "redux-persist/lib/storage";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { authReducer } from "./auth/auth-reducer";
+import { dailyCaloryReducer } from "./calculator/calculatorReducer";
+import { diaryReducer } from "./diary/diaryReducers";
 import {
- // persistStore,
- // persistReducer,
+ persistStore,
+ persistReducer,
  FLUSH,
  REHYDRATE,
  PAUSE,
@@ -9,12 +13,6 @@ import {
  PURGE,
  REGISTER,
 } from "redux-persist";
-// import storage from "redux-persist/lib/storage";
-
-// import contactsReducer from "./contacts/contacts-reducer";
-import { authReducer } from "./auth/auth-reducer";
-import { dailyCaloryReducer } from "./calculator/calculatorReducer";
-import { diaryReducer } from "./diary/diaryReducers";
 
 const authPersistConfig = {
   key: "auth",
@@ -23,22 +21,21 @@ const authPersistConfig = {
 };
 
 const store = configureStore({
- reducer: {
-  // user: userReducer,
-  auth: authReducer,
-  diary: diaryReducer,
-  daily: dailyCaloryReducer,
- },
-
- middleware: getDefaultMiddleware({
-  serializableCheck: {
-   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+  reducer: {
+    auth: persistReducer(authPersistConfig, authReducer),
+    diary: diaryReducer,
+    daily: dailyCaloryReducer,
   },
- }),
+
+  middleware: getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
 });
 
 const persistor = persistStore(store);
 
-// const exportedData = { store, persistor };
+const exportedData = { store, persistor };
 
-export default persistor;
+export default exportedData;
