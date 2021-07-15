@@ -5,12 +5,13 @@ import styles from './RightSideBar.module.css';
 
 const RightSideBar = () => {
   const daySummary = useSelector(selectors.getDaySummary);
+  const selectedDate = useSelector(selectors.getSelectedDate);
 
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.statistics}>
-          <h3 className={styles.subTitle}>Сводка за {daySummary.date}</h3>
+          <h3 className={styles.subTitle}>Сводка за {selectedDate}</h3>
 
           <ul className={styles.statisticsList}>
             <li className={styles.statisticsItem}>
