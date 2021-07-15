@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import sprite from '../../images/modal/sprite.svg';
 import { DailyCalorieIntakeStyled } from './DailyCalorieIntakeStyled';
 
-const DailyCalorieIntake = () => {
+const DailyCalorieIntake = ({data}) => {
 
+
+ console.log(data);
 
   const [value, setValue] = useState('');
   const onChange = event => setValue(event.target.value);
@@ -39,7 +41,13 @@ const DailyCalorieIntake = () => {
             </svg>
           </span>
         </div>
-
+        {/* <ol className='productsList'>
+          {productsFinal.map((product, id) => (
+            <li key={id} className='productsItem'>
+              {product}
+            </li>
+          ))}
+        </ol> */}
       
         <Link to="/registration" className='button'>
           Начать худеть

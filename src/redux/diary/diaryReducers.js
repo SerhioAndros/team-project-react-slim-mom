@@ -57,6 +57,21 @@ const daySummary = createReducer(initialDiaryState.daySummary, {
   [addProductSuccess]: (state, {payload}) => parseDaySummary(payload)
 });
 
+const loading = createReducer(false, {
+  [setMatchingProductsRequest]: () => true,
+  [setMatchingProductsSuccess]: () => false,
+  [setMatchingProductsError]: () => false,
+  [setDailyEatenProductsRequest]: () => true,
+  [setDailyEatenProductsSuccess]: () => false,
+  [setDailyEatenProductsError]: () => false,
+  [addProductRequest]: () => true,
+  [addProductSuccess]: () => false,
+  [addProductError]: () => false,
+  [deleteProductRequest]: () => true,
+  [deleteProductSuccess]: () => false,
+  [deleteProductError]: () => false
+});
+
 const parseDaySummary = data => {
   if (data.daySummary) return data.daySummary;
   return {...data};
@@ -67,7 +82,8 @@ const diaryReducer = combineReducers({
   matchingProducts,
   dailyEatenProducts,
   daySummary,
-  selectedDateId
+  selectedDateId,
+  loading
 });
 
 export {diaryReducer};
