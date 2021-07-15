@@ -106,22 +106,12 @@ input[type="radio"]:checked ~ span:after {
 }
 
 @media screen and (min-width: 768px) {
-  .bg {
-    background-image: url(../../images/bg/bg-tablet-1.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 1024px;
-    background-position: 25px 212px;
-  }
   .titleH {
     font-weight: 700;
     font-size: 30px;
     line-height: 1.2;
-    margin-left: 87px;
+    /* margin-left: 87px; */
     margin-bottom: 60px;
-  }
-  .formInput {
-    padding-left: 87px;
   }
 
   .containerDivFlex {
@@ -149,20 +139,11 @@ input[type="radio"]:checked ~ span:after {
 }
 
 @media screen and (min-width: 1280px) {
-  .bg {
-    background-image: url(../../images/bg/bg-desktop.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 850px;
-    background-position: 339px -5px;
-    padding-top: 200px;
-  }
-
   .titleH {
     width: 450px;
   }
 
   .containerDivFlex {
-    width: 35%;
+    width: 55%;
   }
 }

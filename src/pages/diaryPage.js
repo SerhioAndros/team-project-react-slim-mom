@@ -7,16 +7,26 @@ import {
   DiaryPageInnerContainer,
 } from "./diaryPage.module.css";
 import RightSideBar from "../components/rightSideBar/RightSideBar";
-//test
+import Container from "../components/Container/Container";
+import Section from "../components/Section/Section";
+
 export default function DiaryPage() {
   return (
     <div className={DiaryPageContainer}>
       <div className={DiaryPageInnerContainer}>
-        <DiaryDateCalendar />
-        <DiaryAddProductForm />
-        <DiaryProductsList />
+        <Container>
+          <Section>
+            <DiaryDateCalendar />
+            <DiaryAddProductForm />
+            <DiaryProductsList />
+          </Section>
+        </Container>
       </div>
+      {/* <Container>
+        <Section> */}
       <RightSideBar />
+      {/* </Section>
+      </Container> */}
     </div>
   );
 }
