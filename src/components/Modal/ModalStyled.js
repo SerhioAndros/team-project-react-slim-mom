@@ -12,6 +12,9 @@ export const ModalStyled = styled.div`
   overflow-y: scroll;
   background-color: rgba(33, 33, 33, 0.12);
 }
+.stopScroll {
+  overflow-y: hidden;
+}
 .notShow {
   opacity: 0;
   transition: 0.3s;

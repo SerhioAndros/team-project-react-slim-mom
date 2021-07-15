@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import closeModalBtn from "../../images/modal/close-burger-menu.png";
 import goBackBtn from "../../images/modal/go-back.png";
 import { ModalStyled } from "./ModalStyled";
-import { ReactDOM } from "react";
+import  ReactDOM from "react-dom";
 
 import DailyCalorieIntake from "../DailyCalorieIntake/DailyCalorieIntake";
 
@@ -14,6 +14,7 @@ class Modal extends Component {
     document
       .getElementById("overlay")
       .addEventListener("click", this.closeOverlay);
+      
   }
 
   componentWillUnmount() {
