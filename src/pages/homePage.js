@@ -7,16 +7,18 @@ import Container from "../components/Container/Container";
 import Section from "../components/Section/Section";
 
 const HomePage = () => {
-
+  const [data, setData] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const onSubmit = async (values) => {
     try {
       const result = await getDailyRate(values);
       if (result) {
         setShowModal(true);
+        setData(result.data)
       }
     } catch (error) {}
   };
+  console.log(data);
   return (
     <>
     <Container>
@@ -36,7 +38,7 @@ const HomePage = () => {
     </Container>
       {showModal && (
         <Modal>
-          <DailyCalorieIntake />
+          <DailyCalorieIntake data={data} />
         </Modal>
       )}
     </>
