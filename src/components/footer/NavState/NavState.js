@@ -12,7 +12,7 @@ export const NavState = ({ children }) => {
   function toggleMenuMode() {
     toggleMenu(!isMenuOpen);
   }
-
+  // oncloseBurger={()=>toggleMenuMode(null)}
   return <MenuContext.Provider value={{ isMenuOpen, toggleMenuMode }}>{children}</MenuContext.Provider>;
 };
 
