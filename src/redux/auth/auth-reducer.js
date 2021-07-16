@@ -55,15 +55,15 @@ const error = createReducer(null, {
   [getCurrentUserError]: (_, {payload}) => payload
 });
 
-const isAuthenticated = createReducer(false, {
-  [registerSuccess]: () => false,
-  [loginSuccess]: () => true,
-  [getCurrentUserSuccess]: () => true,
-  [registerError]: () => false,
-  [loginError]: () => false,
-  [getCurrentUserError]: () => false,
-  [logoutSuccess]: () => false
-});
+// const isAuthenticated = createReducer(false, {
+//   [registerSuccess]: () => false,
+//   [loginSuccess]: () => true,
+//   [getCurrentUserSuccess]: () => true,
+//   [registerError]: () => false,
+//   [loginError]: () => false,
+//   [getCurrentUserError]: () => false,
+//   [logoutSuccess]: () => false
+// });
 
 const isRegistrated = createReducer(false, {
   [registerSuccess]: () => true,
@@ -78,7 +78,7 @@ const authReducer = combineReducers({
   user,
   todaySummaryInfo,
   token,
-  isAuthenticated,
+  // isAuthenticated,
   loading,
   isRegistrated,
   error
