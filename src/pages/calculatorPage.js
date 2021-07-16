@@ -13,11 +13,14 @@ import ContainerGrid from "../components/ContainerGrid/ContainerGrid";
 import GridElementLeft from "../components/ContainerGrid/GridElementLeft";
 import GridElementRight from "../components/ContainerGrid/GridElementRight";
 import { useMediaQuery } from "../shared/hooks/mediaRuleHook";
+import { useHistory } from "react-router";
 
 const CalculatorPage = () => {
   const selector = useSelector(calculatorFormSelector);
   const dispatch = useDispatch();
-  const onSubmit = (values) => dispatch(calculatorOperation(values));
+  const history = useHistory();
+  const onSubmit = (values) => {dispatch(calculatorOperation(values)) 
+   history.push("/diary")};
 
   const isPageWideLaptop = useMediaQuery("(min-width: 1280px)");
 

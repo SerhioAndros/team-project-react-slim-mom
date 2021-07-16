@@ -11,15 +11,15 @@ export const calculatorOperation =
  (formState) => async (dispatch, getState) => {
   const token = getState().auth.token;
   const id = getState().auth.user.id;
-  const history = useHistory();
+//   const history = useHistory();
 
   try {
    const numberValues = transformString(formState);
    const responce = await calculatorFormApi(token, id, numberValues);
    dispatch(getCalculateDailyCalory(responce.data));
    dispatch(getCurrentUser());
-   console.log(history);
-   history.push("/diary");
+//    console.log(history);
+//    history.push("/diary");
   } catch (error) {
    dispatch(getCalculateDailyCaloryError(error));
   }
