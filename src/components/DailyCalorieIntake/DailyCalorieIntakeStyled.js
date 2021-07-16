@@ -91,7 +91,7 @@ export const DailyCalorieIntakeStyled =styled.div`
 .caloriesText {
   position: relative;
 }
-.caloriesText::after {
+/* .caloriesText::after {
   content: "";
   position: absolute;
   left: 0;
@@ -100,7 +100,7 @@ export const DailyCalorieIntakeStyled =styled.div`
   bottom: -30px;
   background-color: #e0e0e0;
   margin-top: 30px;
-}
+} */
 
 @media screen and (min-width: 768px) {
   .title {
@@ -117,5 +117,25 @@ export const DailyCalorieIntakeStyled =styled.div`
     padding-top: 20px;
   }
 }
-@media screen and (min-width: 1280px) {
+@media screen and (max-width: 768px) {
+  .title{
+    font-size: 26px;
+line-height: 32px;
+text-align: center;
+  }
+  @media screen and (max-width:320px) {
+    .title{
+      /* width: 290px;
+height: 74px; */
+ 
+padding: 0;
+text-align: left;
+
+font-family: Verdana;
+font-style: normal;
+font-weight: bold;
+font-size: 18px;
+line-height: 26px;
+  }
+  }
 }`

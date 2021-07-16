@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import sprite from "../../images/modal/sprite.svg";
 import { DailyCalorieIntakeStyled } from "./DailyCalorieIntakeStyled";
 
-const DailyCalorieIntake = ({ calories, products }) => {
+const DailyCalorieIntake = ({ calories, products = [] }) => {
   console.log(products);
 
   const [value, setValue] = useState("");

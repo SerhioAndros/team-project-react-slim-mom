@@ -93,7 +93,6 @@ const getUserDayInfo = () => async (dispatch, getState) => {
   const userBody = getState().auth.user.userData;
   const { weight, height, age, bloodType, desiredWeight } = userBody;
   const objUserBody = { weight, height, age, bloodType, desiredWeight };
-  console.log(objUserBody);
   const {
     auth: { token: persistedToken },
   } = getState();

@@ -38,4 +38,25 @@
     align-items: baseline;
     border-bottom: none;
   }
+
+  .headerNavigation {
+    display: flex;
+    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: baseline;
+    height: 100%;
+    width: 100%;
+    padding: 90px;
+    padding-bottom: 0;
+  }
+  .headerUserInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+    padding-top: 90px;
+    padding-left: 90px;
+    padding-right: 115px;
+  }
 }

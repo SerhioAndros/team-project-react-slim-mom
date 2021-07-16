@@ -11,14 +11,6 @@ const Navigation = ({ auth }) => {
   const renderOne = isPageWideMobile && auth;
   const renderTwo = isPageWideTablet && !auth;
   const finalRender = renderOne || renderTwo;
-  console.log(
-    "renderOne -",
-    renderOne,
-    "renderTwo -",
-    renderTwo,
-    "finalRender -",
-    finalRender
-  );
   return (
     <NavLink exact to="/">
       <div className={styles.logoWrapper}>
