@@ -2,33 +2,28 @@ import React, { Component } from "react";
 import closeModalBtn from "../../images/modal/close-burger-menu.png";
 import goBackBtn from "../../images/modal/go-back.png";
 import { ModalStyled } from "./ModalStyled";
-import  ReactDOM from "react-dom";
-
+import ReactDOM from "react-dom";
 
 class Modal extends Component {
- 
   componentDidMount() {
-    window.addEventListener("keydown", (e)=>{  
+    window.addEventListener("keydown", e => {
       if (e.code === "Escape") {
-      this.closeModal();
-    }});
+        this.closeModal();
+      }
+    });
 
-        document.body.classList.add("stopScroll");
-        
-
+    document.body.classList.add("stopScroll");
   }
 
   componentWillUnmount() {
     window.removeEventListener("keydown", this.closeModal);
-
-  
   }
   // onModalToggle = () => {
   //   this.setState((prevState) => ({ showModal: !prevState.showModal }));
   //   document.body.classList.add("stopScroll");
   // };
 
-  closeOverlay = (event) => {
+  closeOverlay = event => {
     if (event.target.className.includes("overlay")) {
       this.closeModal();
     }
@@ -36,37 +31,27 @@ class Modal extends Component {
 
   closeModal = () => {
     document.body.classList.remove("stopScroll");
-this.props.onClose()
-  
+    this.props.onClose();
   };
-
-
 
   render() {
     return ReactDOM.createPortal(
       <>
-          {" "}
-          <ModalStyled>
-        <div id="overlay" className="overlay" onClick={this.closeOverlay}>
+        {" "}
+        <ModalStyled>
+          <div id="overlay" className="overlay" onClick={this.closeOverlay}>
+            
             <div className="modal">
-              <button
-                type="button"
-                onClick={this.closeModal}
-                className="closeModalBtn"
-              >
-                <img
-                  src={closeModalBtn}
-                  alt="close-modal"
-                  className="closeModalImg"
-                />
+              <button type="button" onClick={this.closeModal} className="closeModalBtn">
+                <img src={closeModalBtn} alt="close-modal" className="closeModalImg" />
                 <img src={goBackBtn} alt="close-modal" className="goBackImg" />
+
               </button>
 
-
-             {this.props.children}
+              {this.props.children}
             </div>
-        </div>
-          </ModalStyled>
+          </div>
+        </ModalStyled>
       </>,
       document.getElementById("portal")
     );
