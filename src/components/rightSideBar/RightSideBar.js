@@ -13,7 +13,7 @@ const RightSideBar = () => {
   const selectedDate = useSelector(selectors.getSelectedDate);
 
   const dispatch = useDispatch();
-console.log(daySummary)
+  console.log(daySummary);
   useEffect(() => {
     dispatch(getUserDayInfo());
   }, [dispatch]);
@@ -27,23 +27,23 @@ console.log(daySummary)
             <ul className={styles.statisticsList}>
               <li className={styles.statisticsItem}>
                 Осталось{" "}
-                <span>{Math.round(daySummary[0].kcalLeft) + " ккал"}</span>
+                <span>{Math.round(daySummary[0]?.kcalLeft) + " ккал"}</span>
               </li>
 
               <li className={styles.statisticsItem}>
                 Употреблено{" "}
-                <span>{Math.round(daySummary[0].kcalConsumed) + " ккал"}</span>
+                <span>{Math.round(daySummary[0]?.kcalConsumed) + " ккал"}</span>
               </li>
 
               <li className={styles.statisticsItem}>
                 Дневная норма{" "}
-                <span>{Math.round(daySummary[0].dailyRate) + " ккал"}</span>
+                <span>{Math.round(daySummary[0]?.dailyRate) + " ккал"}</span>
               </li>
 
               <li className={styles.statisticsItem}>
                 % от нормы{" "}
                 <span>
-                  {Math.round(daySummary[0].percentsOfDailyRate) + " %"}
+                  {Math.round(daySummary[0]?.percentsOfDailyRate) + " %"}
                 </span>
               </li>
             </ul>
@@ -69,7 +69,7 @@ console.log(daySummary)
               </li>
               <li>
                 <p>
-                  n% от нормы
+                  % от нормы
                   <span>000 калл</span>
                 </p>
               </li>
