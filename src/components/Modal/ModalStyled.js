@@ -5,14 +5,14 @@ export const ModalStyled = styled.div`
     position: fixed;
     top: 80px;
     left: 0;
-    z-index: 1200;
     width: 100vw;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: auto;
+    /* overflow: auto; */
     background-color: rgba(33, 33, 33, 0.12);
+    z-index: 1200;
   }
   .stopScroll {
     overflow-y: hidden;  
