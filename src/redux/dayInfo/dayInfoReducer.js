@@ -25,7 +25,7 @@ export const dayInfo = createReducer(null, {
     }
     return [payload.daySummary];
   },
-  [deleteProductSuccess]: (_, { payload }) => [payload.daySummary],
+  [deleteProductSuccess]: (_, { payload }) => [payload?.daySummary],
   [getUserInfoSuccess]: (_, { payload }) => parseDaySummaryUserInfo(payload),
   [logoutSuccess]: () => null,
 });
@@ -36,12 +36,20 @@ const parseDaySummary = (data) => {
 };
 
 const parseDaySummaryCalc = (data) => {
-  if (data.summaries.length === 0) return null;
+  if (data.summaries.length === 0) return [{kcalLeft: data.dailyRate,
+    kcalConsumed:0, 
+    dailyRate: data.dailyRate,
+    percentsOfDailyRate: 0,
+  }];
 
   return data.summaries;
 };
 const parseDaySummaryUserInfo = (data) => {
-  if (data.data.summaries.length === 0) return null;
+  if (data.data.summaries.length === 0) return [{kcalLeft: data.data.dailyRate,
+    kcalConsumed:0, 
+    dailyRate: data.data.dailyRate,
+    percentsOfDailyRate: 0,
+  }];
   return [data.data.summaries[0]];
 };
 const parseDaySummaryCurrentUser = (data) => {
