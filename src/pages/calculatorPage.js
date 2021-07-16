@@ -20,7 +20,6 @@ const CalculatorPage = () => {
   const onSubmit = (values) => dispatch(calculatorOperation(values));
 
   const isPageWideLaptop = useMediaQuery("(min-width: 1280px)");
-  //   const renderGrid = isAuthenticated && isPageWideLaptop;
 
   return (
     <>
@@ -41,9 +40,6 @@ const CalculatorPage = () => {
                   }}
                 />
               </div>
-              {/* <div className={styles.calculatorPageRigthSide}>
-                <RightSideBar />
-              </div> */}
             </div>
           </GridElementLeft>
           <GridElementRight>

@@ -68,7 +68,7 @@ const RightSideBar = () => {
               </li>
               <li>
                 <p>
-                  n% от нормы
+                  % от нормы
                   <span>000 калл</span>
                 </p>
               </li>
