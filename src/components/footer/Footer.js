@@ -11,10 +11,8 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.container_footer}>
           <div className={styles.boxTablet}>
-            {/* <div className={styles.userInfoTablet}>
-              <UserInfo />
-            </div> */}
-            <NavState>
+         
+            <NavState   >
               <MainMenu />
             </NavState>
             <div className={styles.burgerMenu}></div>
