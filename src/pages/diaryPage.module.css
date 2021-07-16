@@ -1,7 +1,7 @@
 @media screen and (min-width: 1280px) {
   .DiaryPageContainer {
     display: grid;
-    grid-template-areas: 'content sidebar';
+    grid-template-areas: "content sidebar";
     grid-template-columns: 58% 42%;
     grid-template-rows: calc(100vh - 170px);
   }
@@ -10,5 +10,19 @@
   }
   .RightSideBar_container {
     grid-area: sidebar;
+  }
+
+  /* new styles */
+
+  .DiaryPageLeftSide {
+    margin-top: 146px;
+    margin-left: 115px;
+    height: 85vh;
+  }
+
+  .DiaryPageRightSide {
+    margin-top: 146px;
+    margin-left: 90px;
+    height: 85vh;
   }
 }
