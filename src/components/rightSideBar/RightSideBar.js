@@ -12,6 +12,7 @@ const RightSideBar = () => {
   const daySummary = useSelector(getDayInfo);
   const notAllowedProductsInfo = useSelector(getNotAllowedProductsInfo);
   const selectedDate = useSelector(selectors.getSelectedDate);
+  const date = selectedDate.split("-").reverse().join(".");
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -22,13 +23,9 @@ const RightSideBar = () => {
 
   const getcurrentDate = () => {
     if (location.pathname === "/calculator") {
-      return new Date()
-        .toLocaleDateString("uk-UA")
-        .split(".")
-        .reverse()
-        .join("-");
+      return new Date().toLocaleDateString("uk-UA");
     }
-    return selectedDate;
+    return date;
   };
 
   return (
