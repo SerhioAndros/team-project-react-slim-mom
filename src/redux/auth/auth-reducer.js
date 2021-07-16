@@ -29,11 +29,10 @@ const user = createReducer(initialUserState, {
     userData: payload.userData,
   }),
 });
+
 const todaySummaryInfo = createReducer(null, {
-  [registerSuccess]: (_, { payload }) => payload.todaySummary,
-  [loginSuccess]: (_, { payload }) => payload.todaySummary,
+  [loginSuccess]: (_, { payload }) => payload.user.userData,
   [logoutSuccess]: () => null,
-  [getCurrentUserSuccess]: (_, { payload }) => payload.days.daySummary,
 });
 
 const token = createReducer(null, {
@@ -66,9 +65,10 @@ const isAuthenticated = createReducer(false, {
   [getCurrentUserSuccess]: () => true,
   [registerError]: () => false,
   [loginError]: () => false,
-  [getCurrentUserError]: () => false,
+  // [getCurrentUserError]: () => false,
   [logoutSuccess]: () => false,
 });
+
 const isRegistrated = createReducer(false, {
   [registerSuccess]: () => true,
   [getCurrentUserSuccess]: () => true,

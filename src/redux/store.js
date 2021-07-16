@@ -4,20 +4,22 @@ import { authReducer } from "./auth/auth-reducer";
 import { dailyCaloryReducer } from "./calculator/calculatorReducer";
 import { diaryReducer } from "./diary/diaryReducers";
 import {
- persistStore,
- persistReducer,
- FLUSH,
- REHYDRATE,
- PAUSE,
- PERSIST,
- PURGE,
- REGISTER,
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
 } from "redux-persist";
+import { notAllowedProducts } from "./notAllowedProducts/notAllowedProductsReducer";
+import { dayInfo } from "./dayInfo/dayInfoReducer";
 
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"],
+  whitelist: ["token", "isAuthenticated", "user"],
 };
 
 const store = configureStore({
@@ -25,6 +27,8 @@ const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     diary: diaryReducer,
     daily: dailyCaloryReducer,
+    notAllowedProducts,
+    dayInfo,
   },
 
   middleware: getDefaultMiddleware({

@@ -68,7 +68,7 @@ const RightSideBar = () => {
         <div className={styles.products}>
           <h3 className={styles.subTitle}>Нерекомендуемые продукты</h3>
 
-          {dailyCalory?.notAllowedProducts.length ? (
+          {dailyCalory?.notAllowedProducts?.length ? (
             <ul className={styles.productsList}>
               {dailyCalory.notAllowedProducts.map((product) => (
                 <li key={product} className={styles.productsItem}>

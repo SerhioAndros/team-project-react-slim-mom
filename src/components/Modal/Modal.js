@@ -4,10 +4,9 @@ import goBackBtn from "../../images/modal/go-back.png";
 import { ModalStyled } from "./ModalStyled";
 import  ReactDOM from "react-dom";
 
-import DailyCalorieIntake from "../DailyCalorieIntake/DailyCalorieIntake";
 
 class Modal extends Component {
-  state = { showModal: false };
+  state = { showModal: true };
   componentDidMount() {
     window.addEventListener("keydown", this.closeModal);
 
@@ -68,7 +67,7 @@ class Modal extends Component {
                 <img src={goBackBtn} alt="close-modal" className="goBackImg" />
               </button>
 
-              <DailyCalorieIntake />
+             {this.props.children}
             </div>
           </ModalStyled>
         </div>
