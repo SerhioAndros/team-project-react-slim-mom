@@ -1,4 +1,4 @@
-import React, {Component, Suspense, lazy, useEffect} from 'react';
+import React, {Suspense, lazy, useEffect} from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 import PublicRoute from './routes/publicRoute';
@@ -7,7 +7,7 @@ import NotFound from './pages/notFoundPage';
 import {AppLoader} from './shared/components/loader/Loader';
 import PublicRouteReg from './routes/publicRouteReg';
 import './App.css';
-import {connect, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {getCurrentUser} from './redux/auth/auth-operation';
 import {setAppDesktop, setAppMobile} from './redux/appState/appStateActions';
 
