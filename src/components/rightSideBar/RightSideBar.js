@@ -13,7 +13,7 @@ const RightSideBar = () => {
   const selectedDate = useSelector(selectors.getSelectedDate);
 
   const dispatch = useDispatch();
-
+console.log(daySummary)
   useEffect(() => {
     dispatch(getUserDayInfo());
   }, [dispatch]);
