@@ -6,22 +6,34 @@ import { getNotAllowedProductsInfo } from "../../redux/notAllowedProducts/notAll
 
 import styles from "./RightSideBar.module.css";
 import { getUserDayInfo } from "../../redux/auth/auth-operation";
+import { useLocation } from "react-router";
 
 const RightSideBar = () => {
   const daySummary = useSelector(getDayInfo);
   const notAllowedProductsInfo = useSelector(getNotAllowedProductsInfo);
   const selectedDate = useSelector(selectors.getSelectedDate);
+  const date = selectedDate.split("-").reverse().join(".");
 
+  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserDayInfo());
   }, [dispatch]);
 
+  const location = useLocation();
+
+  const getcurrentDate = () => {
+    if (location.pathname === "/calculator") {
+      return new Date().toLocaleDateString("uk-UA");
+    }
+    return date;
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.statistics}>
-          <h3 className={styles.subTitle}>Сводка за {selectedDate}</h3>
+          <h3 className={styles.subTitle}>Сводка за {getcurrentDate()}</h3>
           {daySummary ? (
             <ul className={styles.statisticsList}>
               <li className={styles.statisticsItem}>
