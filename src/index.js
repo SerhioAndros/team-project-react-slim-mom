@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/es/integration/react";
 import redux from "./redux/store.js";
+import HomePage from "./pages/homePage";
 
 ReactDOM.render(
   <React.StrictMode>
