@@ -5,8 +5,9 @@ import { getDayInfo } from "../../redux/dayInfo/dayInfoSelector";
 import { getNotAllowedProductsInfo } from "../../redux/notAllowedProducts/notAllowedProductsSelectors";
 
 import styles from "./RightSideBar.module.css";
-import { getUserDayInfo } from "../../redux/auth/auth-operation";
-import { useLocation } from "react-router";
+// import { getUserDayInfo } from "../../redux/auth/auth-operation";
+// import { useLocation } from "react-router";
+import { operations } from "../../redux/diary/diaryOperations";
 
 const RightSideBar = () => {
   const daySummary = useSelector(getDayInfo);
@@ -14,17 +15,23 @@ const RightSideBar = () => {
   const selectedDate = useSelector(selectors.getSelectedDate);
   const date = selectedDate.split("-").reverse().join(".");
 
+  // const findCurrentdaySummary = () => { if (!daySummary) return;
+  //   return daySummary.filter((summary) => summary.date === selectedDate);
+  // };
+
+  // const filteredSummary = findCurrentdaySummary();
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUserDayInfo());
-  }, [dispatch]);
+    dispatch(operations.fetchDailyEatenProducts());
+  }, [dispatch, selectedDate]);
 
-  const location = useLocation();
+  // const location = useLocation();
 
   const getcurrentDate = () => {
-    if (location.pathname === "/calculator") {
-      return new Date().toLocaleDateString("uk-UA");
-    }
+    // if (location.pathname === "/calculator") {
+    //   return new Date().toLocaleDateString("uk-UA");
+    // }
     return date;
   };
 

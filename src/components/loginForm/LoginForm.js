@@ -11,7 +11,7 @@ const initialForm = { email: "", password: "" };
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
-    .email("* Поле должно содержать  '@mail.com'")
+    .email(`* E-mail адрес введен неверно!`)
     .min(5, "* Минимум 5 символов")
     .required("*Поле обязательно!"),
   password: Yup.string()
