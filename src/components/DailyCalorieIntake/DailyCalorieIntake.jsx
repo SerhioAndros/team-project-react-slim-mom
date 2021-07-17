@@ -12,11 +12,10 @@ import {
 import { DailyCalorieIntakeStyled } from "./DailyCalorieIntakeStyled";
 
 const DailyCalorieIntake = ({ calories }) => {
-
  const dispatch = useDispatch();
  const products = useSelector(productsSelector);
  const filter = useSelector(filterSelector);
-//  const filteredProducts = useSelector(getfilteredProductsSelector);
+ const filteredProducts = useSelector(getfilteredProductsSelector);
 
  const onChange = (event) => {
   dispatch(getFilterValue(event.target.value));
@@ -51,15 +50,13 @@ const DailyCalorieIntake = ({ calories }) => {
       </span>
      </div>
      <ol className="productsList">
-       
-      {products?.map((product) => (
-       <li className="productsItem">{product}</li>
-      ))}
-      {/* {filteredProducts
-       ? products?.map((product) => <li className="productsItem">{product}</li>)
-       : filteredProducts?.map((product) => (
+      {filteredProducts
+       ? filteredProducts?.map((product) => (
           <li className="productsItem">{product}</li>
-         ))} */}
+         ))
+       : products?.map((product) => (
+          <li className="productsItem">{product}</li>
+         ))}
      </ol>
 
      <Link to="/registration" className="button">
