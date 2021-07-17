@@ -74,6 +74,7 @@ const parseDaySummaryCalc = (data) => {
 //     ];
 //   return data.data.summaries;
 // };
+
 const parseDaySummaryCurrentUser = (data) => {
   if (data.days.length === 0)
     return [
