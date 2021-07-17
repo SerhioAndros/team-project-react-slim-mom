@@ -1,5 +1,5 @@
-import {combineReducers} from 'redux';
-import {createReducer} from '@reduxjs/toolkit';
+import { combineReducers } from "redux";
+import { createReducer } from "@reduxjs/toolkit";
 import {
   registerSuccess,
   registerError,
@@ -8,33 +8,33 @@ import {
   logoutSuccess,
   logoutError,
   getCurrentUserSuccess,
-  getCurrentUserError
-} from './auth-actions';
+  getCurrentUserError,
+} from "./auth-actions";
 
 const initialUserState = {
   email: null,
   username: null,
   id: null,
-  userData: null
+  userData: null,
 };
 
 const user = createReducer(initialUserState, {
-  [registerSuccess]: (_, {payload}) => payload.user,
-  [loginSuccess]: (_, {payload}) => payload.user,
+  [registerSuccess]: (_, { payload }) => payload.user,
+  [loginSuccess]: (_, { payload }) => payload.user,
   [logoutSuccess]: () => initialUserState,
-  [getCurrentUserSuccess]: (_, {payload}) => payload
+  [getCurrentUserSuccess]: (_, { payload }) => payload,
 });
 
 const todaySummaryInfo = createReducer(null, {
-  [registerSuccess]: (_, {payload}) => payload.todaySummary,
-  [loginSuccess]: (_, {payload}) => payload.todaySummary,
-  [logoutSuccess]: () => null
+  [registerSuccess]: (_, { payload }) => payload.todaySummary,
+  [loginSuccess]: (_, { payload }) => payload.todaySummary,
+  [logoutSuccess]: () => null,
 });
 
 const token = createReducer(null, {
   [registerSuccess]: () => null,
-  [loginSuccess]: (_, {payload}) => payload.accessToken,
-  [logoutSuccess]: () => null
+  [loginSuccess]: (_, { payload }) => payload.accessToken,
+  [logoutSuccess]: () => null,
 });
 
 const loading = createReducer(false, {
@@ -45,14 +45,14 @@ const loading = createReducer(false, {
   [registerSuccess]: () => false,
   [registerError]: () => false,
   [getCurrentUserSuccess]: () => false,
-  [getCurrentUserError]: () => false
+  [getCurrentUserError]: () => false,
 });
 
 const error = createReducer(null, {
-  [registerError]: (_, {payload}) => payload,
-  [loginError]: (_, {payload}) => payload,
-  [logoutError]: (_, {payload}) => payload,
-  [getCurrentUserError]: (_, {payload}) => payload
+  [registerError]: (_, { payload }) => payload,
+  [loginError]: (_, { payload }) => payload,
+  [logoutError]: (_, { payload }) => payload,
+  [getCurrentUserError]: (_, { payload }) => payload,
 });
 
 // const isAuthenticated = createReducer(false, {
@@ -71,7 +71,7 @@ const isRegistrated = createReducer(false, {
   [registerError]: () => false,
   [loginError]: () => false,
   [getCurrentUserError]: () => false,
-  [logoutSuccess]: () => false
+  [logoutSuccess]: () => false,
 });
 
 const authReducer = combineReducers({
@@ -81,7 +81,7 @@ const authReducer = combineReducers({
   // isAuthenticated,
   loading,
   isRegistrated,
-  error
+  error,
 });
 
-export {authReducer};
+export { authReducer };

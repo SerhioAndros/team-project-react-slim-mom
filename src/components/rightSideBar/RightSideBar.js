@@ -14,7 +14,6 @@ const RightSideBar = () => {
   const selectedDate = useSelector(selectors.getSelectedDate);
   const date = selectedDate.split("-").reverse().join(".");
 
-  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserDayInfo());
