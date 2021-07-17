@@ -15,8 +15,10 @@ import {
   PAUSE,
   PERSIST,
   PURGE,
-  REGISTER,
-} from "redux-persist";
+  REGISTER
+} from 'redux-persist';
+import { filterReducer } from "./filter/filterReducer";
+
 
 const authPersistConfig = {
   key: "auth",
@@ -32,6 +34,7 @@ const store = configureStore({
     dayInfo,
     notAllowedProducts,
     appState: appStateReducer,
+    filter:filterReducer,
   },
 
   middleware: getDefaultMiddleware({
