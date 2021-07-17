@@ -29,32 +29,58 @@ const Menu = styled.nav`
 `;
 
 export const SideMenu = ({ children }) => {
-  const { isMenuOpen } = useContext(MenuContext);
+  const { isMenuOpen, toggleMenuMode } = useContext(MenuContext);
 
-  return <Menu open={isMenuOpen}>{children}</Menu>;
+  const clickHandler = () => {
+    toggleMenuMode();
+  };
+  return <Menu open={isMenuOpen}  > <>
+  <NavLink
+    className={styles.linkDiary}
+    activeClassName={styles.mobileLinkActive}
+    to="/diary"
+onClick={clickHandler}
+  >
+    ДНЕВНИК
+  </NavLink>
+  <NavLink
+    className={styles.linkCalc}
+    activeClassName={styles.mobileLinkActive}
+    to="/calculator"
+    onClick={clickHandler}
+
+  >
+    КАЛЬКУЛЯТОР
+  </NavLink>
+</></Menu>;
 };
-
+// const closeMenu= document.getElementById('SideMenu')
+// const closeFooterMenu=()=>{
+//   closeMenu.classList.add('goToCalculate')
+// }
 // SideMenu.propTypes = {
 //   children: PropTypes.node,
 // };
 
-SideMenu.defaultProps = {
-  children: (
-    <>
-      <NavLink
-        className={styles.linkDiary}
-        activeClassName={styles.mobileLinkActive}
-        to="/diary"
-      >
-        ДНЕВНИК
-      </NavLink>
-      <NavLink
-        className={styles.linkCalc}
-        activeClassName={styles.mobileLinkActive}
-        to="/calculator"
-      >
-        КАЛЬКУЛЯТОР
-      </NavLink>
-    </>
-  ),
-};
+// SideMenu.defaultProps = {
+
+//   children: (
+//     <>
+//       <NavLink
+//         className={styles.linkDiary}
+//         activeClassName={styles.mobileLinkActive}
+//         to="/diary"
+    
+//       >
+//         ДНЕВНИК
+//       </NavLink>
+//       <NavLink
+//         className={styles.linkCalc}
+//         activeClassName={styles.mobileLinkActive}
+//         to="/calculator"
+//       >
+//         КАЛЬКУЛЯТОР
+//       </NavLink>
+//     </>
+//   ),
+// };

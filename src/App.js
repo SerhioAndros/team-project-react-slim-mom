@@ -1,41 +1,42 @@
-import React, {Suspense, lazy, useEffect} from 'react';
-import {Route, Switch} from 'react-router-dom';
+import React, { Suspense, lazy, useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
 
-import PublicRoute from './routes/publicRoute';
-import PrivateRoute from './routes/privateRoute';
-import NotFound from './pages/notFoundPage';
-import {AppLoader} from './shared/components/loader/Loader';
-import PublicRouteReg from './routes/publicRouteReg';
-import './App.css';
-import {useDispatch} from 'react-redux';
-import {getCurrentUser} from './redux/auth/auth-operation';
-import {setAppDesktop, setAppMobile} from './redux/appState/appStateActions';
+import PublicRoute from "./routes/publicRoute";
+import PrivateRoute from "./routes/privateRoute";
+import NotFound from "./pages/notFoundPage";
+import { AppLoader } from "./shared/components/loader/Loader";
+import PublicRouteReg from "./routes/publicRouteReg";
+import "./App.css";
+import { connect, useDispatch } from "react-redux";
+import { getCurrentUser } from "./redux/auth/auth-operation";
+import { setAppDesktop, setAppMobile } from "./redux/appState/appStateActions";
+import { getIsAuth } from "./redux/auth/auth-selectors";
 
 const HomePage = lazy(() =>
-  import('./pages/homePage' /* webpackChunkName: 'home-page' */)
+  import("./pages/homePage" /* webpackChunkName: 'home-page' */)
 );
 
 const NavBar = lazy(() =>
-  import('./navBar/navBar' /* webpackChunkName: 'navigation-page' */)
+  import("./navBar/navBar" /* webpackChunkName: 'navigation-page' */)
 );
 
 const LoginPage = lazy(() =>
-  import('./pages/loginPage' /* webpackChunkName: 'login-page' */)
+  import("./pages/loginPage" /* webpackChunkName: 'login-page' */)
 );
 
 const RegistrationPage = lazy(() =>
-  import('./pages/registerPage' /* webpackChunkName: 'registration-page' */)
+  import("./pages/registerPage" /* webpackChunkName: 'registration-page' */)
 );
 
 const CalculatorPage = lazy(() =>
-  import('./pages/calculatorPage.js' /* webpackChunkName: 'calculator-page' */)
+  import("./pages/calculatorPage.js" /* webpackChunkName: 'calculator-page' */)
 );
 
 const DiaryPage = lazy(() =>
-  import('./pages/diaryPage' /* webpackChunkName: 'diary-page' */)
+  import("./pages/diaryPage" /* webpackChunkName: 'diary-page' */)
 );
 
-const App = () => {
+const App = ({ isAuthenticated }) => {
   const dispatch = useDispatch();
 
   const isMobile = window.innerWidth < 768;
@@ -48,9 +49,9 @@ const App = () => {
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
-
+  console.log(isAuthenticated);
   return (
-    <div className="appWrapper">
+    <div className={isAuthenticated ? "" : "appWrapper"}>
       <Suspense fallback={<AppLoader />}>
         <NavBar />
         <Switch>
@@ -94,4 +95,10 @@ const App = () => {
   );
 };
 
-export default App;
+// export default App;
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: getIsAuth(state),
+});
+
+export default connect(mapStateToProps)(App);

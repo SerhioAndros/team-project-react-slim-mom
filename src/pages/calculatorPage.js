@@ -19,8 +19,10 @@ const CalculatorPage = () => {
   const selector = useSelector(calculatorFormSelector);
   const dispatch = useDispatch();
   const history = useHistory();
-  const onSubmit = (values) => {dispatch(calculatorOperation(values)) 
-   history.push("/diary")};
+  const onSubmit = (values) => {
+    dispatch(calculatorOperation(values));
+    history.push("/diary");
+  };
 
   const isPageWideLaptop = useMediaQuery("(min-width: 1280px)");
 
@@ -52,10 +54,10 @@ const CalculatorPage = () => {
           </GridElementRight>
         </ContainerGrid>
       ) : (
-        <Container>
-          <Section>
-            <div className={styles.PageContainer}>
-              <div className={styles.calculatorPageLeftSide}>
+        <div className={styles.PageContainer}>
+          <div className={styles.calculatorPageLeftSide}>
+            <Container>
+              <Section>
                 <MainForm
                   onSubmit={onSubmit}
                   phraze={"Узнай свою суточную норму калорий"}
@@ -67,13 +69,13 @@ const CalculatorPage = () => {
                     bloodType: selector?.bloodType ?? "",
                   }}
                 />
-              </div>
-              <div className={styles.calculatorPageRigthSide}>
-                <RightSideBar />
-              </div>
-            </div>
-          </Section>
-        </Container>
+              </Section>
+            </Container>
+          </div>
+          <div className={styles.calculatorPageRigthSide}>
+            <RightSideBar />
+          </div>
+        </div>
       )}
     </>
     //   <Container>
