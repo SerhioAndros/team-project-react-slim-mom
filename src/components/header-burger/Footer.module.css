@@ -126,10 +126,14 @@
   }
 }
 @media screen and (min-width: 768px) {
+  .container {
+    margin-left: 0;
+  }
   .container_footer {
-    /* width: 768px; */
+    width: 100%;
     padding: 0;
-    margin: 0 auto;
+    margin: 0;
+    /* margin-right: 87px; */
   }
 }
 

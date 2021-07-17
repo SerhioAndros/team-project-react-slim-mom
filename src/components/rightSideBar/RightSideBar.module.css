@@ -79,8 +79,11 @@
   }
 
   .statistics {
-    width: 80%;
+    width: 100%;
     padding-right: 60px;
+  }
+  .products {
+    width: 100%;
   }
 
   .container {
@@ -102,9 +105,11 @@
   }
 
   .container {
-    background-size: 65%;
+    /* background-size: 65%;
     background-position: right;
-    background-image: url(../../images/rightSideBar/rightSideBar_desk.png);
+    background-image: url(../../images/rightSideBar/rightSideBar_desk.png); */
+    background-image: none;
+    background-color: transparent;
   }
 
   .statistics {
@@ -119,5 +124,6 @@
 
   .productsList {
     max-height: 150px;
+    max-width: 200px;
   }
 }

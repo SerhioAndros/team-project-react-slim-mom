@@ -14,6 +14,7 @@ import { useMediaQuery } from "../shared/hooks/mediaRuleHook";
 
 const NavBar = ({ isAuthenticated }) => {
   const isPageWideLaptop = useMediaQuery("(min-width: 1280px)");
+  const isPageWideMobile = useMediaQuery("(max-width: 767px)");
   const renderGrid = isAuthenticated && isPageWideLaptop;
 
   return (
@@ -33,12 +34,19 @@ const NavBar = ({ isAuthenticated }) => {
           </GridElementRight>
         </ContainerGrid>
       ) : (
-        <div className={styles.headerContainer}>
-          <div className={styles.headerSection}>
-            <Navigation auth={isAuthenticated} />
-            {isAuthenticated ? <UserMenu /> : <AuthNav />}
+        <>
+          <div className={styles.headerContainer}>
+            <div className={styles.headerSection}>
+              <Navigation auth={isAuthenticated} />
+              {isAuthenticated ? <UserMenu /> : <AuthNav />}
+            </div>
           </div>
-        </div>
+          {isAuthenticated && isPageWideMobile && (
+            <div>
+              <UserInfo />
+            </div>
+          )}
+        </>
       )}
     </>
   );

@@ -9,7 +9,7 @@ const MenuButton = styled.button`
   outline: 0;
   border: 0;
   padding-top: 28px;
-  margin-left: auto;
+  margin-left: 0;
   margin-bottom: 28px;
   background: none;
 
@@ -51,7 +51,11 @@ const HamburgerButton = () => {
   };
 
   return (
-    <MenuButton className={isMenuOpen ? "active" : ""} aria-label="Открыть главное меню" onClick={clickHandler}>
+    <MenuButton
+      className={isMenuOpen ? "active" : ""}
+      aria-label="Открыть главное меню"
+      onClick={clickHandler}
+    >
       <Bar />
       <Bar />
       <Bar />

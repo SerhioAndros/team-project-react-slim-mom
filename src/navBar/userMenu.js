@@ -4,7 +4,7 @@ import { UserInfo } from "../components/UserInfo/UserInfo";
 import styles from "./userMenu.module.css";
 import { useMediaQuery } from "../shared/hooks/mediaRuleHook";
 
-import Footer from "../components/footer/Footer";
+import Footer from "../components/header-burger/Footer";
 
 const activeLink = {
   color: "#212121",
@@ -12,7 +12,10 @@ const activeLink = {
 
 const UserMenu = () => {
   const isPageWideLaptop = useMediaQuery("(min-width: 1280px)");
-  const isPageWideTablet = useMediaQuery("(max-width: 1279px)");
+  const isPageWideMaxTablet = useMediaQuery("(max-width: 1279px)");
+  const isPageWideMinTablet = useMediaQuery("(min-width: 768px)");
+  const tabletScreen = isPageWideMaxTablet && isPageWideMinTablet;
+  const isPageWideMobile = useMediaQuery("(max-width: 767px)");
 
   return (
     <div className={styles.userMenuWrapper}>
@@ -36,8 +39,13 @@ const UserMenu = () => {
           </NavLink>
         </div>
       )}
-      {isPageWideTablet && <Footer />}
-      {/* <UserInfo /> */}
+      {tabletScreen && (
+        <>
+          <UserInfo />
+          <Footer />
+        </>
+      )}
+      {isPageWideMobile && <Footer />}
     </div>
   );
 };

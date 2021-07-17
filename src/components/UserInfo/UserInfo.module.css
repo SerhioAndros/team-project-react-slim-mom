@@ -41,8 +41,8 @@
 @media screen and (min-width: 768px) {
   .userContainer {
     padding: 0;
-    /* margin-right: 50px; */
-    background-color: white;
+    margin-right: 50px;
+    background-color: transparent;
   }
 }
 @media screen and (min-width: 1280px) {

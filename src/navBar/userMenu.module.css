@@ -17,6 +17,17 @@
   text-transform: uppercase;
 }
 
+@media screen and (min-width: 768px) {
+  .userMenuWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: tomato; */
+    /* width: 100%; */
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .userMenuWrapper {
     display: flex;

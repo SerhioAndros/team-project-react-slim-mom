@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 // import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { MenuContext } from "../NavState/NavState";
-import styles from "../../footer/Footer.module.css";
+import styles from "../Footer.module.css";
 import { NavLink } from "react-router-dom";
 
 const Menu = styled.nav`
@@ -34,25 +34,29 @@ export const SideMenu = ({ children }) => {
   const clickHandler = () => {
     toggleMenuMode();
   };
-  return <Menu open={isMenuOpen}  > <>
-  <NavLink
-    className={styles.linkDiary}
-    activeClassName={styles.mobileLinkActive}
-    to="/diary"
-onClick={clickHandler}
-  >
-    ДНЕВНИК
-  </NavLink>
-  <NavLink
-    className={styles.linkCalc}
-    activeClassName={styles.mobileLinkActive}
-    to="/calculator"
-    onClick={clickHandler}
-
-  >
-    КАЛЬКУЛЯТОР
-  </NavLink>
-</></Menu>;
+  return (
+    <Menu open={isMenuOpen}>
+      {" "}
+      <>
+        <NavLink
+          className={styles.linkDiary}
+          activeClassName={styles.mobileLinkActive}
+          to="/diary"
+          onClick={clickHandler}
+        >
+          ДНЕВНИК
+        </NavLink>
+        <NavLink
+          className={styles.linkCalc}
+          activeClassName={styles.mobileLinkActive}
+          to="/calculator"
+          onClick={clickHandler}
+        >
+          КАЛЬКУЛЯТОР
+        </NavLink>
+      </>
+    </Menu>
+  );
 };
 // const closeMenu= document.getElementById('SideMenu')
 // const closeFooterMenu=()=>{
@@ -70,7 +74,7 @@ onClick={clickHandler}
 //         className={styles.linkDiary}
 //         activeClassName={styles.mobileLinkActive}
 //         to="/diary"
-    
+
 //       >
 //         ДНЕВНИК
 //       </NavLink>
