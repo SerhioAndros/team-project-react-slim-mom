@@ -18,6 +18,7 @@ import {
   PURGE,
   REGISTER
 } from 'redux-persist';
+import { filterReducer } from "./filter/filterReducer";
 
 const authPersistConfig = {
   key: 'auth',
@@ -32,7 +33,8 @@ const store = configureStore({
     daily: dailyCaloryReducer,
     dayInfo,
     notAllowedProducts,
-    appState: appStateReducer
+    appState: appStateReducer,
+    filter:filterReducer,
 
   },
 
