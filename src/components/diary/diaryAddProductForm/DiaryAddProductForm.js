@@ -1,21 +1,21 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Autocomplete from "react-autocomplete";
-import styles from "./DiaryAddProductForm.module.css";
-import sprite from "../../../images/diary/sprite.svg";
-import { operations } from "../../../redux/diary/diaryOperations";
-import { selectors } from "../../../redux/diary/diarySelectors";
+import {useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import Autocomplete from 'react-autocomplete';
+import styles from './DiaryAddProductForm.module.css';
+import sprite from '../../../images/diary/sprite.svg';
+import {operations} from '../../../redux/diary/diaryOperations';
+import {selectors} from '../../../redux/diary/diarySelectors';
 
-const DiaryAddProductForm = ({ isModal, toggleModal }) => {
+const DiaryAddProductForm = ({isModal, toggleModal}) => {
   const initialState = {
-    product: "",
-    productId: "",
-    productWeight: "",
-    productCalories: "",
-    error: "",
+    product: '',
+    productId: '',
+    productWeight: '',
+    productCalories: '',
+    error: ''
   };
 
-  const [state, setState] = useState({ ...initialState });
+  const [state, setState] = useState({...initialState});
 
   const dispatch = useDispatch();
   const matchingProducts = useSelector(selectors.getMatchingProducts);
@@ -28,12 +28,12 @@ const DiaryAddProductForm = ({ isModal, toggleModal }) => {
     dispatch(operations.fetchMatchingProducts(state.product));
   }, [dispatch, state.product]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     const eatenProduct = {
       date: selectedDate,
       productId: state.productId,
-      weight: state.productWeight,
+      weight: state.productWeight
     };
 
     dispatch(operations.addEatenProduct(eatenProduct));
@@ -48,7 +48,7 @@ const DiaryAddProductForm = ({ isModal, toggleModal }) => {
       <form onSubmit={handleSubmit}>
         <div
           className={`${styles.form} 
-                      ${isModal ? styles.mobileModal : ""}
+                      ${isModal ? styles.mobileModal : ''}
                       `}
         >
           <label>
@@ -58,29 +58,44 @@ const DiaryAddProductForm = ({ isModal, toggleModal }) => {
               shouldItemRender={(item, value) =>
                 item.label.toLowerCase().indexOf(value.toLowerCase()) > -1
               }
-              getItemValue={(item) => item.label}
-              renderItem={(item, highlighted) => (
-                <div key={item.id}>{item.label}</div>
+              getItemValue={item => item.label}
+              renderItem={(item, isHighlighted) => (
+                <div
+                  style={{background: isHighlighted ? 'lightgray' : 'white'}}
+                  key={item.id}
+                >
+                  {item.label}
+                </div>
               )}
               value={state.product}
-              onChange={(e) =>
-                setState((prevState) => ({
+              onChange={e =>
+                setState(prevState => ({
                   ...prevState,
-                  product: e.target.value,
+                  product: e.target.value
                 }))
               }
               onSelect={(value, item) =>
-                setState((prevState) => ({
+                setState(prevState => ({
                   ...prevState,
                   product: item.label,
                   productId: item.id,
                   productWeight: item.weight,
-                  productCalories: item.calories,
+                  productCalories: item.calories
                 }))
               }
               inputProps={{
                 className: styles.productName,
-                placeholder: "Введите название продукта",
+                placeholder: 'Введите название продукта'
+              }}
+              menuStyle={{
+                borderRadius: '3px',
+                boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
+                background: 'rgba(255, 255, 255, 0.9)',
+                padding: '2px 0',
+                fontSize: '90%',
+                position: 'absolute',
+                overflow: 'auto',
+                maxHeight: '50%'
               }}
             />
           </label>
@@ -91,10 +106,10 @@ const DiaryAddProductForm = ({ isModal, toggleModal }) => {
               placeholder="Граммы"
               name="weight"
               value={state.productWeight}
-              onChange={(e) =>
-                setState((prevState) => ({
+              onChange={e =>
+                setState(prevState => ({
                   ...prevState,
-                  productWeight: e.target.value,
+                  productWeight: e.target.value
                 }))
               }
               autoComplete="off"
@@ -108,7 +123,7 @@ const DiaryAddProductForm = ({ isModal, toggleModal }) => {
           ) : (
             <button className={styles.buttonSubmit} type="submit">
               <svg className={styles.icon}>
-                <use href={sprite + "#whiteCross"} />
+                <use href={sprite + '#whiteCross'} />
               </svg>
             </button>
           )}
