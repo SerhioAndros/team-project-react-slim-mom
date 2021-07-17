@@ -1,0 +1,4 @@
+.elementLeft {
+  grid-area: left;
+  background-color: white;
+}

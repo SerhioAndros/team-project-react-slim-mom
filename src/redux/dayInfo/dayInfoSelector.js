@@ -1,3 +1,3 @@
-const getDayInfo = (state) => state;
+const getDayInfo = (state) => state.dayInfo;
 
 export { getDayInfo };

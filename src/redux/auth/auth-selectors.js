@@ -1,4 +1,4 @@
-const getIsAuth = (state) => state.auth.isAuthenticated;
+const getIsAuth = (state) => !!state.auth.token;
 const getAuthUserName = (state) => state.auth.user.username;
 const getIsRegistr = (state) => state.auth.isRegistrated;
 

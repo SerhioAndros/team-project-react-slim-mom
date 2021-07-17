@@ -37,7 +37,7 @@ const UserMenu = () => {
         </div>
       )}
       {isPageWideTablet && <Footer />}
-      <UserInfo />
+      {/* <UserInfo /> */}
     </div>
   );
 };

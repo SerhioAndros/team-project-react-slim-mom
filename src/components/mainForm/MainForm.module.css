@@ -142,8 +142,4 @@ input[type="radio"]:checked ~ span:after {
   .titleH {
     width: 450px;
   }
-
-  .containerDivFlex {
-    width: 55%;
-  }
 }

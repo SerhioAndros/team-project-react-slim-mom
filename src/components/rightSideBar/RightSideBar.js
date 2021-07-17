@@ -1,39 +1,60 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { selectors } from "../../redux/diary/diarySelectors";
-import { calculatorSelector } from "../../redux/calculator/calculatorSelector";
+import { getDayInfo } from "../../redux/dayInfo/dayInfoSelector";
+import { getNotAllowedProductsInfo } from "../../redux/notAllowedProducts/notAllowedProductsSelectors";
+
 import styles from "./RightSideBar.module.css";
+import { getUserDayInfo } from "../../redux/auth/auth-operation";
+import { useLocation } from "react-router";
 
 const RightSideBar = () => {
-  const daySummary = useSelector(selectors.getDaySummary);
+  const daySummary = useSelector(getDayInfo);
+  const notAllowedProductsInfo = useSelector(getNotAllowedProductsInfo);
   const selectedDate = useSelector(selectors.getSelectedDate);
-  const dailyCalory = useSelector(calculatorSelector);
+  const date = selectedDate.split("-").reverse().join(".");
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserDayInfo());
+  }, [dispatch]);
+
+  const location = useLocation();
+
+  const getcurrentDate = () => {
+    if (location.pathname === "/calculator") {
+      return new Date().toLocaleDateString("uk-UA");
+    }
+    return date;
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.statistics}>
-          <h3 className={styles.subTitle}>Сводка за {selectedDate}</h3>
+          <h3 className={styles.subTitle}>Сводка за {getcurrentDate()}</h3>
           {daySummary ? (
             <ul className={styles.statisticsList}>
               <li className={styles.statisticsItem}>
                 Осталось{" "}
-                <span>{Math.round(daySummary.kcalLeft) + " ккал"}</span>
+                <span>{Math.round(daySummary[0]?.kcalLeft) + " ккал"}</span>
               </li>
 
               <li className={styles.statisticsItem}>
                 Употреблено{" "}
-                <span>{Math.round(daySummary.kcalConsumed) + " ккал"}</span>
+                <span>{Math.round(daySummary[0]?.kcalConsumed) + " ккал"}</span>
               </li>
 
               <li className={styles.statisticsItem}>
                 Дневная норма{" "}
-                <span>{Math.round(daySummary.dailyRate) + " ккал"}</span>
+                <span>{Math.round(daySummary[0]?.dailyRate) + " ккал"}</span>
               </li>
 
               <li className={styles.statisticsItem}>
                 % от нормы{" "}
-                <span>{Math.round(daySummary.percentsOfDailyRate) + " %"}</span>
+                <span>
+                  {Math.round(daySummary[0]?.percentsOfDailyRate) + " %"}
+                </span>
               </li>
             </ul>
           ) : (
@@ -58,7 +79,7 @@ const RightSideBar = () => {
               </li>
               <li>
                 <p>
-                  n% от нормы
+                  % от нормы
                   <span>000 калл</span>
                 </p>
               </li>
@@ -68,9 +89,9 @@ const RightSideBar = () => {
         <div className={styles.products}>
           <h3 className={styles.subTitle}>Нерекомендуемые продукты</h3>
 
-          {dailyCalory?.notAllowedProducts?.length ? (
+          {notAllowedProductsInfo ? (
             <ul className={styles.productsList}>
-              {dailyCalory.notAllowedProducts.map((product) => (
+              {notAllowedProductsInfo.map((product) => (
                 <li key={product} className={styles.productsItem}>
                   {product},{" "}
                 </li>

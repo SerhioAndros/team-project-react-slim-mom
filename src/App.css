@@ -6,6 +6,7 @@
     background-size: contain;
     background-position-x: right;
     background-position-y: 430px;
+    height: 120vh;
   }
 }
 
@@ -16,5 +17,6 @@
     background-size: contain;
     background-position-x: right;
     background-position-y: bottom;
+    height: 120vh;
   }
 }

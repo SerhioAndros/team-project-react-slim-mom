@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { useDispatch } from "react-redux";
-import { setSelectedDate } from "../../../redux/diary/diaryActions";
-import css from "./DiaryDateCalendar.module.css";
-
+import {useEffect, useState} from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import {useDispatch} from 'react-redux';
+import {setSelectedDate} from '../../../redux/diary/diaryActions';
+import css from './DiaryDateCalendar.module.css';
 
 const DiaryDateCalendar = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -24,12 +23,11 @@ const DiaryDateCalendar = () => {
       <div className={css.calendar_container}>
         <DatePicker
           selected={startDate}
-          onChange={(date) => setStartDate(date)}
+          onChange={date => setStartDate(date)}
           dateFormat="dd.MM.yyyy"
           maxDate={new Date()}
           showMonthDropdown
           className={css.date}
-          locale="ru"
         />
       </div>
     </div>

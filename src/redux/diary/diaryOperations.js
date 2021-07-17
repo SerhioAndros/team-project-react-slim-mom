@@ -1,10 +1,8 @@
 import axios from 'axios';
+import {logoutSuccess} from '../auth/auth-actions';
 import {
-  setSelectedDate,
-  setMatchingProductsRequest,
   setMatchingProductsSuccess,
   setMatchingProductsError,
-  setDailyEatenProductsRequest,
   setDailyEatenProductsSuccess,
   setDailyEatenProductsError,
   addProductRequest,
@@ -35,6 +33,9 @@ const fetchMatchingProducts = query => async (dispatch, getState) => {
 
     dispatch(setMatchingProductsSuccess(matchingProducts));
   } catch (error) {
+    if (error.response.status === 401) {
+      dispatch(logoutSuccess());
+    }
     dispatch(setMatchingProductsError(error.message));
   }
 };
@@ -50,17 +51,17 @@ const fetchDailyEatenProducts = () => async (dispatch, getState) => {
   const endpoint = `/day/info`;
   const request = {date: selectedDate};
 
-  console.log(`fetching eaten for : ${selectedDate}`);
-
   try {
     const {data} = await axios.post(endpoint, request);
-    console.dir(data);
     if (!data.eatenProducts) {
       data.eatenProducts = [];
     }
 
     dispatch(setDailyEatenProductsSuccess(data));
   } catch (error) {
+    if (error.response.status === 401) {
+      dispatch(logoutSuccess());
+    }
     dispatch(setDailyEatenProductsError(error.message));
   }
 };
