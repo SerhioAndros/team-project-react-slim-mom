@@ -3,7 +3,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import {
   logoutSuccess,
   getCurrentUserSuccess,
-  getUserInfoSuccess,
+  // getUserInfoSuccess,
 } from "../auth/auth-actions";
 
 import {
@@ -13,6 +13,8 @@ import {
 } from "../diary/diaryActions";
 
 import { getCalculateDailyCalory } from "../calculator/calculatorActions";
+// import { useSelector } from "react-redux";
+// import { getSelectDate } from "./dayInfoSelector";
 
 export const dayInfo = createReducer(null, {
   [getCurrentUserSuccess]: (_, { payload }) =>
@@ -26,7 +28,18 @@ export const dayInfo = createReducer(null, {
     return [payload.daySummary];
   },
   [deleteProductSuccess]: (_, { payload }) => [payload?.daySummary],
-  [getUserInfoSuccess]: (_, { payload }) => parseDaySummaryUserInfo(payload),
+  // [getUserInfoSuccess]: (state, { payload }) => {
+  //   if (payload.data.summaries.length === 0)
+  //     return [
+  //       {
+  //         kcalLeft: payload.data.dailyRate,
+  //         kcalConsumed: 0,
+  //         dailyRate: payload.data.dailyRate,
+  //         percentsOfDailyRate: 0,
+  //       },
+  //     ];
+  //   return payload.data.summaries;
+  // },
   [logoutSuccess]: () => null,
 });
 
@@ -36,23 +49,41 @@ const parseDaySummary = (data) => {
 };
 
 const parseDaySummaryCalc = (data) => {
-  if (data.summaries.length === 0) return [{kcalLeft: data.dailyRate,
-    kcalConsumed:0, 
-    dailyRate: data.dailyRate,
-    percentsOfDailyRate: 0,
-  }];
+  if (data.summaries.length === 0)
+    return [
+      {
+        kcalLeft: data.dailyRate,
+        kcalConsumed: 0,
+        dailyRate: data.dailyRate,
+        percentsOfDailyRate: 0,
+      },
+    ];
 
   return data.summaries;
 };
-const parseDaySummaryUserInfo = (data) => {
-  if (data.data.summaries.length === 0) return [{kcalLeft: data.data.dailyRate,
-    kcalConsumed:0, 
-    dailyRate: data.data.dailyRate,
-    percentsOfDailyRate: 0,
-  }];
-  return [data.data.summaries[0]];
-};
+
+// const parseDaySummaryUserInfo = (data) => {
+//   if (data.data.summaries.length === 0)
+//     return [
+//       {
+//         kcalLeft: data.data.dailyRate,
+//         kcalConsumed: 0,
+//         dailyRate: data.data.dailyRate,
+//         percentsOfDailyRate: 0,
+//       },
+//     ];
+//   return data.data.summaries;
+// };
+
 const parseDaySummaryCurrentUser = (data) => {
-  if (data.days.length === 0) return null;
+  if (data.days.length === 0)
+    return [
+      {
+        kcalLeft: data.userData.dailyRate,
+        kcalConsumed: 0,
+        dailyRate: data.userData.dailyRate,
+        percentsOfDailyRate: 0,
+      },
+    ];
   return [data.days[0].daySummary];
 };

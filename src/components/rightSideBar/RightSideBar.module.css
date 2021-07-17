@@ -67,7 +67,7 @@
 @media screen and (min-width: 768px) {
   .wrapper {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: stretch;
     padding: 91px 87px;
   }
@@ -78,8 +78,13 @@
     margin-bottom: 0;
   }
 
+  .statistics {
+    width: 80%;
+    padding-right: 60px;
+  }
+
   .container {
-    background-size: contain;
+    background-size: 50%;
     background-repeat: no-repeat;
     background-position: bottom right;
     background-image: url(../../images/rightSideBar/rightSideBar_tablet.png);
@@ -97,11 +102,15 @@
   }
 
   .container {
+    background-size: 65%;
+    background-position: right;
     background-image: url(../../images/rightSideBar/rightSideBar_desk.png);
   }
 
   .statistics {
     margin-bottom: 60px;
+    width: auto;
+    padding-right: 0px;
   }
 
   .statisticsList {

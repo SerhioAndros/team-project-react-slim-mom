@@ -1,4 +1,3 @@
-
 import storage from "redux-persist/lib/storage";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/auth-reducer";
@@ -6,7 +5,7 @@ import { dailyCaloryReducer } from "./calculator/calculatorReducer";
 import { diaryReducer } from "./diary/diaryReducers";
 import { dayInfo } from "./dayInfo/dayInfoReducer";
 import { notAllowedProducts } from "./notAllowedProducts/notAllowedProductsReducer";
-import { appStateReducer } from './appState/appStateReducer';
+import { appStateReducer } from "./appState/appStateReducer";
 
 import {
   persistStore,
@@ -20,10 +19,11 @@ import {
 } from 'redux-persist';
 import { filterReducer } from "./filter/filterReducer";
 
+
 const authPersistConfig = {
-  key: 'auth',
+  key: "auth",
   storage,
-  whitelist: ['token',  'user']
+  whitelist: ["token", "user"],
 };
 
 const store = configureStore({
@@ -35,18 +35,17 @@ const store = configureStore({
     notAllowedProducts,
     appState: appStateReducer,
     filter:filterReducer,
-
   },
 
   middleware: getDefaultMiddleware({
     serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-    }
-  })
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
 });
 
 const persistor = persistStore(store);
 
-const exportedData = {store, persistor};
+const exportedData = { store, persistor };
 
 export default exportedData;

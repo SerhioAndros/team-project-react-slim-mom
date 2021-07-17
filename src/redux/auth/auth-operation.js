@@ -84,6 +84,10 @@ const getCurrentUser = () => async (dispatch, getState) => {
     const { data } = await axios.get("/user");
     dispatch(getCurrentUserSuccess(data));
   } catch (error) {
+    if (error.response.status === 401) {
+      dispatch(logoutSuccess());
+    }
+
     dispatch(getCurrentUserError(error.message));
   }
 };
@@ -109,6 +113,10 @@ const getUserDayInfo = () => async (dispatch, getState) => {
 
     dispatch(getUserInfoSuccess(response));
   } catch (error) {
+    // if (error.response.status === 401) {
+    //   dispatch(logoutSuccess());
+    // }
+
     dispatch(getUserInfoError(error.message));
   }
 };
