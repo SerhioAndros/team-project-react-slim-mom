@@ -8,10 +8,10 @@
     padding-top: 146px;
     padding-left: 90px;
     height: 100%;
-    background-size: contain;
+    background-size: 80%;
     background-repeat: no-repeat;
     background-position-x: right;
-    background-position-y: top;
+    background-position-y: -100px;
     background-image: url(../images/rightSideBar/rightSideBar_desk.png);
   }
   .PageContainer {
