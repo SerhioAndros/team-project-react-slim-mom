@@ -51,11 +51,15 @@ const DailyCalorieIntake = ({ calories }) => {
           </div>
           <ol className="productsList">
             {filteredProducts
-              ? filteredProducts?.map((product) => (
-                  <li className="productsItem">{product}</li>
+              ? filteredProducts?.map((product, index) => (
+                  <li className="productsItem" key={index}>
+                    {product}
+                  </li>
                 ))
-              : products?.map((product) => (
-                  <li className="productsItem">{product}</li>
+              : products?.map((product, index) => (
+                  <li className="productsItem" key={index}>
+                    {product}
+                  </li>
                 ))}
           </ol>
 
