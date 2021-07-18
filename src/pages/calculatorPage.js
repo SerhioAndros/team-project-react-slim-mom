@@ -16,91 +16,71 @@ import { useMediaQuery } from "../shared/hooks/mediaRuleHook";
 import { useHistory } from "react-router";
 
 const CalculatorPage = () => {
-  const selector = useSelector(calculatorFormSelector);
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const onSubmit = (values) => {
-    dispatch(calculatorOperation(values));
-    history.push("/diary");
-  };
 
-  const isPageWideLaptop = useMediaQuery("(min-width: 1280px)");
+ const selector = useSelector(calculatorFormSelector);
+ const dispatch = useDispatch();
+ const history = useHistory();
 
-  return (
-    <>
-      {isPageWideLaptop ? (
-        <ContainerGrid>
-          <GridElementLeft>
-            <div className={styles.PageContainer}>
-              <div className={styles.calculatorPageLeftSide}>
-                <MainForm
-                  onSubmit={onSubmit}
-                  phraze={"Узнай свою суточную норму калорий"}
-                  initialValues={{
-                    height: selector?.height ?? "",
-                    age: selector?.age ?? "",
-                    weight: selector?.weight ?? "",
-                    desiredWeight: selector?.desiredWeight ?? "",
-                    bloodType: selector?.bloodType ?? "",
-                  }}
-                />
-              </div>
-            </div>
-          </GridElementLeft>
-          <GridElementRight>
-            <div className={styles.calculatorPageRigthSide}>
-              <RightSideBar />
-            </div>
-          </GridElementRight>
-        </ContainerGrid>
-      ) : (
-        <div className={styles.PageContainer}>
-          <div className={styles.calculatorPageLeftSide}>
-            <Container>
-              <Section>
-                <MainForm
-                  onSubmit={onSubmit}
-                  phraze={"Узнай свою суточную норму калорий"}
-                  initialValues={{
-                    height: selector?.height ?? "",
-                    age: selector?.age ?? "",
-                    weight: selector?.weight ?? "",
-                    desiredWeight: selector?.desiredWeight ?? "",
-                    bloodType: selector?.bloodType ?? "",
-                  }}
-                />
-              </Section>
-            </Container>
-          </div>
-          <div className={styles.calculatorPageRigthSide}>
-            <RightSideBar />
-          </div>
-        </div>
-      )}
-    </>
-    //   <Container>
-    //     <Section>
-    //       <div className={styles.PageContainer}>
-    //         <div className={styles.calculatorPageLeftSide}>
-    //           <MainForm
-    //             onSubmit={onSubmit}
-    //             phraze={"Узнай свою суточную норму калорий"}
-    //             initialValues={{
-    //               height: selector?.height ?? "",
-    //               age: selector?.age ?? "",
-    //               weight: selector?.weight ?? "",
-    //               desiredWeight: selector?.desiredWeight ?? "",
-    //               bloodType: selector?.bloodType ?? "",
-    //             }}
-    //           />
-    //         </div>
-    //         <div className={styles.calculatorPageRigthSide}>
-    //           <RightSideBar />
-    //         </div>
-    //       </div>
-    //     </Section>
-    //   </Container>
-  );
+ const onSubmit = (formState) => {
+  dispatch(calculatorOperation(formState));
+  history.push("/diary");
+ };
+
+ const isPageWideLaptop = useMediaQuery("(min-width: 1280px)");
+
+ return (
+  <>
+   {isPageWideLaptop ? (
+    <ContainerGrid>
+     <GridElementLeft>
+      <div className={styles.PageContainer}>
+       <div className={styles.calculatorPageLeftSide}>
+        <MainForm
+         onSubmit={onSubmit}
+         phraze={"Узнай свою суточную норму калорий"}
+         initialValues={{
+          height: selector?.height ?? "",
+          age: selector?.age ?? "",
+          weight: selector?.weight ?? "",
+          desiredWeight: selector?.desiredWeight ?? "",
+          bloodType: selector?.bloodType ?? "",
+         }}
+        />
+       </div>
+      </div>
+     </GridElementLeft>
+     <GridElementRight>
+      <div className={styles.calculatorPageRigthSide}>
+       <RightSideBar />
+      </div>
+     </GridElementRight>
+    </ContainerGrid>
+   ) : (
+    <div className={styles.PageContainer}>
+     <div className={styles.calculatorPageLeftSide}>
+      <Container>
+       <Section>
+        <MainForm
+         onSubmit={onSubmit}
+         phraze={"Узнай свою суточную норму калорий"}
+         initialValues={{
+          height: selector?.height ?? "",
+          age: selector?.age ?? "",
+          weight: selector?.weight ?? "",
+          desiredWeight: selector?.desiredWeight ?? "",
+          bloodType: selector?.bloodType ?? "",
+         }}
+        />
+       </Section>
+      </Container>
+     </div>
+     <div className={styles.calculatorPageRigthSide}>
+      <RightSideBar />
+     </div>
+    </div>
+   )}
+  </>
+ );
 };
 
 export default CalculatorPage;

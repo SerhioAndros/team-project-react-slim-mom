@@ -20,8 +20,7 @@ const HomePage = () => {
    dispatch(getnotAllowedProducts(result.data.notAllowedProducts));
   } catch (error) {}
  };
- console.log("data", data);
-
+ 
  return (
   <>
    <Container>
