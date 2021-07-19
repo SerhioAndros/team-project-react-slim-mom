@@ -19,6 +19,7 @@ const getCurrentUserError = createAction("auth/getCurrentUserError");
 const getUserInfoRequest = createAction("auth/getUserInfoRequest");
 const getUserInfoSuccess = createAction("auth/getUserInfoSuccess");
 const getUserInfoError = createAction("auth/getUserInfoError");
+const goToRegistr = createAction("auth/goToRegistr");
 
 export {
   registerRequest,
@@ -36,4 +37,5 @@ export {
   getUserInfoRequest,
   getUserInfoSuccess,
   getUserInfoError,
+  goToRegistr,
 };
