@@ -1,33 +1,33 @@
-import { createReducer } from "@reduxjs/toolkit";
+import {createReducer} from '@reduxjs/toolkit';
 
 import {
   logoutSuccess,
-  getCurrentUserSuccess,
+  getCurrentUserSuccess
   // getUserInfoSuccess,
-} from "../auth/auth-actions";
+} from '../auth/auth-actions';
 
 import {
   setDailyEatenProductsSuccess,
   addProductSuccess,
-  deleteProductSuccess,
-} from "../diary/diaryActions";
+  deleteProductSuccess
+} from '../diary/diaryActions';
 
-import { getCalculateDailyCalory } from "../calculator/calculatorActions";
+import {getCalculateDailyCalory} from '../calculator/calculatorActions';
 // import { useSelector } from "react-redux";
 // import { getSelectDate } from "./dayInfoSelector";
 
 export const dayInfo = createReducer(null, {
-  [getCurrentUserSuccess]: (_, { payload }) =>
+  [getCurrentUserSuccess]: (_, {payload}) =>
     parseDaySummaryCurrentUser(payload),
-  [getCalculateDailyCalory]: (_, { payload }) => parseDaySummaryCalc(payload),
-  [setDailyEatenProductsSuccess]: (_, { payload }) => parseDaySummary(payload),
-  [addProductSuccess]: (_, { payload }) => {
-    if ("newSummary" in payload) {
+  [getCalculateDailyCalory]: (_, {payload}) => parseDaySummaryCalc(payload),
+  [setDailyEatenProductsSuccess]: (_, {payload}) => parseDaySummary(payload),
+  [addProductSuccess]: (_, {payload}) => {
+    if ('newSummary' in payload) {
       return [payload.newSummary];
     }
     return [payload.daySummary];
   },
-  [deleteProductSuccess]: (_, { payload }) => [payload?.daySummary],
+  [deleteProductSuccess]: (_, {payload}) => [payload?.daySummary],
   // [getUserInfoSuccess]: (state, { payload }) => {
   //   if (payload.data.summaries.length === 0)
   //     return [
@@ -40,26 +40,36 @@ export const dayInfo = createReducer(null, {
   //     ];
   //   return payload.data.summaries;
   // },
-  [logoutSuccess]: () => null,
+  [logoutSuccess]: () => null
 });
 
-const parseDaySummary = (data) => {
+const parseDaySummary = data => {
   if (data.daySummary) return [data.daySummary];
-  return [{ ...data }];
+  return [{...data}];
 };
 
-const parseDaySummaryCalc = (data) => {
+const parseDaySummaryCalc = data => {
   if (data.summaries.length === 0)
     return [
       {
         kcalLeft: data.dailyRate,
         kcalConsumed: 0,
         dailyRate: data.dailyRate,
-        percentsOfDailyRate: 0,
-      },
+        percentsOfDailyRate: 0
+      }
     ];
 
-  return data.summaries;
+  return data.summaries.filter(s => isToday(s.date));
+};
+
+const isToday = date => {
+  const inputDate = new Date(date);
+  const today = new Date();
+  return (
+    inputDate.getDate() === today.getDate() &&
+    inputDate.getMonth() === today.getMonth() &&
+    inputDate.getFullYear() === today.getFullYear()
+  );
 };
 
 // const parseDaySummaryUserInfo = (data) => {
@@ -75,15 +85,15 @@ const parseDaySummaryCalc = (data) => {
 //   return data.data.summaries;
 // };
 
-const parseDaySummaryCurrentUser = (data) => {
+const parseDaySummaryCurrentUser = data => {
   if (data.days.length === 0)
     return [
       {
         kcalLeft: data.userData.dailyRate,
         kcalConsumed: 0,
         dailyRate: data.userData.dailyRate,
-        percentsOfDailyRate: 0,
-      },
+        percentsOfDailyRate: 0
+      }
     ];
   return [data.days[0].daySummary];
 };
