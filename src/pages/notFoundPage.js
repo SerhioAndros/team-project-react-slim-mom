@@ -1,21 +1,29 @@
 import React from "react";
 import Container from "../components/Container/Container";
 import Section from "../components/Section/Section";
-
-const notFound = {
-  color: "#212121",
-  fontFamily: '"Montserrat", sans-serif',
-  fontWeight: "700",
-  fontSize: "16px",
-  lineHeight: "1.1",
-  letterSpacing: "0.04em",
-};
+import { Link } from "react-router-dom";
+import css from "./notFoundPage.module.css";
+import comingSoon from "../images/coming-soon.jpg";
 
 const NotFound = () => {
   return (
     <Container>
       <Section>
-        <p style={notFound}>Page not found or under construction...</p>
+        <div className={css.notFoundWrapper}>
+          <p className={css.text}>
+            Страница не найдена, или еще в разработке...
+          </p>
+          <img
+            className={css.comingSoon}
+            src={comingSoon}
+            alt="Coming soon..."
+          />
+          <Link to="/" exact>
+            <button type="button" className={css.secondary_form_btn}>
+              На главную
+            </button>
+          </Link>
+        </div>
       </Section>
     </Container>
   );
