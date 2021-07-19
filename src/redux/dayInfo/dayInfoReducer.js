@@ -1,20 +1,17 @@
-import {createReducer} from '@reduxjs/toolkit';
+import { createReducer } from "@reduxjs/toolkit";
 import { logoutSuccess, getCurrentUserSuccess } from "../auth/auth-actions";
 import {
   setDailyEatenProductsSuccess,
   addProductSuccess,
-  deleteProductSuccess
-} from '../diary/diaryActions';
-
-import {getCalculateDailyCalory} from '../calculator/calculatorActions';
+  deleteProductSuccess,
+} from "../diary/diaryActions";
 
 export const dayInfo = createReducer(null, {
-  [getCurrentUserSuccess]: (_, {payload}) =>
+  [getCurrentUserSuccess]: (_, { payload }) =>
     parseDaySummaryCurrentUser(payload),
   [setDailyEatenProductsSuccess]: (_, { payload }) => parseDaySummary(payload),
   [addProductSuccess]: (_, { payload }) => {
     if ("newSummary" in payload) {
-
       return [payload.newSummary];
     }
     return [payload.daySummary];
@@ -22,12 +19,11 @@ export const dayInfo = createReducer(null, {
 
   [deleteProductSuccess]: (_, { payload }) => [payload?.daySummary],
   [logoutSuccess]: () => null,
-
 });
 
-const parseDaySummary = data => {
+const parseDaySummary = (data) => {
   if (data.daySummary) return [data.daySummary];
-  return [{...data}];
+  return [{ ...data }];
 };
 
 const parseDaySummaryCurrentUser = (data) => {
@@ -37,14 +33,14 @@ const parseDaySummaryCurrentUser = (data) => {
         kcalLeft: data.userData.dailyRate,
         kcalConsumed: 0,
         dailyRate: data.userData.dailyRate,
-        percentsOfDailyRate: 0
-      }
+        percentsOfDailyRate: 0,
+      },
     ];
 
   const day = data.days.filter(
-    day =>
+    (day) =>
       day.date ===
-      new Date().toLocaleDateString('uk-UA').split('.').reverse().join('-')
+      new Date().toLocaleDateString("uk-UA").split(".").reverse().join("-")
   );
 
   function findDay() {
@@ -54,8 +50,8 @@ const parseDaySummaryCurrentUser = (data) => {
           kcalLeft: data.userData.dailyRate,
           kcalConsumed: 0,
           dailyRate: data.userData.dailyRate,
-          percentsOfDailyRate: 0
-        }
+          percentsOfDailyRate: 0,
+        },
       ];
     return [day[0].daySummary];
   }
