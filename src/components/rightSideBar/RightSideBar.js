@@ -65,30 +65,22 @@ const RightSideBar = () => {
               </li>
             </ul>
           ) : (
-            <ul>
-              <li>
-                <p>
-                  Осталось
-                  <span>000 калл</span>
-                </p>
+            <ul className={styles.statisticsList}>
+              <li className={styles.statisticsItem}>
+                Осталось
+                <span>000 калл</span>
               </li>
-              <li>
-                <p>
-                  Употреблено
-                  <span>000 калл</span>
-                </p>
+              <li className={styles.statisticsItem}>
+                Употреблено
+                <span>000 калл</span>
               </li>
-              <li>
-                <p>
-                  Дневная норма
-                  <span>000 калл</span>
-                </p>
+              <li className={styles.statisticsItem}>
+                Дневная норма
+                <span>000 калл</span>
               </li>
-              <li>
-                <p>
-                  % от нормы
-                  <span>000 калл</span>
-                </p>
+              <li className={styles.statisticsItem}>
+                % от нормы
+                <span>000 калл</span>
               </li>
             </ul>
           )}
@@ -96,11 +88,11 @@ const RightSideBar = () => {
         <div className={styles.products}>
           <h3 className={styles.subTitle}>Нерекомендуемые продукты</h3>
 
-          {notAllowedProductsInfo ? (
+          {notAllowedProductsInfo.length > 0 ? (
             <ul className={styles.productsList}>
-              {notAllowedProductsInfo.map((product) => (
+              {notAllowedProductsInfo[0].map((product) => (
                 <li key={product} className={styles.productsItem}>
-                  {product},{" "}
+                  {product},
                 </li>
               ))}
             </ul>
