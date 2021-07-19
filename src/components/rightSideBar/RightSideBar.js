@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectors } from "../../redux/diary/diarySelectors";
 import { getDayInfo } from "../../redux/dayInfo/dayInfoSelector";
-import { getNotAllowedProductsInfo } from "../../redux/notAllowedProducts/notAllowedProductsSelectors";
+// import { getNotAllowedProductsInfo } from "../../redux/notAllowedProducts/notAllowedProductsSelectors";
 
 import styles from "./RightSideBar.module.css";
 import { operations } from "../../redux/diary/diaryOperations";
@@ -117,7 +117,7 @@ const RightSideBar = () => {
           )}
 
           <ul className={styles.productsList}>
-            {filteredProducts
+            {filteredProducts?.length > 0
               ? filteredProducts?.map((product, index) => (
                   <li className={styles.productsItem} key={index}>
                     {product}
