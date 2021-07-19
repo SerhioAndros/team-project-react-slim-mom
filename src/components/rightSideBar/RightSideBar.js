@@ -5,21 +5,21 @@ import { getDayInfo } from "../../redux/dayInfo/dayInfoSelector";
 import { getNotAllowedProductsInfo } from "../../redux/notAllowedProducts/notAllowedProductsSelectors";
 
 import styles from "./RightSideBar.module.css";
-// import { getUserDayInfo } from "../../redux/auth/auth-operation";
-// import { useLocation } from "react-router";
 import { operations } from "../../redux/diary/diaryOperations";
+
+// import sprite from "../../images/modal/sprite.svg";
+// import { getFilterValue } from "../../redux/filter/filterActions";
+// import {
+//   filterSelector,
+//   getfilteredProductsSelector,
+//   productsSelector,
+// } from "../../redux/filter/filterSelectors";
 
 const RightSideBar = () => {
   const daySummary = useSelector(getDayInfo);
   const notAllowedProductsInfo = useSelector(getNotAllowedProductsInfo);
   const selectedDate = useSelector(selectors.getSelectedDate);
   const date = selectedDate.split("-").reverse().join(".");
-
-  // const findCurrentdaySummary = () => { if (!daySummary) return;
-  //   return daySummary.filter((summary) => summary.date === selectedDate);
-  // };
-
-  // const filteredSummary = findCurrentdaySummary();
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -34,6 +34,14 @@ const RightSideBar = () => {
     // }
     return date;
   };
+
+  // const products = useSelector(productsSelector);
+  // const filter = useSelector(filterSelector);
+  // const filteredProducts = useSelector(getfilteredProductsSelector);
+
+  // const onChange = (event) => {
+  //   dispatch(getFilterValue(event.target.value));
+  // };
 
   return (
     <div className={styles.container}>
@@ -88,9 +96,37 @@ const RightSideBar = () => {
         <div className={styles.products}>
           <h3 className={styles.subTitle}>Нерекомендуемые продукты</h3>
 
-          {notAllowedProductsInfo?.length > 0 ? (
+          {/* <div className="inputWrapper">
+            <input
+              className="input"
+              type="text"
+              name="filter"
+              value={filter}
+              onChange={onChange}
+            />
+            <span>
+              <svg width="12" height="12">
+                <use href={sprite + "#search-icon"} />
+              </svg>
+            </span>
+          </div>
+          <ul className={styles.productsList}>
+            {filteredProducts
+              ? filteredProducts?.map((product, index) => (
+                  <li className={styles.productsItem} key={index}>
+                    {product}
+                  </li>
+                ))
+              : notAllowedProductsInfo?.map((product, index) => (
+                  <li className="productsItem" key={index}>
+                    {product}
+                  </li>
+                ))}
+          </ul> */}
+
+          {notAllowedProductsInfo ? (
             <ul className={styles.productsList}>
-              {notAllowedProductsInfo[0].map((product) => (
+              {notAllowedProductsInfo.map((product) => (
                 <li key={product} className={styles.productsItem}>
                   {product},
                 </li>
