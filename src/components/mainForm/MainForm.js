@@ -1,6 +1,6 @@
 import React from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
 import styled from "./MainForm.module.css";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import { CalculatorSchema } from "./validationSchema";
 
 const MainForm = ({ onSubmit, initialValues, phraze }) => {

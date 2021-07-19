@@ -36,26 +36,26 @@ const RightSideBar = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <div className={styles.statistics}>
-          <h3 className={styles.subTitle}>Сводка за {getcurrentDate()}</h3>
-          {daySummary ? (
-            <ul className={styles.statisticsList}>
-              <li className={styles.statisticsItem}>
-                Осталось{" "}
-                <span>{Math.round(daySummary[0]?.kcalLeft) + " ккал"}</span>
-              </li>
+   <div className={styles.container}>
+    <div className={styles.wrapper}>
+     <div className={styles.statistics}>
+      <h3 className={styles.subTitle}>Сводка за {getcurrentDate()}</h3>
+      {daySummary ? (
+       <ul className={styles.statisticsList}>
+        <li className={styles.statisticsItem}>
+         Осталось <span>{Math.round(daySummary[0]?.kcalLeft) + " ккал"}</span>
+        </li>
 
-              <li className={styles.statisticsItem}>
-                Употреблено{" "}
-                <span>{Math.round(daySummary[0]?.kcalConsumed) + " ккал"}</span>
-              </li>
+        <li className={styles.statisticsItem}>
+         Употреблено{" "}
+         <span>{Math.round(daySummary[0]?.kcalConsumed) + " ккал"}</span>
+        </li>
 
-              <li className={styles.statisticsItem}>
-                Дневная норма{" "}
-                <span>{Math.round(daySummary[0]?.dailyRate) + " ккал"}</span>
-              </li>
+        <li className={styles.statisticsItem}>
+         Дневная норма{" "}
+         <span>{Math.round(daySummary[0]?.dailyRate) + " ккал"}</span>
+        </li>
+
 
               <li className={styles.statisticsItem}>
                 % от нормы{" "}
@@ -104,6 +104,7 @@ const RightSideBar = () => {
         </div>
       </div>
     </div>
+   </div>
   );
 };
 
