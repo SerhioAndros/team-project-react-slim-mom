@@ -51,22 +51,22 @@ const RightSideBar = () => {
           {daySummary ? (
             <ul className={styles.statisticsList}>
               <li className={styles.statisticsItem}>
-                Осталось{" "}
+                Осталось
                 <span>{Math.round(daySummary[0]?.kcalLeft) + " ккал"}</span>
               </li>
 
               <li className={styles.statisticsItem}>
-                Употреблено{" "}
+                Употреблено
                 <span>{Math.round(daySummary[0]?.kcalConsumed) + " ккал"}</span>
               </li>
 
               <li className={styles.statisticsItem}>
-                Дневная норма{" "}
+                Дневная норма
                 <span>{Math.round(daySummary[0]?.dailyRate) + " ккал"}</span>
               </li>
 
               <li className={styles.statisticsItem}>
-                % от нормы{" "}
+                % от нормы
                 <span>
                   {Math.round(daySummary[0]?.percentsOfDailyRate) + " %"}
                 </span>
@@ -76,19 +76,19 @@ const RightSideBar = () => {
             <ul className={styles.statisticsList}>
               <li className={styles.statisticsItem}>
                 Осталось
-                <span>000 калл</span>
+                <span>ккал</span>
               </li>
               <li className={styles.statisticsItem}>
                 Употреблено
-                <span>000 калл</span>
+                <span>ккал</span>
               </li>
               <li className={styles.statisticsItem}>
                 Дневная норма
-                <span>000 калл</span>
+                <span>ккал</span>
               </li>
               <li className={styles.statisticsItem}>
                 % от нормы
-                <span>000 калл</span>
+                <span>ккал</span>
               </li>
             </ul>
           )}
