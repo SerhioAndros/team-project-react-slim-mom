@@ -12,6 +12,7 @@ import {
   deleteProductSuccess,
   deleteProductError
 } from './diaryActions';
+import {alertError} from '../../shared/reactAlert';
 
 // GET @ /filtered products
 const fetchMatchingProducts = query => async (dispatch, getState) => {
@@ -73,7 +74,10 @@ const addEatenProduct = eatenProduct => dispatch => {
   axios
     .post('/day', eatenProduct)
     .then(({data}) => dispatch(addProductSuccess(data)))
-    .catch(error => dispatch(addProductError(error.message)));
+    .catch(error => {
+      dispatch(addProductError(error.message));
+      alertError('Введите название продукта');
+    });
 };
 
 // DELETE @ /products/:id
