@@ -1,4 +1,3 @@
-// import { useHistory } from "react-router";
 import calculatorFormApi from "../../services/calculatorFormApi";
 import { transformString } from "../../shared/transformString/transformString";
 import { getCurrentUser } from "../auth/auth-operation";

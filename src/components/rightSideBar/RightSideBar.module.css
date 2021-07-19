@@ -39,6 +39,7 @@
 }
 
 .productsList {
+  max-width: 270px;
   max-height: 110px;
   overflow-y: scroll;
 }
@@ -51,6 +52,10 @@
   color: #9b9faa;
 }
 
+.productsItem:not(:last-child) {
+  margin-bottom: 12px;
+}
+
 .message {
   color: #9b9faa;
   font-family: Verdana;
@@ -61,7 +66,6 @@
 }
 
 /* .productsList {
-
 } */
 
 @media screen and (min-width: 768px) {
@@ -124,6 +128,5 @@
 
   .productsList {
     max-height: 150px;
-    max-width: 200px;
   }
 }
