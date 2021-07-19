@@ -5,6 +5,7 @@ import {
   getCalculateDailyCalory,
   getCalculateDailyCaloryError
 } from './calculatorActions';
+import NotificationError from '../../components/pnotify/Pnotify';
 
 export const calculatorOperation = formState => async (dispatch, getState) => {
   const token = getState().auth.token;
@@ -18,5 +19,6 @@ export const calculatorOperation = formState => async (dispatch, getState) => {
     dispatch(getCurrentUser());
   } catch (error) {
     dispatch(getCalculateDailyCaloryError(error));
+    NotificationError('Неверный запрос на сервер', error);
   }
 };

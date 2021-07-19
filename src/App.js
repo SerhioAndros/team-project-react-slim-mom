@@ -11,6 +11,8 @@ import { connect, useDispatch } from "react-redux";
 import { getCurrentUser } from "./redux/auth/auth-operation";
 import { setAppDesktop, setAppMobile } from "./redux/appState/appStateActions";
 import { getIsAuth } from "./redux/auth/auth-selectors";
+import { ToastContainer, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HomePage = lazy(() =>
   import("./pages/homePage" /* webpackChunkName: 'home-page' */)
@@ -91,6 +93,14 @@ const App = ({ isAuthenticated }) => {
           <Route component={NotFound} />
         </Switch>
       </Suspense>
+      <ToastContainer
+        transition={Zoom}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
