@@ -1,22 +1,20 @@
 import React from "react";
 import styles from "./calculatorPage.module.css";
-import Container from "../components/Container/Container";
-import Section from "../components/Section/Section";
-
-import { useDispatch, useSelector } from "react-redux";
-import MainForm from "../components/mainForm/MainForm";
-import { calculatorOperation } from "../redux/calculator/calculatorOperation";
-import { calculatorFormSelector } from "../redux/calculator/calculatorSelector";
-import RightSideBar from "../components/rightSideBar/RightSideBar";
-
 import ContainerGrid from "../components/ContainerGrid/ContainerGrid";
 import GridElementLeft from "../components/ContainerGrid/GridElementLeft";
 import GridElementRight from "../components/ContainerGrid/GridElementRight";
+import Container from "../components/Container/Container";
+import Section from "../components/Section/Section";
+
+import MainForm from "../components/mainForm/MainForm";
+import RightSideBar from "../components/rightSideBar/RightSideBar";
+import { calculatorOperation } from "../redux/calculator/calculatorOperation";
+import { calculatorFormSelector } from "../redux/calculator/calculatorSelector";
 import { useMediaQuery } from "../shared/hooks/mediaRuleHook";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 
 const CalculatorPage = () => {
-
  const selector = useSelector(calculatorFormSelector);
  const dispatch = useDispatch();
  const history = useHistory();
@@ -39,11 +37,19 @@ const CalculatorPage = () => {
          onSubmit={onSubmit}
          phraze={"Узнай свою суточную норму калорий"}
          initialValues={{
-          height: selector?.height ?? "",
-          age: selector?.age ?? "",
-          weight: selector?.weight ?? "",
-          desiredWeight: selector?.desiredWeight ?? "",
-          bloodType: selector?.bloodType ?? "",
+          height:
+           selector?.height && selector?.height > 0 ? selector?.height : "",
+          age: selector?.age && selector?.age > 0 ? selector?.age : "",
+          weight:
+           selector?.weight && selector?.weight > 0 ? selector?.weight : "",
+          desiredWeight:
+           selector?.desiredWeight && selector?.desiredWeight
+            ? selector?.desiredWeight
+            : "",
+          bloodType:
+           selector?.bloodType && selector?.bloodType
+            ? selector?.bloodType
+            : "",
          }}
         />
        </div>
@@ -64,11 +70,19 @@ const CalculatorPage = () => {
          onSubmit={onSubmit}
          phraze={"Узнай свою суточную норму калорий"}
          initialValues={{
-          height: selector?.height ?? "",
-          age: selector?.age ?? "",
-          weight: selector?.weight ?? "",
-          desiredWeight: selector?.desiredWeight ?? "",
-          bloodType: selector?.bloodType ?? "",
+          height:
+           selector?.height && selector?.height > 0 ? selector?.height : "",
+          age: selector?.age && selector?.age > 0 ? selector?.age : "",
+          weight:
+           selector?.weight && selector?.weight > 0 ? selector?.weight : "",
+          desiredWeight:
+           selector?.desiredWeight && selector?.desiredWeight
+            ? selector?.desiredWeight
+            : "",
+          bloodType:
+           selector?.bloodType && selector?.bloodType
+            ? selector?.bloodType
+            : "",
          }}
         />
        </Section>
