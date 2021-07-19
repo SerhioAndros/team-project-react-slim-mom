@@ -1,7 +1,9 @@
 import axios from "axios";
+import NotificationError from "../components/pnotify/Pnotify";
+
 const BASE_URL = "https://slimmom-backend.goit.global";
 
- const calculatorFormApi = async (token, id, formState) => {
+const calculatorFormApi = async (token, id, formState) => {
  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
  try {
@@ -10,7 +12,7 @@ const BASE_URL = "https://slimmom-backend.goit.global";
   });
   return response;
  } catch (error) {
-  console.log(error);
+  NotificationError("Некорестный запрос на сервер", error);
  }
 };
 
