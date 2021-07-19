@@ -33,10 +33,10 @@ const selectedDate = createReducer(initialDiaryState.selectedDate, {
 });
 
 const selectedDateId = createReducer(initialDiaryState.selectedDateId, {
-  [setDailyEatenProductsSuccess]: (state, {payload}) => {
-    const id = payload.id ? payload.id : '';
-    return id;
-  }
+  [setDailyEatenProductsSuccess]: (state, {payload}) =>
+    payload.id ? payload.id : '',
+  [addProductSuccess]: (state, {payload}) =>
+    payload.newDay && payload.newDay.id ? payload.newDay.id : ''
 });
 
 const matchingProducts = createReducer(initialDiaryState.matchingProducts, {
