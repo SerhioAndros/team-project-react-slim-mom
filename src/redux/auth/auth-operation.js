@@ -16,6 +16,10 @@ import {
   getUserInfoSuccess,
   getUserInfoError,
 } from "./auth-actions";
+import NotificationError from '../../components/pnotify/Pnotify';
+
+
+
 
 axios.defaults.baseURL = "https://slimmom-backend.goit.global";
 
@@ -34,8 +38,11 @@ const register = (registrationObject) => async (dispatch) => {
   try {
     const { data } = await axios.post("/auth/register", registrationObject);
     dispatch(registerSuccess(data));
+    NotificationError('Регистрация прошла успешно. Ввойдите в свою учетную запись.');
   } catch (error) {
-    alert(`${error.message}`);
+    if (error.response?.status === 409) {
+      NotificationError('Пользователь с тaкой почтой уже зарегистрирован');
+    }
     dispatch(registerError(error.message));
   }
 };
@@ -45,11 +52,13 @@ const logIn = (loginObject) => async (dispatch) => {
 
   try {
     const { data } = await axios.post("/auth/login", loginObject);
-    console.log();
-    // token.set(data.token);
     dispatch(loginSuccess(data));
+    NotificationError('Добро пожаловать');
+
   } catch (error) {
-    alert("Введен неверный логин или пароль.");
+    if (error.response?.status === 403) {
+      NotificationError('Неверный логин или пароль');
+    }
     dispatch(loginError(error.message));
   }
 };
@@ -113,10 +122,6 @@ const getUserDayInfo = () => async (dispatch, getState) => {
 
     dispatch(getUserInfoSuccess(response));
   } catch (error) {
-    // if (error.response.status === 401) {
-    //   dispatch(logoutSuccess());
-    // }
-
     dispatch(getUserInfoError(error.message));
   }
 };
