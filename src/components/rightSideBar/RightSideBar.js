@@ -7,19 +7,22 @@ import { getNotAllowedProductsInfo } from "../../redux/notAllowedProducts/notAll
 import styles from "./RightSideBar.module.css";
 import { operations } from "../../redux/diary/diaryOperations";
 
-// import sprite from "../../images/modal/sprite.svg";
-// import { getFilterValue } from "../../redux/filter/filterActions";
-// import {
-//   filterSelector,
-//   getfilteredProductsSelector,
-//   productsSelector,
-// } from "../../redux/filter/filterSelectors";
+import sprite from "../../images/modal/sprite.svg";
+import { getFilterValue } from "../../redux/filter/filterActions";
+import {
+  filterSelector,
+  getFilteredNotAllowedProductsSelector,
+  notAllowedProductsSelector,
+} from "../../redux/filter/filterSelectors";
 
 const RightSideBar = () => {
   const daySummary = useSelector(getDayInfo);
-  const notAllowedProductsInfo = useSelector(getNotAllowedProductsInfo);
+  // const notAllowedProductsInfo = useSelector(getNotAllowedProductsInfo);
   const selectedDate = useSelector(selectors.getSelectedDate);
   const date = selectedDate.split("-").reverse().join(".");
+  const products = useSelector(notAllowedProductsSelector);
+  const filter = useSelector(filterSelector);
+  const filteredProducts = useSelector(getFilteredNotAllowedProductsSelector);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -35,13 +38,9 @@ const RightSideBar = () => {
     return date;
   };
 
-  // const products = useSelector(productsSelector);
-  // const filter = useSelector(filterSelector);
-  // const filteredProducts = useSelector(getfilteredProductsSelector);
-
-  // const onChange = (event) => {
-  //   dispatch(getFilterValue(event.target.value));
-  // };
+  const onChange = (event) => {
+    dispatch(getFilterValue(event.target.value));
+  };
 
   return (
     <div className={styles.container}>
@@ -96,20 +95,27 @@ const RightSideBar = () => {
         <div className={styles.products}>
           <h3 className={styles.subTitle}>Нерекомендуемые продукты</h3>
 
-          {/* <div className="inputWrapper">
-            <input
-              className="input"
-              type="text"
-              name="filter"
-              value={filter}
-              onChange={onChange}
-            />
-            <span>
-              <svg width="12" height="12">
-                <use href={sprite + "#search-icon"} />
-              </svg>
-            </span>
-          </div>
+          {filteredProducts ? (
+            <div className="inputWrapper">
+              <input
+                className={styles.input}
+                type="text"
+                name="filter"
+                value={filter}
+                onChange={onChange}
+              />
+              <span>
+                <svg width="12" height="12" className={styles.svg}>
+                  <use href={sprite + "#search-icon"} />
+                </svg>
+              </span>
+            </div>
+          ) : (
+            <p className={styles.message}>
+              Здесь будет отображаться Ваш рацион
+            </p>
+          )}
+
           <ul className={styles.productsList}>
             {filteredProducts
               ? filteredProducts?.map((product, index) => (
@@ -117,14 +123,14 @@ const RightSideBar = () => {
                     {product}
                   </li>
                 ))
-              : notAllowedProductsInfo?.map((product, index) => (
+              : products?.map((product, index) => (
                   <li className="productsItem" key={index}>
                     {product}
                   </li>
                 ))}
-          </ul> */}
+          </ul>
 
-          {notAllowedProductsInfo ? (
+          {/* {notAllowedProductsInfo ? (
             <ul className={styles.productsList}>
               {notAllowedProductsInfo.map((product) => (
                 <li key={product} className={styles.productsItem}>
@@ -136,7 +142,7 @@ const RightSideBar = () => {
             <p className={styles.message}>
               Здесь будет отображаться Ваш рацион
             </p>
-          )}
+          )} */}
         </div>
       </div>
     </div>
