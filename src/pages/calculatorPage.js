@@ -1,22 +1,20 @@
 import React from "react";
 import styles from "./calculatorPage.module.css";
-import Container from "../components/Container/Container";
-import Section from "../components/Section/Section";
-
-import { useDispatch, useSelector } from "react-redux";
-import MainForm from "../components/mainForm/MainForm";
-import { calculatorOperation } from "../redux/calculator/calculatorOperation";
-import { calculatorFormSelector } from "../redux/calculator/calculatorSelector";
-import RightSideBar from "../components/rightSideBar/RightSideBar";
-
 import ContainerGrid from "../components/ContainerGrid/ContainerGrid";
 import GridElementLeft from "../components/ContainerGrid/GridElementLeft";
 import GridElementRight from "../components/ContainerGrid/GridElementRight";
+import Container from "../components/Container/Container";
+import Section from "../components/Section/Section";
+
+import MainForm from "../components/mainForm/MainForm";
+import RightSideBar from "../components/rightSideBar/RightSideBar";
+import { calculatorOperation } from "../redux/calculator/calculatorOperation";
+import { calculatorFormSelector } from "../redux/calculator/calculatorSelector";
 import { useMediaQuery } from "../shared/hooks/mediaRuleHook";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 
 const CalculatorPage = () => {
-
  const selector = useSelector(calculatorFormSelector);
  const dispatch = useDispatch();
  const history = useHistory();
