@@ -70,11 +70,19 @@ const CalculatorPage = () => {
          onSubmit={onSubmit}
          phraze={"Узнай свою суточную норму калорий"}
          initialValues={{
-          height: selector?.height ?? "",
-          age: selector?.age ?? "",
-          weight: selector?.weight ?? "",
-          desiredWeight: selector?.desiredWeight ?? "",
-          bloodType: selector?.bloodType ?? "",
+          height:
+           selector?.height && selector?.height > 0 ? selector?.height : "",
+          age: selector?.age && selector?.age > 0 ? selector?.age : "",
+          weight:
+           selector?.weight && selector?.weight > 0 ? selector?.weight : "",
+          desiredWeight:
+           selector?.desiredWeight && selector?.desiredWeight
+            ? selector?.desiredWeight
+            : "",
+          bloodType:
+           selector?.bloodType && selector?.bloodType
+            ? selector?.bloodType
+            : "",
          }}
         />
        </Section>
