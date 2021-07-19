@@ -75,19 +75,19 @@ const RightSideBar = () => {
             <ul className={styles.statisticsList}>
               <li className={styles.statisticsItem}>
                 Осталось
-                <span>ккал</span>
+                <span>0 ккал</span>
               </li>
               <li className={styles.statisticsItem}>
                 Употреблено
-                <span>ккал</span>
+                <span>0 ккал</span>
               </li>
               <li className={styles.statisticsItem}>
                 Дневная норма
-                <span>ккал</span>
+                <span>0 ккал</span>
               </li>
               <li className={styles.statisticsItem}>
                 % от нормы
-                <span>ккал</span>
+                <span>0 ккал</span>
               </li>
             </ul>
           )}
