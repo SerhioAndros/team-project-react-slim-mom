@@ -1,7 +1,6 @@
 .logoWrapper {
   display: flex;
   align-items: center;
-  /* margin-left: 15px; */
 }
 .logoImg {
   width: 50px;
@@ -25,31 +24,10 @@
   color: #fc842d;
 }
 
-/* .logoText,
-.logoTextAccent {
-  display: none;
-} */
-
 @media screen and (min-width: 768px) {
   .logoWrapper {
     margin-left: 0;
   }
-
-  /* .logoText,
-  .logoTextAccent {
-    display: block;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 1.1;
-    letter-spacing: 0.06em;
-  }
-  .logoText {
-    color: #212121;
-  }
-  .logoTextAccent {
-    color: #fc842d;
-  } */
 
   .logoImg {
     margin-right: 11px;

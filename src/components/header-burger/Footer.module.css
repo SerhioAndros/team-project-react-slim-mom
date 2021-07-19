@@ -133,7 +133,6 @@
     width: 100%;
     padding: 0;
     margin: 0;
-    /* margin-right: 87px; */
   }
 }
 
@@ -176,12 +175,6 @@
     margin-left: auto;
     background-color: #f0f1f3;
   }
-  /* .userInfoTablet {
-      display: none;
-    } */
-  /* .burgerMenu {
-      display: none;
-    } */
   .boxDesktop {
     display: flex;
     justify-content: center;
@@ -206,9 +199,3 @@
     color: black;
   }
 }
-/* .container {
-    border-bottom: 1px solid #e0e0e0;
-  } */
-/* .container_footer{    width: 320px;
-    padding: 0 15px;
-    margin: 0 auto;} */

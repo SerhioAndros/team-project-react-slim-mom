@@ -4,7 +4,6 @@
   max-width: 767px;
   height: 40px;
   padding: 0 15px;
-  /* margin: 0 auto; */
   background-color: #eff1f3;
 }
 .userInfo {
@@ -48,8 +47,6 @@
 @media screen and (min-width: 1280px) {
   .userContainer {
     max-height: 100%;
-    /* margin-left: auto;
-    margin-right: 115px; */
     background-color: #f0f1f3;
   }
   .name {

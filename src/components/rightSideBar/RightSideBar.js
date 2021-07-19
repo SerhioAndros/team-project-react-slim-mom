@@ -2,12 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectors } from "../../redux/diary/diarySelectors";
 import { getDayInfo } from "../../redux/dayInfo/dayInfoSelector";
-// import { getNotAllowedProductsInfo } from "../../redux/notAllowedProducts/notAllowedProductsSelectors";
 
 import styles from "./RightSideBar.module.css";
 import { operations } from "../../redux/diary/diaryOperations";
-
-import sprite from "../../images/modal/sprite.svg";
+import searchLogo from "../../images/searchLogo.png";
 import { getFilterValue } from "../../redux/filter/filterActions";
 import {
   filterSelector,
@@ -17,7 +15,6 @@ import {
 
 const RightSideBar = () => {
   const daySummary = useSelector(getDayInfo);
-  // const notAllowedProductsInfo = useSelector(getNotAllowedProductsInfo);
   const selectedDate = useSelector(selectors.getSelectedDate);
   const date = selectedDate.split("-").reverse().join(".");
   const products = useSelector(notAllowedProductsSelector);
@@ -29,14 +26,7 @@ const RightSideBar = () => {
     dispatch(operations.fetchDailyEatenProducts());
   }, [dispatch, selectedDate]);
 
-  // const location = useLocation();
-
-  const getcurrentDate = () => {
-    // if (location.pathname === "/calculator") {
-    //   return new Date().toLocaleDateString("uk-UA");
-    // }
-    return date;
-  };
+  const getcurrentDate = () => date;
 
   const onChange = (event) => {
     dispatch(getFilterValue(event.target.value));
@@ -104,11 +94,14 @@ const RightSideBar = () => {
                 value={filter}
                 onChange={onChange}
               />
-              <span>
-                <svg width="12" height="12" className={styles.svg}>
-                  <use href={sprite + "#search-icon"} />
-                </svg>
-              </span>
+
+              <img
+                className={styles.svg}
+                src={searchLogo}
+                alt="Search"
+                width="20"
+                height="20"
+              />
             </div>
           ) : (
             <p className={styles.message}>
@@ -129,20 +122,6 @@ const RightSideBar = () => {
                   </li>
                 ))}
           </ul>
-
-          {/* {notAllowedProductsInfo?.length > 0 ? (
-            <ul className={styles.productsList}>
-              {notAllowedProductsInfo.map((product) => (
-                <li key={product} className={styles.productsItem}>
-                  {product},
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className={styles.message}>
-              Здесь будет отображаться Ваш рацион
-            </p>
-          )} */}
         </div>
       </div>
     </div>

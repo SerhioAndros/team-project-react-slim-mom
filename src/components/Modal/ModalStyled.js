@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 export const ModalStyled = styled.div`
   .overlay {
@@ -10,12 +9,11 @@ export const ModalStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    /* overflow: auto; */
     background-color: rgba(33, 33, 33, 0.12);
     z-index: 1200;
   }
   .stopScroll {
-    overflow-y: hidden;  
+    overflow-y: hidden;
   }
   .notShow {
     opacity: 0;
@@ -51,6 +49,9 @@ export const ModalStyled = styled.div`
     top: -24px;
     left: 10px;
   }
+  .closeModalBtn {
+    border: none;
+  }
 
   @media screen and (min-width: 768px) {
     .overlay {
@@ -77,6 +78,6 @@ export const ModalStyled = styled.div`
     .modal {
       top: 135px;
       width: 690px;
- }
-  }
-;` 
+    }
+  } ;
+`;

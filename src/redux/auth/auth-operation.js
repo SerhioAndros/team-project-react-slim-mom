@@ -16,7 +16,6 @@ import {
   getUserInfoSuccess,
   getUserInfoError,
 } from "./auth-actions";
-import NotificationError from "../../components/pnotify/Pnotify";
 import { alertError, alertSuccess } from "../../shared/reactAlert";
 
 axios.defaults.baseURL = "https://slimmom-backend.goit.global";
@@ -36,9 +35,7 @@ const register = (registrationObject) => async (dispatch) => {
   try {
     const { data } = await axios.post("/auth/register", registrationObject);
     dispatch(registerSuccess(data));
-    alertSuccess(
-      "Регистрация прошла успешно. Ввойдите в свою учетную запись."
-    );
+    alertSuccess("Регистрация прошла успешно. Ввойдите в свою учетную запись.");
   } catch (error) {
     if (error.response?.status === 409) {
       alertError("Пользователь с тaкой почтой уже зарегистрирован");
