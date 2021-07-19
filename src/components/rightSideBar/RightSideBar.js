@@ -124,7 +124,7 @@ const RightSideBar = () => {
                 ))}
           </ul> */}
 
-          {notAllowedProductsInfo ? (
+          {notAllowedProductsInfo?.length > 0 ? (
             <ul className={styles.productsList}>
               {notAllowedProductsInfo.map((product) => (
                 <li key={product} className={styles.productsItem}>
