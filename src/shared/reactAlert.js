@@ -10,7 +10,6 @@ function alertError(message) {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    // transition: "zoom",
   });
 }
 function alertSuccess(message) {
@@ -22,7 +21,6 @@ function alertSuccess(message) {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    // transition: "zoom",
   });
 }
 

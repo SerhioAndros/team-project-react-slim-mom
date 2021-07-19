@@ -15,7 +15,6 @@ const Navigation = ({ auth }) => {
     <NavLink exact to="/">
       <div className={styles.logoWrapper}>
         <img className={styles.logoImg} src={logoImg} alt="Website logo" />
-
         {finalRender && <span className={styles.logoText}>Slim</span>}
         {finalRender && <span className={styles.logoTextAccent}>Mom</span>}
       </div>

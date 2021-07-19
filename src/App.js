@@ -51,7 +51,6 @@ const App = ({ isAuthenticated }) => {
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
-  console.log(isAuthenticated);
   return (
     <div className={isAuthenticated ? "" : "appWrapper"}>
       <Suspense fallback={<AppLoader />}>
@@ -104,8 +103,6 @@ const App = ({ isAuthenticated }) => {
     </div>
   );
 };
-
-// export default App;
 
 const mapStateToProps = (state) => ({
   isAuthenticated: getIsAuth(state),

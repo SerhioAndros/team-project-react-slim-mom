@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import sprite from "../../images/modal/sprite.svg";
+import logoImg from "../../images/searchLogo.png";
 import { getFilterValue } from "../../redux/filter/filterActions";
 import {
   filterSelector,
@@ -43,11 +43,14 @@ const DailyCalorieIntake = ({ calories }) => {
               value={filter}
               onChange={onChange}
             />
-            <span>
-              <svg width="12" height="12">
-                <use href={sprite + "#search-icon"} />
-              </svg>
-            </span>
+
+            <img
+              className="searchLogo"
+              src={logoImg}
+              alt="Search"
+              width="20"
+              height="20"
+            />
           </div>
           <ol className="productsList">
             {filteredProducts

@@ -9,7 +9,7 @@ import {
   logoutError,
   getCurrentUserSuccess,
   getCurrentUserError,
-  goToRegistr
+  goToRegistr,
 } from "./auth-actions";
 
 const initialUserState = {
@@ -56,16 +56,6 @@ const error = createReducer(null, {
   [getCurrentUserError]: (_, { payload }) => payload,
 });
 
-// const isAuthenticated = createReducer(false, {
-//   [registerSuccess]: () => false,
-//   [loginSuccess]: () => true,
-//   [getCurrentUserSuccess]: () => true,
-//   [registerError]: () => false,
-//   [loginError]: () => false,
-//   [getCurrentUserError]: () => false,
-//   [logoutSuccess]: () => false
-// });
-
 const isRegistrated = createReducer(false, {
   [registerSuccess]: () => true,
   [getCurrentUserSuccess]: () => true,
@@ -80,7 +70,6 @@ const authReducer = combineReducers({
   user,
   todaySummaryInfo,
   token,
-  // isAuthenticated,
   loading,
   isRegistrated,
   error,
