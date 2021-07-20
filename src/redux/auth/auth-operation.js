@@ -95,7 +95,6 @@ const getCurrentUser = () => async (dispatch, getState) => {
     if (error.response.status === 401) {
       dispatch(logoutSuccess());
     }
-
     dispatch(getCurrentUserError(error.message));
   }
 };
