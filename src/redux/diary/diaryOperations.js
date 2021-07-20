@@ -73,7 +73,9 @@ const addEatenProduct = eatenProduct => dispatch => {
 
   axios
     .post('/day', eatenProduct)
-    .then(({data}) => dispatch(addProductSuccess(data)))
+    .then(({data}) => {
+      dispatch(addProductSuccess(data));
+    })
     .catch(error => {
       dispatch(addProductError(error.message));
       alertError('Введите название продукта');
