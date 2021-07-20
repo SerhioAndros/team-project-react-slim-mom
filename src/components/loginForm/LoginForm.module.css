@@ -8,7 +8,6 @@
   display: flex;
   justify-content: center;
   margin-bottom: 60px;
-
   font-family: Verdana;
   font-style: normal;
   font-weight: 700;
@@ -16,7 +15,6 @@
   line-height: 0.92;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-
   color: #fc842d;
 }
 
@@ -32,7 +30,6 @@
   font-size: 14px;
   line-height: 1.21;
   letter-spacing: 0.04em;
-
   color: #9b9faa;
 }
 
@@ -84,7 +81,6 @@
   font-size: 14px;
   line-height: 17px;
   letter-spacing: 0.04em;
-
   color: #ffffff;
   width: 176px;
   height: 44px;
@@ -111,12 +107,9 @@
   font-size: 14px;
   line-height: 17px;
   letter-spacing: 0.04em;
-
   color: #fc842d;
-
   width: 176px;
   height: 44px;
-
   background: #ffffff;
   border: 2px solid #fc842d;
   box-sizing: border-box;
@@ -163,7 +156,6 @@
     font-size: 14px;
     line-height: 17px;
     letter-spacing: 0.04em;
-
     color: #ffffff;
     width: 176px;
     height: 44px;
@@ -177,7 +169,4 @@
     margin-bottom: 0;
     margin-right: 30px;
   }
-}
-
-@media screen and (min-width: 1280px) {
 }

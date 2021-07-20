@@ -13,7 +13,7 @@ const MainForm = ({ onSubmit, initialValues, phraze }) => {
         onSubmit={onSubmit}
         validationSchema={CalculatorSchema}
       >
-        {() => (
+        {({ values }) => (
           <Form className={styled.formInput}>
             <div className={styled.containerDivFlex}>
               <div className={styled.containerDivFlexLeft}>
@@ -86,7 +86,7 @@ const MainForm = ({ onSubmit, initialValues, phraze }) => {
                       type="radio"
                       name="bloodType"
                       value="1"
-                      checked="checked"
+                      checked={values.bloodType.toString() === "1"}
                       className={styled.fieldRadio}
                     />
                     <span></span> 1
@@ -96,6 +96,7 @@ const MainForm = ({ onSubmit, initialValues, phraze }) => {
                       type="radio"
                       name="bloodType"
                       value="2"
+                      checked={values.bloodType.toString() === "2"}
                       className={styled.fieldRadio}
                     />
                     <span></span> 2
@@ -105,6 +106,7 @@ const MainForm = ({ onSubmit, initialValues, phraze }) => {
                       type="radio"
                       name="bloodType"
                       value="3"
+                      checked={values.bloodType.toString() === "3"}
                       className={styled.fieldRadio}
                     />
                     <span></span> 3
@@ -114,6 +116,7 @@ const MainForm = ({ onSubmit, initialValues, phraze }) => {
                       type="radio"
                       name="bloodType"
                       value="4"
+                      checked={values.bloodType.toString() === "4"}
                       className={styled.fieldRadio}
                     />
                     <span></span> 4

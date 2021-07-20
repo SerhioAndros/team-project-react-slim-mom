@@ -23,8 +23,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /* background-color: tomato; */
-    /* width: 100%; */
   }
 }
 
@@ -33,8 +31,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* background-color: tomato; */
-    /* width: 100%; */
   }
   .navWrapper {
     border-left: 2px solid #e0e0e0;

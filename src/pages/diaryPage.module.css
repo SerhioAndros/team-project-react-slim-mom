@@ -12,8 +12,6 @@
     grid-area: sidebar;
   }
 
-  /* new styles */
-
   .DiaryPageLeftSide {
     margin-top: 146px;
     margin-left: 115px;
@@ -21,8 +19,6 @@
   }
 
   .DiaryPageRightSide {
-    /* margin-top: 146px;
-    margin-left: 90px; */
     padding-top: 146px;
     padding-left: 90px;
     height: 100%;

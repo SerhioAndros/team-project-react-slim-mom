@@ -16,9 +16,7 @@
   font-size: 14px;
   line-height: 1.21;
   letter-spacing: 0.04em;
-
   color: #9b9faa;
-
   margin-bottom: 15px;
 }
 
@@ -51,20 +49,17 @@
 .buttonForm {
   width: 176px;
   height: 44px;
-
   background: #fc842d;
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
   border-radius: 30px;
   border: 0;
   cursor: pointer;
   margin: 0 auto;
-
   font-weight: 700;
   font-size: 14px;
   line-height: 1.21;
   display: block;
   letter-spacing: 0.04em;
-
   color: #ffffff;
   margin-bottom: 80px;
 }
@@ -77,6 +72,7 @@ input[type="radio"] + span {
   margin-right: 15px;
   font-size: 14px;
 }
+
 input[type="radio"] ~ span:before {
   content: "";
   display: block;
@@ -89,16 +85,17 @@ input[type="radio"] ~ span:before {
   background-color: #fff;
   border-radius: 50%;
 }
+
 input[type="radio"] {
   display: none;
 }
+
 input[type="radio"]:checked ~ span:after {
   content: "";
   display: block;
   position: absolute;
   bottom: 14%;
   left: 40%;
-
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -110,7 +107,6 @@ input[type="radio"]:checked ~ span:after {
     font-weight: 700;
     font-size: 30px;
     line-height: 1.2;
-    /* margin-left: 87px; */
     margin-bottom: 60px;
   }
 
