@@ -1,0 +1,62 @@
+.headerSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  padding: 18px 15px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.List {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.ListItem {
+  margin-right: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .headerContainer {
+    padding: 0;
+  }
+  .headerSection {
+    padding: 18px 70px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .headerContainer {
+    padding: 90px 90px;
+    padding-bottom: 0;
+  }
+  .headerSection {
+    padding: 0;
+    justify-content: flex-start;
+    align-items: baseline;
+    border-bottom: none;
+  }
+
+  .headerNavigation {
+    display: flex;
+    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: baseline;
+    height: 100%;
+    width: 100%;
+    padding: 90px;
+    padding-bottom: 0;
+  }
+  .headerUserInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+    padding-top: 90px;
+    padding-left: 90px;
+    padding-right: 115px;
+  }
+}

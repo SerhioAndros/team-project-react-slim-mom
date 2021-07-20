@@ -1,0 +1,138 @@
+.container {
+  background-color: #f0f1f3;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 15px 40px 15px;
+}
+
+.subTitle {
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+.input {
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.statisticsList {
+  padding-left: 0;
+  margin-bottom: 40px;
+}
+
+.statisticsItem {
+  color: #9b9faa;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.statisticsItem:not(:last-child) {
+  margin-bottom: 14px;
+}
+
+.productsList {
+  max-width: 600px;
+  max-height: 110px;
+  overflow-y: scroll;
+}
+
+.productsItem {
+  font-family: Verdana;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: #9b9faa;
+}
+
+.productsItem:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.message {
+  color: #9b9faa;
+  font-family: Verdana;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  width: 270px;
+}
+
+.svg {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+    padding: 91px 87px;
+  }
+  .subTitle {
+    margin-bottom: 22px;
+  }
+  .statisticsList {
+    margin-bottom: 0;
+  }
+
+  .statistics {
+    width: 100%;
+    padding-right: 60px;
+  }
+  .products {
+    width: 100%;
+  }
+
+  .container {
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-image: url(../../images/rightSideBar/rightSideBar_tablet.png);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    flex-direction: column;
+    padding: 0;
+    margin-top: 0;
+    max-width: 550px;
+  }
+
+  .productsList {
+    max-width: 300px;
+  }
+
+  .container {
+    background-image: none;
+    background-color: transparent;
+  }
+
+  .statistics {
+    margin-bottom: 60px;
+    width: auto;
+    padding-right: 0px;
+  }
+
+  .statisticsList {
+    width: 260px;
+  }
+
+  .productsList {
+    max-height: 148px;
+  }
+}

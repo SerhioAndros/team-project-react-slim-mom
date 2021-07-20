@@ -1,0 +1,141 @@
+.titleH {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.45;
+  margin-left: 15px;
+  margin-bottom: 30px;
+}
+
+.formInput {
+  padding-left: 15px;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: #9b9faa;
+  margin-bottom: 15px;
+}
+
+.field {
+  margin-bottom: 30px;
+  width: 240px;
+  border: 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.errorLowerDiv {
+  color: red;
+  margin-top: -20px;
+  margin-bottom: 15px;
+}
+
+.radioContainer {
+  margin-bottom: 40px;
+  margin-top: 9px;
+}
+
+.labelRadio {
+  margin-right: 28px;
+}
+
+.labelRadioNumber {
+  margin-left: 11px;
+}
+
+.buttonForm {
+  width: 176px;
+  height: 44px;
+  background: #fc842d;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  border-radius: 30px;
+  border: 0;
+  cursor: pointer;
+  margin: 0 auto;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.21;
+  display: block;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  margin-bottom: 80px;
+}
+
+input[type="radio"] + span {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 10px;
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+input[type="radio"] ~ span:before {
+  content: "";
+  display: block;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: -17.5px;
+  left: -1px;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked ~ span:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 14%;
+  left: 40%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fc842d;
+}
+
+@media screen and (min-width: 768px) {
+  .titleH {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.2;
+    margin-bottom: 60px;
+  }
+
+  .containerDivFlex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .containerDivFlexLeft {
+    margin-right: 30px;
+    width: 45%;
+  }
+  .containerDivFlexRight {
+    width: 45%;
+  }
+
+  .errorLowerDiv {
+    display: block;
+    margin-top: -20px;
+    margin-bottom: 15px;
+  }
+
+  .buttonForm {
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .titleH {
+    width: 450px;
+  }
+}
